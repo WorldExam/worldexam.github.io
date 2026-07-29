@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_vehicle_nose_into_pedestrian_crossing__case_06",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/social_interaction/image/third_person_vehicle_nose_into_pedestrian_crossing__case_06.jpg",
+    "prompt": "The red compact sedan moves forward. Grounded 3D game-engine render, clear third-person follow camera directly behind one red compact sedan, medium chase distance, slightly elevated and tilted down about 40 degrees. The sedan's rear is centered in the foreground in a supermarket parking lane lined with parked cars and a visible store facade ahead. Across the midground is a broad striped pedestrian walkway leading to the automatic entrance doors. The sedan has already crept so its hood occupies part of the walkway. One shopper is pushing a metal grocery cart from left to right, with one companion walking beside the cart on the store side; they are very close to the sedan's front bumper line. The conflict zone is the striped path directly before the car nose and cart wheels. Soft evening light, realistic proportions, all actors unobstructed, ordinary everyday shopping environment.",
+    "subject": "red compact sedan",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/social_interaction/third_person_vehicle_nose_into_pedestrian_crossing__case_06",
+    "image_data": {
+        "checklist": [
+            "Does the red sedan continue inching forward into the storefront crossing?",
+            "Do the cart pusher and companion remain visible enough to judge how they pass the car nose?",
+            "Does the cart path or walking pace visibly change near the sedan's protruding front end?",
+            "Is the cart interaction focused on the crossing area directly in front of the car?",
+            "Does the continuation stay at ordinary parking-lot speed and behavior?",
+            "Does the sedan remain the dominant source of social pressure in the scene?",
+            "Is the NPC response plausible for pedestrians guiding a shopping cart around a vehicle nose?",
+            "Does the clip avoid unrelated dominant events such as another car cutting through the scene?"
+        ],
+        "image": "image/third_person_vehicle_nose_into_pedestrian_crossing__case_06.jpg",
+        "prompt": "Grounded 3D game-engine render, clear third-person follow camera directly behind one red compact sedan, medium chase distance, slightly elevated and tilted down about 40 degrees. The sedan's rear is centered in the foreground in a supermarket parking lane lined with parked cars and a visible store facade ahead. Across the midground is a broad striped pedestrian walkway leading to the automatic entrance doors. The sedan has already crept so its hood occupies part of the walkway. One shopper is pushing a metal grocery cart from left to right, with one companion walking beside the cart on the store side; they are very close to the sedan's front bumper line. The conflict zone is the striped path directly before the car nose and cart wheels. Soft evening light, realistic proportions, all actors unobstructed, ordinary everyday shopping environment.",
+        "control_path": [
+            "w"
+        ],
+        "subject": "red compact sedan",
+        "sample_name": "third_person_vehicle_nose_into_pedestrian_crossing__case_06",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

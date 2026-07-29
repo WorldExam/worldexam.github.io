@@ -1,0 +1,64 @@
+{
+    "sample_name": "daily_soccer_shot__case_05",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/task_understanding/image/daily_soccer_shot/case_05.jpg",
+    "prompt": "Kick the ball at the lower painted rectangle on the wall.",
+    "subject": null,
+    "total_frames": 123,
+    "output_dir": "output/happyhorse/task_understanding/daily_soccer_shot__case_05",
+    "image_data": {
+        "case_id": "case_05",
+        "task_domain": "daily",
+        "task_pattern": "daily_soccer_shot",
+        "scene_type": "school playground with a brick wall and painted goal rectangles",
+        "camera_perspective": "rear three-quarter view of child-sized player",
+        "instruction": "Kick the ball at the lower painted rectangle on the wall.",
+        "goal_state": "The soccer ball hits the brick wall within or immediately adjacent to the lower painted rectangle.",
+        "key_objects": [
+            "soccer ball",
+            "lower painted rectangle on the wall",
+            "upper painted rectangle on the wall",
+            "child player with raised kicking leg"
+        ],
+        "distractors": [
+            "upper painted rectangle",
+            "hopscotch markings on the asphalt",
+            "backpack by the chain-link fence",
+            "court line markings"
+        ],
+        "preconditions": [
+            "The ball is on the asphalt in front of the child.",
+            "The child is already positioned behind the ball with a kicking leg lifted.",
+            "Both the lower and upper painted rectangles on the wall are visible.",
+            "The space between the ball and the wall is clear enough for a direct shot."
+        ],
+        "scene_constraints": [
+            "Aim at the lower painted rectangle rather than the upper one.",
+            "Take a direct kick from the current playground position.",
+            "Keep the shot within the visible wall-target area ahead.",
+            "Do not treat the hopscotch or ground markings as the target."
+        ],
+        "checklist": [
+            "Does the child perform a clear kicking action on the ball?",
+            "Does the ball travel generally forward toward the wall after the kick?",
+            "Does the continuation keep the lower painted rectangle as the intended target?",
+            "Does the shot avoid redirecting toward the upper painted rectangle as the main goal?",
+            "Does the ball reach the wall area rather than stopping in the middle of the court?",
+            "Does the ball strike within or immediately next to the lower painted rectangle?",
+            "Does the action remain grounded in the visible playground space and wall targets?"
+        ],
+        "first_frame_prompt": "Documentary-style photo of a school playground, rear three-quarter view behind a child-sized player, full body visible with one leg raised to kick a soccer ball on asphalt. A brick wall ahead shows two white painted rectangular targets, a larger lower rectangle and a smaller upper rectangle. A chain-link fence runs along the left side with a colorful backpack resting by it, and hopscotch markings are painted on the ground to the right. Overcast daylight, natural everyday viewpoint, clear pre-kick moment with the child's body and kicking leg visible.",
+        "first_frame_path": "images/daily_soccer_shot/case_05.jpg",
+        "language_control_prompt": "Kick the ball at the lower painted rectangle on the wall.",
+        "image": "image/daily_soccer_shot/case_05.jpg",
+        "source_first_frame_path": "/data2/shuyao.shang/WorldUndBench/TaskUnderstanding/image/daily_soccer_shot/case_05/candidate_05.jpg",
+        "prompt": "Kick the ball at the lower painted rectangle on the wall.",
+        "scene_prompt": "Documentary-style photo of a school playground, rear three-quarter view behind a child-sized player, full body visible with one leg raised to kick a soccer ball on asphalt. A brick wall ahead shows two white painted rectangular targets, a larger lower rectangle and a smaller upper rectangle. A chain-link fence runs along the left side with a colorful backpack resting by it, and hopscotch markings are painted on the ground to the right. Overcast daylight, natural everyday viewpoint, clear pre-kick moment with the child's body and kicking leg visible.",
+        "use_raw_prompt": true,
+        "control_path": [],
+        "duration_ratio": [],
+        "sample_name": "daily_soccer_shot__case_05"
+    },
+    "control_path": [],
+    "duration_ratio": [],
+    "action_segments": []
+}

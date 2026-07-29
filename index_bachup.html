@@ -1,0 +1,3189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorldExam: Your World Model Needs a Comprehensive and Wise Judge</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --bg:#07111f;
+  --bg-soft:#0b1627;
+  --panel:#101c2f;
+  --panel-strong:#13243b;
+  --text:#e5edf7;
+  --heading:#f7fbff;
+  --muted:#a4b4c8;
+  --line:rgba(148,163,184,.26);
+  --line-soft:rgba(148,163,184,.16);
+  --surface:#111d31;
+  --blue:#58a6ff;
+  --green:#4ade80;
+  --purple:#a78bfa;
+  --cyan:#22d3ee;
+  --amber:#fbbf24;
+  --shadow-sm:0 10px 28px rgba(0,0,0,.24);
+  --shadow-md:0 18px 42px rgba(0,0,0,.34);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font:21px/1.6 var(--font-sans)}
+.container{max-width:1440px;margin:auto;padding:0 40px}
+section{margin:64px 0}
+section h2{margin-bottom:16px;font:700 38px/1.3 var(--font-serif)}
+section .desc{margin-bottom:12px;color:var(--muted);font-size:20px}
+
+/* Hero */
+.hero{text-align:center}
+.hero h1{
+  margin-bottom:22px;
+  font:700 54px/1.2 var(--font-serif);
+  letter-spacing:-.02em;
+  background:linear-gradient(135deg,#eaf6ff,#5bb7ff 48%,#22d3ee);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .desc{margin-bottom:14px;color:#d8e7f7;font-size:24px;font-weight:500}
+.hero .authors{margin-bottom:6px;color:#c9d7e8;font-size:20px}
+.hero .affiliations{margin-bottom:6px;color:#a7b7ca;font-size:20px}
+.hero .footnotes{margin-bottom:28px;color:#8fa2ba;font-size:18px}
+.hero-with-bg{
+  margin:0;
+  padding:60px 0 80px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(88,166,255,.24),transparent 34%),
+    linear-gradient(180deg,rgba(7,17,31,.72),rgba(7,17,31,.96)),
+    url('overview/gallary_overview.png') center top/100% auto no-repeat;
+}
+.aff-icon{height:16px;margin:0 4px 0 2px;vertical-align:middle}
+
+/* Publication links */
+.publication-links-wrapper{
+  display:inline-block;
+  width:auto;
+  max-width:1600px;
+  margin-top:1.5rem;
+  padding:1rem 1.5rem;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--surface),#fff);
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+  transition:.3s;
+}
+.publication-links-wrapper:hover{
+  border-color:rgba(37,99,235,.2);
+  box-shadow:0 4px 16px rgba(37,99,235,.1);
+}
+.publication-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.75rem}
+.link-card{
+  display:inline-flex;
+  align-items:center;
+  gap:.625rem;
+  padding:.625rem 1.25rem;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff;
+  color:#1e293b;
+  font-size:.95rem;
+  font-weight:500;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:.3s;
+}
+.link-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--blue);
+  background:#f1f5f9;
+  color:var(--blue);
+  box-shadow:0 4px 12px rgba(37,99,235,.15);
+}
+.link-card-icon{display:flex;align-items:center;justify-content:center;width:22px;height:22px;flex-shrink:0}
+.link-card-text{transition:color .3s}
+.link-card-arrow{
+  width:16px;
+  height:16px;
+  margin-left:.5rem;
+  flex-shrink:0;
+  color:#94a3b8;
+  transition:.3s;
+}
+.link-card:hover .link-card-arrow{transform:translate(2px,-2px);color:var(--blue)}
+
+/* Stats */
+.stats-expanded{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 16px}
+.stat-card{
+  position:relative;
+  overflow:hidden;
+  padding:20px;
+  border:1px solid #eee;
+  border-radius:10px;
+  background:#fafbfc;
+  text-align:center;
+  transition:.3s;
+}
+.stat-card .stat-pin{position:absolute;top:8px;right:10px;font-size:14px;opacity:.4}
+.stat-card .stat-num{color:var(--text);font:700 36px/1.2 var(--font-serif)}
+.stat-card .stat-title{margin-top:2px;color:#555;font-size:13px;font-weight:600}
+.stat-card .stat-details{
+  display:inline-flex;
+  max-height:0;
+  margin-top:0;
+  overflow:hidden;
+  flex-direction:column;
+  gap:4px;
+  opacity:0;
+  text-align:left;
+  transition:max-height .4s,opacity .3s,margin .3s;
+}
+.stat-card .stat-details span{color:#777;font-size:12px}
+.stats-expanded:hover .stat-card{border-color:#ddd;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.stats-expanded:hover .stat-details{max-height:200px;margin-top:12px;opacity:1}
+
+/* Overview */
+#overview{margin-top:0}
+.overview-image{
+  width:100%;
+  max-width:1200px;
+  display:block;
+  margin:24px auto 0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow-sm);
+}
+.overview-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:36px 0 24px}
+.overview-feature-card{
+  min-height:210px;
+  padding:28px 30px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff,var(--surface));
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+}
+.overview-feature-card:hover{transform:translateY(-5px);border-color:#cbd5e1;box-shadow:var(--shadow-md)}
+.overview-feature-header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.overview-feature-icon{
+  display:flex;
+  width:48px;
+  height:48px;
+  flex-shrink:0;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  font-size:20px;
+}
+.overview-feature-icon.blue{background:#dbeafe;color:var(--blue)}
+.overview-feature-icon.green{background:#d1fae5;color:#059669}
+.overview-feature-icon.orange{background:#ffedd5;color:#c2410c}
+.overview-feature-icon.purple{background:#ede9fe;color:var(--purple)}
+.overview-feature-card h3{color:#1e293b;font:700 27px/1.25 var(--font-serif)}
+.overview-feature-card p{color:var(--muted);font-size:18px;line-height:1.8}
+.overview-feature-card p strong{color:#334155;font-weight:700}
+
+.overview-findings{
+  margin-top:32px;
+  padding:34px 38px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:linear-gradient(145deg,var(--surface),#fff);
+  box-shadow:var(--shadow-sm);
+}
+.overview-findings h3{margin-bottom:22px;color:#1e293b;font:700 29px/1.3 var(--font-serif)}
+.overview-findings ul{list-style:none}
+.overview-findings li{
+  position:relative;
+  margin-bottom:18px;
+  padding-left:32px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.75;
+}
+.overview-findings li:last-child{margin-bottom:0}
+.overview-findings li::before{
+  content:"";
+  position:absolute;
+  top:11px;
+  left:2px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#3b82f6;
+  box-shadow:0 0 0 4px rgba(59,130,246,.1);
+}
+.overview-findings li strong{color:#334155;font-weight:700}
+
+/* Comparison */
+.comparison-caption{margin-bottom:20px;color:#475569;font-size:18px;line-height:1.8}
+.comparison-caption strong{color:#111827;font-weight:700}
+.comparison-table-wrap{
+  overflow-x:auto;
+  overflow-y:hidden;
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 4px 18px rgba(15,23,42,.05);
+}
+.comparison-table{
+  width:100%;
+  min-width:1280px;
+  border-spacing:0;
+  border-collapse:separate;
+  background:#fff;
+  color:#1f2937;
+  font-size:15px;
+}
+.comparison-table thead th{
+  position:static;
+  padding:14px 10px;
+  border:0;
+  background:var(--surface);
+  color:var(--heading);
+  font-family:var(--font-sans);
+  font-weight:700;
+  line-height:1.3;
+  text-align:center;
+  text-transform:none;
+  white-space:normal;
+  cursor:default;
+  user-select:text;
+}
+.comparison-table thead tr:first-child th{
+  padding-top:20px;
+  padding-bottom:12px;
+  border-bottom:0;
+  font-size:16px;
+  font-weight:800;
+}
+.comparison-table thead tr:last-child th{
+  padding-top:8px;
+  padding-bottom:18px;
+  border-bottom:1px solid #dbe3ee;
+  color:#1e293b;
+  font-size:13px;
+}
+.comparison-table thead tr:first-child th:first-child{border-top-left-radius:18px}
+.comparison-table thead tr:first-child th:last-child{border-top-right-radius:18px}
+.comparison-table thead th:hover{background:var(--surface);color:var(--heading)}
+.comparison-table tbody td{
+  padding:14px 12px;
+  border:0;
+  border-bottom:1px solid var(--line-soft);
+  background:#fff;
+  color:#1f2937;
+  font-family:var(--font-sans);
+  font-size:15px;
+  line-height:1.35;
+  text-align:center;
+  vertical-align:middle;
+}
+.comparison-table tbody tr:hover td{background:#fafcff}
+.comparison-table tbody td:first-child{text-align:left;white-space:nowrap;font-weight:500}
+.comparison-table .num{color:#111827;font-weight:700}
+.paradigm{font-family:var(--font-sans);font-weight:700;letter-spacing:.01em;white-space:nowrap}
+.paradigm .c{color:var(--blue)}
+.paradigm .a{color:#d97706}
+.paradigm .l{color:var(--purple)}
+.mark{display:inline-block;font-family:var(--font-sans);font-size:18px;font-weight:700;line-height:1}
+.mark.yes{color:var(--green)}
+.mark.no{color:#ef4444}
+.mark.note{margin-left:1px;color:#475569;font-size:12px;vertical-align:super}
+.comparison-table .ours-row td{
+  border-top:1px solid #f1df9b;
+  border-bottom:1px solid #f1df9b;
+  background:#fffbea!important;
+  color:#010612;
+  font-weight:700;
+}
+.comparison-table .ours-row td:first-child{font-weight:800}
+.comparison-table tbody .ours-row:hover td{background:#fff7d6!important}
+
+.comparison-legend{
+  margin-top:18px;
+  padding:18px 20px;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  background:var(--surface);
+}
+.comparison-legend-title{margin-bottom:10px;color:#111827;font-size:14px;font-weight:800}
+.comparison-legend-list{display:flex;flex-wrap:wrap;gap:10px 24px}
+.comparison-legend-item{display:flex;align-items:center;gap:6px;color:#475569;font-size:14px;line-height:1.6}
+.comparison-legend-list .comparison-legend-item:nth-child(n+4){display:none}
+.comparison-legend-note{margin-top:10px;color:#475569;font-size:14px;line-height:1.75}
+.comparison-legend-note strong{color:#111827;font-weight:700}
+
+/* Shared pill buttons */
+.pill-buttons-row{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:0 0 16px}
+.pill-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border:2px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  color:#475569;
+  font-family:var(--font-sans);
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+.pill-btn:hover{
+  transform:translateY(-2px);
+  border-color:#cbd5e1;
+  background:var(--surface);
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.pill-btn.active{
+  border-color:var(--blue);
+  background:linear-gradient(135deg,var(--blue),#1e40af);
+  color:#fff;
+  box-shadow:0 4px 16px rgba(37,99,235,.3);
+}
+
+/* Large task buttons for Metrics and Dataset Gallery */
+#metrics > .pill-buttons-row,
+#gallery .pill-buttons-row{
+  display:grid;
+  width:100%;
+  gap:16px;
+  margin:18px 0;
+}
+
+#metrics > .pill-buttons-row{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+#gallery .pill-buttons-row:first-child{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+}
+
+#gallery .pill-buttons-row:last-child{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+#metrics > .pill-buttons-row .pill-btn,
+#gallery .pill-buttons-row .pill-btn{
+  min-height:58px;
+  justify-content:center;
+  padding:16px 18px;
+  border-width:1px;
+  border-radius:14px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0)),
+    rgba(11,22,39,.9);
+  color:#e6f0fb;
+  font-size:17px;
+  font-weight:750;
+  line-height:1.2;
+  text-align:center;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.12),
+    0 10px 24px rgba(0,0,0,.24);
+}
+
+#metrics > .pill-buttons-row .pill-btn:hover,
+#gallery .pill-buttons-row .pill-btn:hover{
+  transform:translateY(-3px);
+  border-color:rgba(88,166,255,.66);
+  background:
+    linear-gradient(180deg,rgba(88,166,255,.18),rgba(34,211,238,.04)),
+    rgba(14,30,50,.96);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    0 16px 34px rgba(0,0,0,.32),
+    0 0 0 1px rgba(88,166,255,.12);
+}
+
+#metrics > .pill-buttons-row .pill-btn.active,
+#gallery .pill-buttons-row .pill-btn.active{
+  border-color:rgba(34,211,238,.72);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0)),
+    linear-gradient(135deg,#2563eb,#0891b2);
+  color:#fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    0 18px 38px rgba(8,145,178,.28);
+}
+
+/* Leaderboard controls */
+#leaderboard .leaderboard-controls{
+  margin:22px 0 24px;
+  padding:18px 20px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface);
+}
+#leaderboard .filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-bottom:14px}
+#leaderboard .filter-row:last-child{margin-bottom:0}
+#leaderboard .filter-label{
+  width:105px;
+  flex-shrink:0;
+  color:#475569;
+  font-size:13px;
+  font-weight:700;
+}
+#leaderboard .pill-buttons-row{justify-content:flex-start;align-items:center;gap:8px;margin:0}
+#leaderboard .leaderboard-tabs .pill-btn{min-width:210px;justify-content:center}
+#leaderboard .model-type-buttons .pill-btn{min-width:120px;justify-content:center}
+#leaderboard .pill-btn small{font-size:11px;opacity:.62}
+
+/* Leaderboard panels */
+.leaderboard-panel{display:none}
+.leaderboard-panel.active{display:block;animation:leaderboard-panel-in .25s ease}
+.leaderboard-panel-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin:4px 0 14px}
+.leaderboard-panel-header h3{margin:0 0 3px;color:#1e293b;font:700 21px/1.3 var(--font-serif)}
+.leaderboard-panel-header p{color:var(--muted);font-size:13px;line-height:1.6}
+@keyframes leaderboard-panel-in{
+  from{transform:translateY(5px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+/* Leaderboard legends */
+#leaderboard .dim-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:0 0 14px}
+#leaderboard .legend-item{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px}
+#leaderboard .legend-bar{width:22px;height:3px;flex-shrink:0;border-radius:999px}
+
+/* Leaderboard tables */
+#leaderboard .table-wrap{
+  position:relative;
+  overflow-x:auto;
+  overflow-y:visible;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+#leaderboard .leaderboard-table{width:100%;border-collapse:collapse}
+#table-static{min-width:400px}
+#table-dynamic{min-width:800px}
+
+#leaderboard .leaderboard-table thead th{
+  border:0;
+  background:var(--surface);
+  color:#334155;
+  font-family:var(--font-sans);
+  font-weight:700;
+  line-height:1.3;
+  letter-spacing:0;
+  text-align:center;
+  text-transform:none;
+  white-space:normal;
+  cursor:pointer;
+  user-select:none;
+}
+#leaderboard .leaderboard-group-row th{
+  padding:17px 12px 14px;
+  border-bottom:1px solid #dbe3ee;
+  color:#1e293b;
+  font-size:15px;
+  font-weight:800;
+  vertical-align:middle;
+  cursor:default;
+}
+#leaderboard .leaderboard-metric-row th{
+  min-width:60px;
+  height:88px;
+  padding:14px 10px;
+  border-bottom:2px solid #dbe3ee;
+  color:#263449;
+  font-size:13px;
+  vertical-align:middle;
+}
+#leaderboard .leaderboard-metric-row th:hover{background:#eef3f8;color:var(--heading)}
+#leaderboard .metric-heading{
+  display:flex;
+  width:100%;
+  min-height:54px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+#leaderboard .model-column-header,
+#leaderboard .leaderboard-table th:nth-child(2),
+#leaderboard .leaderboard-table td:nth-child(2){
+  min-width:150px;
+  text-align:left;
+}
+#leaderboard .model-column-header{padding-left:18px}
+#leaderboard .leaderboard-table th:first-child,
+#leaderboard .leaderboard-table td:first-child{
+  width:45px;
+  min-width:45px;
+  text-align:center;
+}
+#leaderboard .leaderboard-table tbody td{
+  padding:17px 13px;
+  border-bottom:1px solid #e8edf3;
+  color:#334155;
+  font-family:var(--font-mono);
+  font-size:14px;
+  font-weight:500;
+  line-height:1.4;
+  text-align:center;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+#leaderboard .leaderboard-table tbody tr:last-child td{border-bottom:0}
+#leaderboard .leaderboard-table tbody td:nth-child(2){
+  color:#1e293b;
+  font-family:var(--font-sans);
+  font-size:15px;
+  font-weight:700;
+}
+#leaderboard .leaderboard-table tbody td:first-child{
+  font-family:var(--font-sans);
+  font-size:18px;
+  font-weight:700;
+}
+#leaderboard .leaderboard-table tbody td:nth-child(3){
+  background:var(--surface);
+  color:var(--heading);
+  font-size:15px;
+  font-weight:800;
+}
+#leaderboard .leaderboard-table tbody td:nth-child(4),
+#leaderboard .leaderboard-table tbody td:nth-child(5){
+  background:#fbfcfe;
+  color:#1e293b;
+  font-weight:700;
+}
+#leaderboard .leaderboard-table .col-avg{color:#111827;font-weight:800}
+#leaderboard .leaderboard-metric-row th:nth-child(1){font-weight:800}
+#leaderboard .average-metric-group{box-shadow:inset 0 4px 0 #64748b}
+#leaderboard .task-metric-group{box-shadow:inset 0 4px 0 var(--purple)}
+#leaderboard .general-metric-group{box-shadow:inset 0 4px 0 var(--cyan)}
+#leaderboard td.unsupported{color:#94a3b8;font-weight:600}
+#leaderboard .rank-gold{color:#d97706}
+#leaderboard .rank-silver{color:#64748b}
+#leaderboard .rank-bronze{color:#b45309}
+#leaderboard .no-results{padding:34px 20px;color:#94a3b8;font-size:14px;text-align:center}
+
+/* =========================================================
+   Leaderboard 前三名整行高亮
+   ========================================================= */
+/* 第一名：浅金黄色 */
+#leaderboard .leaderboard-table tbody tr.top-1 td{
+  background:#fffbea !important;
+  border-bottom-color:#f1df9b;
+}
+/* 第二名：浅银灰色 */
+#leaderboard .leaderboard-table tbody tr.top-2 td{
+  background:#f5f7fa !important;
+  border-bottom-color:#dce3ea;
+}
+/* 第三名：浅铜橙色 */
+#leaderboard .leaderboard-table tbody tr.top-3 td{
+  background:#fff6ed !important;
+  border-bottom-color:#f0d2b7;
+}
+/* 第一名悬停 */
+#leaderboard .leaderboard-table tbody tr.top-1:hover td{
+  background:#fff5d6 !important;
+}
+/* 第二名悬停 */
+#leaderboard .leaderboard-table tbody tr.top-2:hover td{
+  background:#edf1f5 !important;
+}
+/* 第三名悬停 */
+#leaderboard .leaderboard-table tbody tr.top-3:hover td{
+  background:#ffead8 !important;
+}
+/* 普通行悬停 */
+#leaderboard .leaderboard-table tbody
+tr:not(.top-1):not(.top-2):not(.top-3):hover td{
+  background:#f8fafc;
+}
+
+/* Shared horizontal scrollbars */
+.comparison-table-wrap::-webkit-scrollbar,
+#leaderboard .table-wrap::-webkit-scrollbar{height:10px}
+.comparison-table-wrap::-webkit-scrollbar-track,
+#leaderboard .table-wrap::-webkit-scrollbar-track{border-radius:999px;background:#eef2f6}
+.comparison-table-wrap::-webkit-scrollbar-thumb,
+#leaderboard .table-wrap::-webkit-scrollbar-thumb{border-radius:999px;background:#bdc8d5}
+.comparison-table-wrap::-webkit-scrollbar-thumb:hover,
+#leaderboard .table-wrap::-webkit-scrollbar-thumb:hover{background:#94a3b8}
+
+/* Metrics */
+.metrics-main-container{display:flex;flex-direction:column;gap:18px;margin-top:32px}
+.video-comparison-area{
+  width:100%;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.video-comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.video-compare-item{
+  padding:0;
+  border:0;
+  border-radius:14px;
+  background:transparent;
+  transition:.3s;
+}
+.video-compare-item:hover{transform:translateY(-3px)}
+.video-wrapper{position:relative;overflow:hidden;margin-bottom:8px;border-radius:12px;background:#000;box-shadow:var(--shadow-sm)}
+.video-wrapper video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.video-label-area{display:flex;align-items:center;justify-content:space-between;padding:0 2px}
+.model-name-label{color:#1e293b;font-size:14px;font-weight:600}
+.score-badge{padding:4px 12px;border-radius:8px;font:700 13px/1.4 var(--font-mono)}
+.score-badge.good{background:#dcfce7;color:#166534}
+.score-badge.mid{background:#fef9c3;color:#854d0e}
+.score-badge.low{background:#fee2e2;color:#991b1b}
+
+.cases-sidebar{
+  width:100%;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+.cases-sidebar-header{display:flex;align-items:center;justify-content:center;margin-bottom:14px;padding:0;border-bottom:0;text-align:center}
+.cases-sidebar-header h4{margin:0;color:#1e293b;font:700 20px/1.3 var(--font-serif)}
+.cases-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.case-thumb-item{
+  position:relative;
+  overflow:hidden;
+  border:3px solid transparent;
+  border-radius:12px;
+  background:var(--surface);
+  cursor:pointer;
+  transition:.3s;
+}
+.case-thumb-item:hover{transform:scale(1.05);border-color:#cbd5e1;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.case-thumb-item.active{border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.3)}
+.case-thumb-item img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+
+/* Gallery */
+.gallery-strip-wrap{
+  position:relative;
+  overflow:hidden;
+  margin-top:20px;
+  -webkit-mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);
+  mask-image:linear-gradient(to right,transparent,black 6%,black 94%,transparent);
+}
+.gallery-strip-track{
+  display:flex;
+  width:max-content;
+  gap:12px;
+  animation:gallery-scroll 30s linear infinite;
+}
+.gallery-strip-track:hover{animation-play-state:paused}
+.gallery-strip-item{
+  position:relative;
+  width:360px;
+  flex-shrink:0;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  border-radius:12px;
+  background:var(--line);
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  transition:transform .3s,box-shadow .3s;
+}
+.gallery-strip-item:hover{transform:scale(1.06) translateY(-4px);box-shadow:0 8px 24px rgba(37,99,235,.2)}
+.gallery-strip-item img{display:block;width:100%;height:100%;object-fit:cover}
+.gallery-strip-item .strip-label{
+  position:absolute;
+  right:0;
+  bottom:0;
+  left:0;
+  padding:18px 8px 6px;
+  background:linear-gradient(transparent,rgba(0,0,0,.72));
+  color:#fff;
+  font-size:11px;
+  font-weight:500;
+  opacity:0;
+  transition:opacity .2s;
+}
+.gallery-strip-item:hover .strip-label{opacity:1}
+.gallery-strip-empty{padding:48px;color:#94a3b8;font-size:14px;text-align:center}
+@keyframes gallery-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* Sidebar and footer */
+.page-layout{position:relative}
+.page-sidebar{
+  position:fixed;
+  top:14px;
+  left:50%;
+  z-index:1000;
+  width:min(1180px,calc(100vw - 32px));
+  padding:10px 14px;
+  transform:translateX(-50%);
+  border:1px solid rgba(148,163,184,.22);
+  border-radius:999px;
+  background:#fff;
+  box-shadow:0 14px 34px rgba(0,0,0,.24);
+  backdrop-filter:blur(18px);
+}
+.toc{display:flex;align-items:center;justify-content:center;gap:6px}
+.toc-title{margin:0 14px 0 2px;color:var(--text);font-size:16px;font-weight:800;white-space:nowrap}
+.toc a{
+  display:flex;
+  min-height:38px;
+  align-items:center;
+  margin:0;
+  padding:8px 14px;
+  border-left:0;
+  border-radius:999px;
+  color:#666;
+  font-size:15px;
+  font-weight:650;
+  text-decoration:none;
+  transition:.25s;
+}
+.toc a:hover{background:linear-gradient(135deg,#bfcfee,#fff);color:var(--text)}
+.toc a.active{background:linear-gradient(135deg,#7ba4df,#e0eafa);color:var(--text);font-weight:750}
+footer{margin-top:64px;padding:32px 0;border-top:1px solid #eee;color:#999;font-size:12px;text-align:center}
+footer a{margin:0 12px;color:#666;text-decoration:none}
+
+/* Responsive */
+@media(max-width:1400px){
+  .page-sidebar{left:10px}
+}
+@media(max-width:1100px){
+  .metrics-main-container{flex-direction:column}
+  .cases-sidebar{width:100%}
+  .cases-list{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .case-thumb-item{flex:1}
+}
+@media(max-width:1024px){
+  .comparison-table{min-width:1180px}
+}
+@media(max-width:1000px){
+  .page-sidebar{display:none}
+}
+@media(max-width:768px){
+  .container{padding:0 18px}
+  .publication-links-wrapper{padding:.75rem 1rem}
+  .publication-links{gap:.5rem}
+  .link-card{padding:.5rem .75rem;font-size:.85rem}
+  .link-card-icon{width:18px;height:18px}
+
+  .overview-feature-grid{grid-template-columns:1fr;gap:16px;margin-top:26px}
+  .overview-feature-card{min-height:0;padding:22px}
+  .overview-feature-card h3{font-size:21px}
+  .overview-findings{padding:24px 22px}
+  .overview-findings li{padding-left:26px;font-size:15px}
+
+  .comparison-caption{font-size:15px;line-height:1.7}
+  .comparison-table{min-width:1100px;font-size:14px}
+  .comparison-table thead tr:first-child th{padding-top:16px;padding-bottom:10px;font-size:15px}
+  .comparison-table thead tr:last-child th{padding-bottom:14px;font-size:12px}
+  .comparison-table tbody td{padding:12px 10px;font-size:14px}
+  .comparison-legend{padding:16px}
+  .comparison-legend-item,.comparison-legend-note{font-size:13px}
+
+  #leaderboard .leaderboard-controls{padding:15px}
+  #leaderboard .filter-row{display:block}
+  #leaderboard .filter-label{width:auto;margin-bottom:8px}
+  #leaderboard .leaderboard-tabs .pill-btn{min-width:0;flex:1 1 180px}
+  #leaderboard .model-type-buttons .pill-btn{min-width:0}
+  .leaderboard-panel-header h3{font-size:19px}
+
+  .video-comparison-grid{grid-template-columns:1fr}
+  .cases-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #metrics > .pill-buttons-row,
+  #gallery .pill-buttons-row,
+  #gallery .pill-buttons-row:first-child,
+  #gallery .pill-buttons-row:last-child{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin:12px 0;
+  }
+  #metrics > .pill-buttons-row .pill-btn,
+  #gallery .pill-buttons-row .pill-btn{
+    min-height:48px;
+    padding:12px 10px!important;
+    font-size:14px!important;
+  }
+  .pill-buttons-row{gap:4px}
+  .pill-btn{padding:6px 8px;font-size:13px}
+}
+
+/* 可排序表头 */
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+/* 文字块和箭头作为两个整体横向排列 */
+.metric-heading {
+  display: inline-flex;
+  align-items: center;       /* 箭头相对整个两行文字垂直居中 */
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* 两行文字自身居中 */
+.metric-text {
+  display: inline-block;
+  text-align: center;
+  line-height: 1.15;
+}
+
+/* 右侧排序箭头 */
+.sort-arrow {
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1;
+  color: #7b8794;
+  transition: color 0.2s ease;
+}
+
+th.sortable:hover .sort-arrow {
+  color: #1f2937;
+}
+
+/* Dark research theme refinements */
+body{
+  background:
+    radial-gradient(circle at 12% 0%,rgba(34,211,238,.12),transparent 30%),
+    radial-gradient(circle at 88% 8%,rgba(88,166,255,.12),transparent 30%),
+    linear-gradient(180deg,#07111f 0%,#091525 42%,#07111f 100%);
+}
+
+section h2{color:var(--heading)}
+strong{color:#f4f9ff}
+
+.publication-links-wrapper,
+.stat-card,
+.overview-feature-card,
+.overview-findings,
+.comparison-legend,
+#leaderboard .leaderboard-controls,
+#leaderboard .table-wrap,
+.page-sidebar{
+  border-color:var(--line);
+  background:linear-gradient(145deg,rgba(19,36,59,.92),rgba(11,22,39,.94));
+  box-shadow:var(--shadow-sm);
+}
+
+.publication-links-wrapper:hover,
+.overview-feature-card:hover,
+.video-compare-item:hover{
+  border-color:rgba(88,166,255,.42);
+  box-shadow:var(--shadow-md);
+}
+
+.link-card,
+.pill-btn{
+  border-color:var(--line);
+  background:rgba(11,22,39,.86);
+  color:#d9e6f6;
+}
+
+.link-card:hover,
+.pill-btn:hover{
+  border-color:rgba(88,166,255,.62);
+  background:rgba(17,34,56,.96);
+  color:#f4f9ff;
+  box-shadow:0 8px 22px rgba(34,211,238,.12);
+}
+
+.link-card-icon img{
+  border-radius:4px;
+  background:#fff;
+  padding:1px;
+}
+
+.hero .affiliations span{color:#7dd3fc!important}
+
+.pill-btn.active{
+  border-color:rgba(34,211,238,.72);
+  background:linear-gradient(135deg,#1d4ed8,#0891b2);
+  color:#fff;
+  box-shadow:0 10px 28px rgba(8,145,178,.28);
+}
+
+.stat-card .stat-title,
+.overview-feature-card p strong,
+.overview-findings li strong,
+.comparison-caption strong,
+.comparison-legend-note strong,
+.model-name-label,
+.cases-sidebar-header h4,
+.leaderboard-panel-header h3{
+  color:#f4f9ff;
+}
+
+.stat-card .stat-details span,
+.comparison-caption,
+.comparison-legend-item,
+.comparison-legend-note,
+#leaderboard .filter-label,
+.toc a,
+footer,
+footer a{
+  color:var(--muted);
+}
+
+.overview-feature-card h3,
+.overview-findings h3,
+.comparison-legend-title{
+  color:var(--heading);
+}
+
+.overview-feature-icon.blue{background:rgba(88,166,255,.16);color:#80c2ff}
+.overview-feature-icon.green{background:rgba(74,222,128,.14);color:#86efac}
+.overview-feature-icon.orange{background:rgba(251,191,36,.14);color:#facc15}
+.overview-feature-icon.purple{background:rgba(167,139,250,.16);color:#c4b5fd}
+
+.comparison-table-wrap,
+.comparison-table,
+.comparison-table tbody td,
+#leaderboard .leaderboard-table tbody td{
+  background:rgba(10,20,35,.92);
+  color:#cbd8e8;
+}
+
+.comparison-table-wrap{
+  border-color:var(--line);
+  box-shadow:var(--shadow-sm);
+}
+
+.comparison-table thead th,
+#leaderboard .leaderboard-table thead th{
+  background:#14243a;
+  color:#e8f1fb;
+}
+
+.comparison-table thead tr:last-child th,
+#leaderboard .leaderboard-group-row th,
+#leaderboard .leaderboard-metric-row th{
+  border-bottom-color:var(--line);
+  color:#dce9f8;
+}
+
+.comparison-table thead th:hover,
+#leaderboard .leaderboard-metric-row th:hover{
+  background:#1a2d48;
+  color:#fff;
+}
+
+.comparison-table tbody td,
+#leaderboard .leaderboard-table tbody td{
+  border-bottom-color:var(--line-soft);
+}
+
+.comparison-table tbody tr:hover td,
+#leaderboard .leaderboard-table tbody tr:not(.top-1):not(.top-2):not(.top-3):hover td{
+  background:#12233a;
+}
+
+.comparison-table tbody td:first-child,
+.comparison-table .num,
+#leaderboard .leaderboard-table tbody td:nth-child(2),
+#leaderboard .leaderboard-table .col-avg{
+  color:#f4f9ff;
+}
+
+#leaderboard .leaderboard-table tbody td:nth-child(3),
+#leaderboard .leaderboard-table tbody td:nth-child(4),
+#leaderboard .leaderboard-table tbody td:nth-child(5){
+  background:rgba(20,36,58,.72);
+  color:#f2f7ff;
+}
+
+.comparison-table .ours-row td,
+#leaderboard .leaderboard-table tbody tr.top-1 td{
+  border-color:rgba(251,191,36,.36);
+  background:rgba(251,191,36,.13)!important;
+  color:#fff8db;
+}
+
+#leaderboard .leaderboard-table tbody tr.top-2 td{
+  border-color:rgba(148,163,184,.32);
+  background:rgba(148,163,184,.12)!important;
+}
+
+#leaderboard .leaderboard-table tbody tr.top-3 td{
+  border-color:rgba(251,146,60,.32);
+  background:rgba(251,146,60,.12)!important;
+}
+
+.comparison-table tbody .ours-row:hover td,
+#leaderboard .leaderboard-table tbody tr.top-1:hover td{
+  background:rgba(251,191,36,.18)!important;
+}
+
+#leaderboard .leaderboard-table tbody tr.top-2:hover td{background:rgba(148,163,184,.17)!important}
+#leaderboard .leaderboard-table tbody tr.top-3:hover td{background:rgba(251,146,60,.17)!important}
+
+.case-thumb-item{
+  border-color:var(--line);
+  background:#0c1a2d;
+}
+
+.video-comparison-area,
+.video-compare-item,
+.cases-sidebar{
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.video-wrapper{
+  box-shadow:0 14px 34px rgba(0,0,0,.34);
+}
+
+.case-thumb-item:hover{
+  border-color:rgba(88,166,255,.62);
+  box-shadow:0 10px 26px rgba(88,166,255,.18);
+}
+
+.score-badge.good{background:rgba(74,222,128,.16);color:#86efac}
+.score-badge.mid{background:rgba(251,191,36,.16);color:#fde68a}
+.score-badge.low{background:rgba(248,113,113,.16);color:#fca5a5}
+
+.gallery-strip-item{
+  background:#0c1a2d;
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+}
+
+.gallery-strip-item:hover{
+  box-shadow:0 14px 34px rgba(88,166,255,.24);
+}
+
+.page-sidebar{
+  background:rgba(9,21,37,.78);
+  box-shadow:0 18px 42px rgba(0,0,0,.34);
+}
+.toc-title{color:var(--heading)}
+.toc a:hover{
+  background:rgba(88,166,255,.12);
+  color:#f4f9ff;
+}
+.toc a.active{
+  background:linear-gradient(90deg,rgba(88,166,255,.22),rgba(34,211,238,.08));
+  color:#fff;
+  font-weight:700;
+}
+
+footer{border-top-color:var(--line)}
+#citation pre{
+  border-color:var(--line)!important;
+  background:#0c1728!important;
+  color:#d8e7f7!important;
+}
+
+.sort-arrow,
+th.sortable:hover .sort-arrow{
+  color:#93c5fd;
+}
+
+.comparison-table-wrap::-webkit-scrollbar-track,
+#leaderboard .table-wrap::-webkit-scrollbar-track{background:#0b1627}
+.comparison-table-wrap::-webkit-scrollbar-thumb,
+#leaderboard .table-wrap::-webkit-scrollbar-thumb{background:#38506d}
+.comparison-table-wrap::-webkit-scrollbar-thumb:hover,
+#leaderboard .table-wrap::-webkit-scrollbar-thumb:hover{background:#58708f}
+
+/*使图片边缘虚化*/
+.teaser-image {
+  width: 100%;
+  max-width: 1200px;
+  display: block;
+  margin: 24px auto 0;
+
+  /* 四周逐渐透明 */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 60%, black 0.2%, black 99.8%, transparent 100%),
+    linear-gradient(to bottom, transparent 60%, black 0.2%, black 99.8%, transparent 100%);
+  -webkit-mask-composite: source-in;
+
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 5%, black 95%, transparent 100%);
+  mask-composite: intersect;
+}
+
+</style>
+</head>
+
+<body>
+<div class="page-layout">
+<div class="page-main">
+
+<!-- 1. 标题章节 -->
+<section id="top">
+<div class="hero hero-with-bg">
+  <h1>WorldExam</h1>
+  <p class="desc"><strong>A Comprehensive, Hierarchical Diagnostic Benchmark For World Models</strong></p>
+  <p class="authors">
+    Yuxue Yang<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px"><sup>*</sup>,
+    Shuyao Shang<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px"><sup>*</sup>,
+    Jiahe Wang<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px">,
+    Zitong Zhou<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px">,
+    <br>
+    Liang Tan<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px">,
+    Junhan Zeng<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px">,
+    Ruizhi Li<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px">,
+    Junyan Li<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px">,
+    <br>
+    Lue Fan<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px"><sup>†</sup>,
+    Zhaoxiang Zhang<img src="top/CASIA.svg" style="height:10px;vertical-align:super;margin:0 1px"><sup>†</sup>
+  </p>
+  <p class="affiliations">
+    <img src="top/CASIA.svg" class="aff-icon">
+    <span style="color:#003da5;font-weight:600">CASIA</span> &nbsp;&nbsp;
+  </p>
+  <p class="footnotes">
+    <sup>*</sup>Equal contribution &nbsp;&nbsp;
+    <sup>†</sup>Corresponding author
+  </p>
+  <!-- 按钮区域 -->
+  <div class="publication-links-wrapper">
+    <div class="publication-links">
+      <a href="https://www.baidu.com" class="link-card" target="_blank">
+        <div class="link-card-icon"><img src="top/arxiv-logomark-small@2x.jpg" alt="Paper" style="width:18px;height:18px;"></div>
+        <span class="link-card-text"><b>Paper</b></span>
+        <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
+      </a>
+      <a href="https://www.baidu.com" class="link-card" target="_blank">
+        <div class="link-card-icon"><img src="top/GitHub_Invertocat_Black.png" alt="Code" style="width:18px;height:18px;"></div>
+        <span class="link-card-text"><b>Code</b></span>
+        <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
+      </a>
+      <a href="https://www.baidu.com" class="link-card" target="_blank">
+        <div class="link-card-icon"><img src="top/hf-logo.png" alt="Dataset" style="width:18px;height:18px;"></div>
+        <span class="link-card-text"><b>Dataset(HuggingFace)</b></span>
+        <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
+      </a>
+      <a href="https://www.baidu.com" class="link-card" target="_blank">
+        <div class="link-card-icon"><img src="top/modelscope.png" alt="Dataset" style="width:18px;height:18px;"></div>
+        <span class="link-card-text"><b>Dataset(ModelScope)</b></span>
+        <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="container">
+
+<!-- 1.1 统计卡片 -->
+<div class="stats-expanded">
+
+  <div class="stat-card">
+    <span class="stat-pin">🌍</span>
+    <div class="stat-num">1474</div>
+    <div class="stat-title">Test Cases</div>
+
+    <div class="stat-details">
+      <span>👀 2 Viewpoints</span>
+      <span>🧍 4 Subject Types</span>
+      <span>🎨 7 Styles</span>
+      <span>🏞️ 13 Scenes</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-pin">🗂️</span>
+    <div class="stat-num">4</div>
+    <div class="stat-title">Diagnostic Dimensions</div>
+
+    <div class="stat-details">
+      <span>🏆 2 Hierarchical Leaderboards</span>
+      <span>🧩 8 Evaluation Tasks</span>
+      <span>📊 14 Total Metrics</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-pin">🤖</span>
+    <div class="stat-num">20</div>
+    <div class="stat-title">Evaluated Models</div>
+
+    <div class="stat-details">
+      <span>📝 7 Language-based Models</span>
+      <span>📷 6 Camera-based Models</span>
+      <span>🎮 7 Action-based Models</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- 2. overview 章节 -->
+<section id="overview">
+  <h2>Overview</h2>
+  <p class="desc">
+    Controllable video generation is increasingly expected to function as a world model,
+    yet existing benchmarks largely measure whether a model reproduces explicitly
+    specified targets. They do not fully reveal whether the model understands the
+    initial scene and generates the consequences that an instruction leaves unstated.
+    <br>
+    We introduce <strong>WorldExam</strong>, a
+    <strong>hierarchical diagnostic</strong> benchmark that evaluate world models together with 4 diagnostic levels, namely: visual quality, control adherence, spatial consistency, and world reactivity.
+  </p>
+  <img
+    class="overview-image"
+    src="overview/teaser_01.png"
+    alt="WorldExam Overview"
+  />
+
+  <!-- 四个分立模块 -->
+  <div class="overview-feature-grid">
+    <!-- 模块 1 -->
+    <article class="overview-feature-card">
+      <div class="overview-feature-header">
+        <div class="overview-feature-icon green">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h3>Visual Quality</h3>
+      </div>
+      <p>
+        measures the quality of the video itself, including perceptual plausibility, temporal stability, and visible artifacts
+      </p>
+    </article>
+    <!-- 模块 2 -->
+    <article class="overview-feature-card">
+      <div class="overview-feature-header">
+        <div class="overview-feature-icon orange">
+          <i class="fa-solid fa-gears"></i>
+        </div>
+        <h3>Control Adherence</h3>
+      </div>
+      <p>
+        measures whether the controlled camera or subject moves as instructed.
+      </p>
+    </article>
+    <!-- 模块 3 -->
+    <article class="overview-feature-card">
+      <div class="overview-feature-header">
+        <div class="overview-feature-icon blue">
+          <i class="fa-solid fa-keyboard"></i>
+        </div>
+        <h3>Spatial Consistency</h3>
+      </div>
+      <p>
+        measures whether the model maintains a coherent world, especially when the camera revisits a previously observed viewpoint.
+      </p>
+    </article>
+    <!-- 模块 4 -->
+    <article class="overview-feature-card">
+      <div class="overview-feature-header">
+        <div class="overview-feature-icon purple">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+        <h3>World Reactivity</h3>
+      </div>
+      <p>
+        evaluates whether a model can infer and generate the scene-conditioned reactions or valid execution paths left unstated by the input.
+      </p>
+    </article>
+  </div>
+
+  <p class="desc">
+    We instantiate this hierarchy through eight dedicated tasks: Camera Control, Subject Control, Scene Revisit, Terrain Interaction, Object Interaction, Social Interaction, Physical Reaction, and Goal Completion. Together with six visual-quality metrics, these tasks yield a total of 14 evaluation metrics, forming two complementary scoring systems—static-scene evaluation and dynamic-interaction evaluation—that assess distinct aspects of world-model capability.
+  </p>
+
+  <img
+    class="overview-image"
+    src="overview/task.png"
+    alt="WorldExam Overview"
+  >
+  <!-- Key Findings -->
+  <div class="overview-findings">
+    <h3>Key Findings</h3>
+    <ul>
+      <li>
+        Strong visual quality, control adherence, and spatial consistency do not imply that a model can infer unstated reactions or execution paths; conversely, success on World Reactivity tasks does not compensate for visual artifacts, control errors, or spatial drift.
+      </li>
+      <li>
+        Existing video world models exhibit a clear capability divide. Camera-driven models excel at precise camera control and scene revisiting; action-driven models provide stronger direct subject control; and language-driven models perform better in semantic interactions and high-level goal completion, although they remain less precise in composed and fine-grained control.
+      </li>
+      <li>
+        Instruction following does not necessarily imply world reactivity. A model’s ability to execute explicitly specified targets does not mean that it can infer unstated execution processes or the resulting consequences.
+      </li>
+      <li>
+        World reactivity remains a major bottleneck for current models. Although many models can control a subject’s actions, terrain, objects, nearby agents, and physical processes often fail to respond appropriately, indicating a limited understanding and simulation of dynamic environments.
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- 3. comparison 章节 -->
+<section id="comparison">
+  <h2>Comparison</h2>
+
+  <p class="comparison-caption">
+    <strong>Comparison with representative world-model benchmarks.</strong>
+    The table compares supported paradigms, viewpoints, task coverage, case counts,
+    and evaluated models.
+  </p>
+
+  <div class="comparison-table-wrap">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th rowspan="2">Benchmark</th>
+          <th rowspan="2">Model<br>Paradigm</th>
+          <th colspan="2">Viewpoint</th>
+          <th colspan="8">WorldExam Evaluation Tasks</th>
+          <th rowspan="2">#Cases</th>
+          <th rowspan="2">#Models</th>
+        </tr>
+        <tr>
+          <th>First<br>Person</th>
+          <th>Third<br>Person</th>
+          <th>Camera<br>Control</th>
+          <th>Subject<br>Control</th>
+          <th>Scene<br>Revisit</th>
+          <th>Terrain<br>Inter.</th>
+          <th>Object<br>Inter.</th>
+          <th>Social<br>Inter.</th>
+          <th>Physical<br>React.</th>
+          <th>Goal<br>Compl.</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>WorldScore</td>
+          <td class="paradigm"><span class="c">C</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">3,000</td>
+          <td class="num">20</td>
+        </tr>
+
+        <tr>
+          <td>MIND</td>
+          <td class="paradigm"><span class="a">A</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">250</td>
+          <td class="num">2</td>
+        </tr>
+
+        <tr>
+          <td>Omni-WorldBench</td>
+          <td class="paradigm"><span class="c">C</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span><span class="mark note">†</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span><span class="mark note">†</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">1,068</td>
+          <td class="num">18</td>
+        </tr>
+
+        <tr>
+          <td>WorldMark</td>
+          <td class="paradigm"><span class="c">C</span> / <span class="a">A</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">500</td>
+          <td class="num">6</td>
+        </tr>
+
+        <tr>
+          <td>iWorld-Bench</td>
+          <td class="paradigm"><span class="c">C</span> / <span class="a">A</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">4,900</td>
+          <td class="num">14</td>
+        </tr>
+
+        <tr>
+          <td>WBench</td>
+          <td class="paradigm"><span class="c">C</span> / <span class="a">A</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span><span class="mark note">†</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span><span class="mark note">†</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">289</td>
+          <td class="num">20</td>
+        </tr>
+
+        <tr>
+          <td>WorldOlympiad</td>
+          <td class="paradigm"><span class="a">A</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span><span class="mark note">†</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span><span class="mark note">†</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">1,000</td>
+          <td class="num">8</td>
+        </tr>
+
+        <tr>
+          <td>WorldRoamBench</td>
+          <td class="paradigm"><span class="a">A</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark no">✗</span></td>
+          <td class="num">600</td>
+          <td class="num">10</td>
+        </tr>
+
+        <tr class="ours-row">
+          <td>WorldExam (Ours)</td>
+          <td class="paradigm"><span class="c">C</span> / <span class="a">A</span> / <span class="l">L</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td><span class="mark yes">✓</span></td>
+          <td class="num">1,474</td>
+          <td class="num">20</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comparison-legend">
+    <div class="comparison-legend-title">Legend</div>
+
+    <div class="comparison-legend-list">
+      <div class="comparison-legend-item">
+        <span class="paradigm"><span class="c">C</span></span> = Camera-driven models
+      </div>
+      <div class="comparison-legend-item">
+        <span class="paradigm"><span class="a">A</span></span> = Action-driven models
+      </div>
+      <div class="comparison-legend-item">
+        <span class="paradigm"><span class="l">L</span></span> = Language-driven models
+      </div>
+      <div class="comparison-legend-item">
+        <span class="mark yes">✓</span> = Supported / Evaluated
+      </div>
+      <div class="comparison-legend-item">
+        <span class="mark no">✗</span> = Not supported / Not evaluated
+      </div>
+      <div class="comparison-legend-item">
+        FPV = First-person viewpoint
+      </div>
+      <div class="comparison-legend-item">
+        TPV = Third-person viewpoint
+      </div>
+    </div>
+
+    <div class="comparison-legend-note">
+      <strong>† Note:</strong>
+      The dagger symbol indicates that the instruction in that benchmark
+      explicitly specifies the expected interaction consequence.
+      By contrast, the corresponding <strong>WorldExam</strong> tasks provide only the
+      control intent, and require the model to infer the consequence from the scene.
+    </div>
+  </div>
+</section>
+
+<!-- 4. leaderboard 章节 -->
+<section id="leaderboard">
+
+  <h2>Leaderboard</h2>
+
+  <p class="desc">
+    Select an evaluation system and model paradigm.
+    Click column headers to sort the results. All retained metrics are normalized
+    so that higher values indicate better performance.
+  </p>
+
+  <!-- 两级筛选区域 -->
+  <div class="leaderboard-controls">
+
+    <!-- 第一层：选择排行榜 -->
+    <div class="filter-row">
+      <div class="filter-label">Leaderboard:</div>
+
+      <div class="pill-buttons-row leaderboard-tabs" id="leaderboard-tabs">
+
+        <button
+          class="pill-btn active"
+          type="button"
+          data-board="static"
+          onclick="switchLeaderboard(this)"
+        >
+          Static-Scene Evaluation
+        </button>
+
+        <button
+          class="pill-btn"
+          type="button"
+          data-board="dynamic"
+          onclick="switchLeaderboard(this)"
+        >
+          Dynamic-Interaction Evaluation
+        </button>
+
+      </div>
+    </div>
+
+    <!-- 第二层：选择模型类型 -->
+    <div class="filter-row">
+      <div class="filter-label">Model Type:</div>
+
+      <div
+        class="pill-buttons-row model-type-buttons"
+        id="leaderboard-model-filters"
+      >
+
+        <button
+          class="pill-btn active"
+          type="button"
+          data-type="all"
+          onclick="filterLeaderboardType(this)"
+        >
+          All <small></small>
+        </button>
+
+        <button
+          class="pill-btn"
+          type="button"
+          data-type="text"
+          onclick="filterLeaderboardType(this)"
+        >
+          Language based <small></small>
+        </button>
+
+        <button
+          class="pill-btn"
+          type="button"
+          data-type="camera"
+          onclick="filterLeaderboardType(this)"
+        >
+          Camera based <small></small>
+        </button>
+
+        <button
+          class="pill-btn"
+          type="button"
+          data-type="action"
+          onclick="filterLeaderboardType(this)"
+        >
+          Action based <small></small>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- =====================================================
+       Leaderboard 1：Static-Scene Evaluation
+       ===================================================== -->
+  <div
+    class="leaderboard-panel active"
+    data-board-panel="static"
+  >
+
+    <div class="leaderboard-panel-header">
+      <div>
+        <h3>Static-Scene Evaluation</h3>
+        <p>
+          Evaluates camera control, scene revisiting, spatial consistency,
+          temporal stability, and visual quality.
+        </p>
+      </div>
+    </div>
+
+    <div class="dim-legend">
+      <span class="legend-item">
+        <span class="legend-bar" style="background:#ea580c"></span>
+        Task-Specific Metrics
+      </span>
+
+      <span class="legend-item">
+        <span class="legend-bar" style="background:#06b6d4"></span>
+        General Quality Metrics
+      </span>
+
+      <span class="legend-item">
+        <span class="legend-bar" style="background:#64748b"></span>
+        Aggregate Scores
+      </span>
+    </div>
+
+    <div class="table-wrap" id="static-board-wrap">
+
+      <table class="leaderboard-table" id="table-static">
+
+        <thead>
+          <!-- 第一层：指标分组 -->
+          <tr class="leaderboard-group-row">
+            <th rowspan="2">#</th>
+            <th rowspan="2" class="model-column-header">Model</th>
+
+            <!-- 平均分提前到最前面 -->
+            <th colspan="3" class="average-metric-group">
+              Summary Scores
+            </th>
+
+            <th colspan="2" class="task-metric-group">
+              Task-Specific Metrics
+            </th>
+
+            <th colspan="5" class="general-metric-group">
+              General Metrics
+            </th>
+          </tr>
+
+          <!-- 第二层：具体指标 -->
+          <tr class="leaderboard-metric-row">
+
+            <!-- Summary Scores -->
+            <th class="sortable"
+                onclick="sortTable('table-static', 2, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Overall
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 3, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Task<br>Average
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 4, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  General<br>Average
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <!-- Task-Specific Metrics -->
+            <th class="sortable"
+                onclick="sortTable('table-static', 5, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Camera<br>Control
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 6, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Scene<br>Revisit
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <!-- General Metrics -->
+            <th class="sortable"
+                onclick="sortTable('table-static', 7, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  3D<br>Consistency
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 8, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Photometric<br>Consistency
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 9, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Temporal<br>Flickering
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 10, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Aesthetic<br>Quality
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-static', 11, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Imaging<br>Quality
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+          </tr>
+
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- 1 -->
+          <tr data-model-type="camera">
+            <td>1</td>
+            <td>NeoVerse</td>
+            <td>97.33</td>
+            <td>89.25</td>
+            <td>98.19</td>
+            <td>70.83</td>
+            <td>93.53</td>
+            <td>52.72</td>
+            <td>72.19</td>
+            <td>93.29</td>
+            <td>77.49</td>
+            <td class="col-avg">85.39</td>
+          </tr>
+
+          <!-- 2 -->
+          <tr data-model-type="action">
+            <td>2</td>
+            <td>WorldPlay</td>
+            <td>92.74</td>
+            <td>72.51</td>
+            <td>98.69</td>
+            <td>81.06</td>
+            <td>95.90</td>
+            <td>53.92</td>
+            <td>73.31</td>
+            <td>82.63</td>
+            <td>80.58</td>
+            <td class="col-avg">81.61</td>
+          </tr>
+
+          <!-- 3 -->
+          <tr data-model-type="camera">
+            <td>3</td>
+            <td>InSpatio-World (1.3B)</td>
+            <td>85.94</td>
+            <td>85.90</td>
+            <td>98.44</td>
+            <td>64.88</td>
+            <td>93.68</td>
+            <td>53.78</td>
+            <td>73.60</td>
+            <td>85.92</td>
+            <td>76.88</td>
+            <td class="col-avg">81.40</td>
+          </tr>
+
+          <!-- 4 -->
+          <tr data-model-type="camera">
+            <td>4</td>
+            <td>TrajectoryCrafter</td>
+            <td>80.32</td>
+            <td>83.03</td>
+            <td>96.98</td>
+            <td>62.83</td>
+            <td>92.56</td>
+            <td>52.17</td>
+            <td>67.03</td>
+            <td>81.68</td>
+            <td>74.31</td>
+            <td class="col-avg">78.00</td>
+          </tr>
+
+          <!-- 5 -->
+          <tr data-model-type="action">
+            <td>5</td>
+            <td>Infinite-World</td>
+            <td>71.70</td>
+            <td>57.34</td>
+            <td>99.91</td>
+            <td>92.09</td>
+            <td>95.99</td>
+            <td>56.27</td>
+            <td>76.41</td>
+            <td>64.52</td>
+            <td>84.13</td>
+            <td class="col-avg">74.33</td>
+          </tr>
+
+          <!-- 6 -->
+          <tr data-model-type="action">
+            <td>6</td>
+            <td>LingBot-World</td>
+            <td>58.19</td>
+            <td>58.35</td>
+            <td>99.59</td>
+            <td>81.52</td>
+            <td>96.53</td>
+            <td>59.87</td>
+            <td>75.00</td>
+            <td>58.27</td>
+            <td>82.50</td>
+            <td class="col-avg">70.39</td>
+          </tr>
+
+          <!-- 7 -->
+          <tr data-model-type="action">
+            <td>7</td>
+            <td>Matrix-Game 3.0</td>
+            <td>76.36</td>
+            <td>64.25</td>
+            <td>95.59</td>
+            <td>30.14</td>
+            <td>93.40</td>
+            <td>48.80</td>
+            <td>73.39</td>
+            <td>70.30</td>
+            <td>68.26</td>
+            <td class="col-avg">69.28</td>
+          </tr>
+
+          <!-- 8 -->
+          <tr data-model-type="text">
+            <td>8</td>
+            <td>Hailuo 2.3</td>
+            <td>63.29</td>
+            <td>48.70</td>
+            <td>99.38</td>
+            <td>79.88</td>
+            <td>95.33</td>
+            <td>56.30</td>
+            <td>75.52</td>
+            <td>55.99</td>
+            <td>81.28</td>
+            <td class="col-avg">68.64</td>
+          </tr>
+
+          <!-- 9 -->
+          <tr data-model-type="camera">
+            <td>9</td>
+            <td>ReCamMaster</td>
+            <td>38.64</td>
+            <td>68.01</td>
+            <td>99.33</td>
+            <td>81.97</td>
+            <td>95.52</td>
+            <td>54.58</td>
+            <td>73.45</td>
+            <td>53.33</td>
+            <td>80.97</td>
+            <td class="col-avg">67.15</td>
+          </tr>
+
+          <!-- 10 -->
+          <tr data-model-type="action">
+            <td>10</td>
+            <td>Yume 1.5</td>
+            <td>75.67</td>
+            <td>32.45</td>
+            <td>98.44</td>
+            <td>67.53</td>
+            <td>95.18</td>
+            <td>53.42</td>
+            <td>75.28</td>
+            <td>54.06</td>
+            <td>77.97</td>
+            <td class="col-avg">66.02</td>
+          </tr>
+
+          <!-- 11 -->
+          <tr data-model-type="camera">
+            <td>11</td>
+            <td>Voyager</td>
+            <td>56.19</td>
+            <td>76.27</td>
+            <td>89.54</td>
+            <td>27.43</td>
+            <td>93.04</td>
+            <td>53.59</td>
+            <td>63.69</td>
+            <td>66.23</td>
+            <td>65.46</td>
+            <td class="col-avg">65.84</td>
+          </tr>
+
+          <!-- 12 -->
+          <tr data-model-type="text">
+            <td>12</td>
+            <td>Wan 2.6 I2V</td>
+            <td>57.72</td>
+            <td>47.32</td>
+            <td>99.49</td>
+            <td>69.42</td>
+            <td>94.13</td>
+            <td>53.93</td>
+            <td>77.53</td>
+            <td>52.52</td>
+            <td>78.90</td>
+            <td class="col-avg">65.71</td>
+          </tr>
+
+          <!-- 13 -->
+          <tr data-model-type="text">
+            <td>13</td>
+            <td>HappyHorse 1.0</td>
+            <td>58.29</td>
+            <td>42.45</td>
+            <td>99.62</td>
+            <td>74.17</td>
+            <td>95.02</td>
+            <td>55.56</td>
+            <td>77.00</td>
+            <td>50.37</td>
+            <td>80.27</td>
+            <td class="col-avg">65.32</td>
+          </tr>
+
+          <!-- 14 -->
+          <tr data-model-type="text">
+            <td>14</td>
+            <td>Kling 2.5</td>
+            <td>50.18</td>
+            <td>38.81</td>
+            <td>99.87</td>
+            <td>87.87</td>
+            <td>97.56</td>
+            <td>56.28</td>
+            <td>75.70</td>
+            <td>44.50</td>
+            <td>83.46</td>
+            <td class="col-avg">63.98</td>
+          </tr>
+
+          <!-- 15 -->
+          <tr data-model-type="text">
+            <td>15</td>
+            <td>Veo 3.1</td>
+            <td>40.83</td>
+            <td>43.05</td>
+            <td>99.06</td>
+            <td>73.61</td>
+            <td>95.43</td>
+            <td>55.49</td>
+            <td>76.57</td>
+            <td>41.94</td>
+            <td>80.03</td>
+            <td class="col-avg">60.99</td>
+          </tr>
+
+          <!-- 16 -->
+          <tr data-model-type="text">
+            <td>16</td>
+            <td>Vidu Q3</td>
+            <td>42.75</td>
+            <td>39.05</td>
+            <td>99.43</td>
+            <td>71.28</td>
+            <td>95.01</td>
+            <td>55.38</td>
+            <td>76.73</td>
+            <td>40.90</td>
+            <td>79.57</td>
+            <td class="col-avg">60.24</td>
+          </tr>
+
+          <!-- 17 -->
+          <tr data-model-type="text">
+            <td>17</td>
+            <td>Seedance 1.5</td>
+            <td>49.18</td>
+            <td>39.23</td>
+            <td>97.31</td>
+            <td>56.60</td>
+            <td>94.81</td>
+            <td>54.45</td>
+            <td>74.88</td>
+            <td>44.21</td>
+            <td>75.61</td>
+            <td class="col-avg">59.91</td>
+          </tr>
+
+          <!-- 18 -->
+          <tr data-model-type="camera">
+            <td>18</td>
+            <td>FantasyWorld</td>
+            <td>18.46</td>
+            <td>55.79</td>
+            <td>98.57</td>
+            <td>75.60</td>
+            <td>95.91</td>
+            <td>57.11</td>
+            <td>73.98</td>
+            <td>37.12</td>
+            <td>80.23</td>
+            <td class="col-avg">58.68</td>
+          </tr>
+
+          <!-- 19 -->
+          <tr data-model-type="action">
+            <td>19</td>
+            <td>Hunyuan-GameCraft</td>
+            <td>41.33</td>
+            <td>41.77</td>
+            <td>93.61</td>
+            <td>53.93</td>
+            <td>93.91</td>
+            <td>54.97</td>
+            <td>71.69</td>
+            <td>41.55</td>
+            <td>73.62</td>
+            <td class="col-avg">57.59</td>
+          </tr>
+
+          <!-- 20 -->
+          <tr data-model-type="action">
+            <td>20</td>
+            <td>Astra</td>
+            <td>32.59</td>
+            <td>38.15</td>
+            <td>96.46</td>
+            <td>78.41</td>
+            <td>96.38</td>
+            <td>51.71</td>
+            <td>71.78</td>
+            <td>35.37</td>
+            <td>78.95</td>
+            <td class="col-avg">57.16</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- =====================================================
+       Leaderboard 2：Dynamic-Interaction Evaluation
+       ===================================================== -->
+  <div
+    class="leaderboard-panel"
+    data-board-panel="dynamic"
+  >
+
+    <div class="leaderboard-panel-header">
+      <div>
+        <h3>Dynamic-Interaction Evaluation</h3>
+        <p>
+          Evaluates subject control, scene-conditioned interactions,
+          physical reactions, and goal-directed execution.
+        </p>
+      </div>
+    </div>
+
+    <div class="dim-legend">
+      <span class="legend-item">
+        <span class="legend-bar" style="background:#7c3aed"></span>
+        Task-Specific Metrics
+      </span>
+
+      <span class="legend-item">
+        <span class="legend-bar" style="background:#06b6d4"></span>
+        General Quality Metrics
+      </span>
+
+      <span class="legend-item">
+        <span class="legend-bar" style="background:#64748b"></span>
+        Aggregate Scores
+      </span>
+    </div>
+
+    <div class="table-wrap" id="dynamic-board-wrap">
+
+      <table class="leaderboard-table" id="table-dynamic">
+
+        <thead>
+          <!-- 第一层：指标分组 -->
+          <tr class="leaderboard-group-row">
+            <th rowspan="2">#</th>
+            <th rowspan="2" class="model-column-header">Model</th>
+
+            <!-- 平均分提前到最前面 -->
+            <th colspan="3" class="average-metric-group">
+              Summary Scores
+            </th>
+
+            <th colspan="6" class="task-metric-group">
+              Task-Specific Metrics
+            </th>
+
+            <th colspan="4" class="general-metric-group">
+              General Metrics
+            </th>
+          </tr>
+
+          <!-- 第二层：具体指标 -->
+          <tr class="leaderboard-metric-row">
+
+            <!-- Summary Scores -->
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 2, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Overall
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 3, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Task<br>Average
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 4, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  General<br>Average
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <!-- Task-Specific Metrics -->
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 5, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Subject<br>Control
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 6, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Terrain<br>Interaction
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 7, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Object<br>Interaction
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 8, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Social<br>Interaction
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 9, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Physical<br>Reaction
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+            <th class="sortable"
+                onclick="sortTable('table-dynamic', 10, this)">
+              <span class="metric-heading">
+                <span class="metric-text">
+                  Goal<br>Completion
+                </span>
+                <span class="sort-arrow">↕</span>
+              </span>
+            </th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- 1 -->
+          <tr data-model-type="text">
+            <td>1</td>
+            <td>Veo 3.1</td>
+            <td>37.28</td>
+            <td>44.71</td>
+            <td>75.96</td>
+            <td>85.10</td>
+            <td>61.76</td>
+            <td>85.30</td>
+            <td>92.07</td>
+            <td>99.12</td>
+            <td>58.22</td>
+            <td>72.65</td>
+            <td>65.02</td>
+            <td>80.52</td>
+            <td class="col-avg">72.77</td>
+          </tr>
+
+          <!-- 2 -->
+          <tr data-model-type="text">
+            <td>2</td>
+            <td>Vidu Q3</td>
+            <td>27.67</td>
+            <td>64.39</td>
+            <td>71.59</td>
+            <td>81.91</td>
+            <td>61.23</td>
+            <td>78.26</td>
+            <td>92.78</td>
+            <td>98.76</td>
+            <td>57.24</td>
+            <td>73.25</td>
+            <td>64.18</td>
+            <td>80.51</td>
+            <td class="col-avg">72.35</td>
+          </tr>
+
+          <!-- 3 -->
+          <tr data-model-type="text">
+            <td>3</td>
+            <td>Hailuo 2.3</td>
+            <td>36.49</td>
+            <td>61.57</td>
+            <td>67.01</td>
+            <td>72.45</td>
+            <td>63.84</td>
+            <td>78.86</td>
+            <td>93.25</td>
+            <td>99.31</td>
+            <td>57.74</td>
+            <td>72.47</td>
+            <td>63.37</td>
+            <td>80.69</td>
+            <td class="col-avg">72.03</td>
+          </tr>
+
+          <!-- 4 -->
+          <tr data-model-type="text">
+            <td>4</td>
+            <td>HappyHorse 1.0</td>
+            <td>33.11</td>
+            <td>56.30</td>
+            <td>65.70</td>
+            <td>76.17</td>
+            <td>47.01</td>
+            <td>85.33</td>
+            <td>92.69</td>
+            <td>98.85</td>
+            <td>57.37</td>
+            <td>73.23</td>
+            <td>60.60</td>
+            <td>80.54</td>
+            <td class="col-avg">70.57</td>
+          </tr>
+
+          <!-- 5 -->
+          <tr data-model-type="text">
+            <td>5</td>
+            <td>Wan 2.6 I2V</td>
+            <td>29.02</td>
+            <td>49.21</td>
+            <td>44.56</td>
+            <td>66.40</td>
+            <td>48.15</td>
+            <td>76.39</td>
+            <td>94.46</td>
+            <td>98.15</td>
+            <td>56.30</td>
+            <td>74.72</td>
+            <td>52.29</td>
+            <td>80.91</td>
+            <td class="col-avg">66.60</td>
+          </tr>
+
+          <!-- 6 -->
+          <tr data-model-type="text">
+            <td>6</td>
+            <td>Seedance 1.5</td>
+            <td>32.51</td>
+            <td>53.83</td>
+            <td>37.91</td>
+            <td>72.09</td>
+            <td>47.60</td>
+            <td>76.24</td>
+            <td>92.14</td>
+            <td>98.87</td>
+            <td>56.72</td>
+            <td>70.84</td>
+            <td>53.36</td>
+            <td>79.64</td>
+            <td class="col-avg">66.50</td>
+          </tr>
+
+          <!-- 7 -->
+          <tr data-model-type="action">
+            <td>7</td>
+            <td>LingBot-World</td>
+            <td>55.47</td>
+            <td>24.33</td>
+            <td>25.94</td>
+            <td>60.37</td>
+            <td>33.43</td>
+            <td class="unsupported">—</td>
+            <td>94.98</td>
+            <td>98.89</td>
+            <td>60.86</td>
+            <td>71.69</td>
+            <td>39.91</td>
+            <td>81.61</td>
+            <td class="col-avg">60.76</td>
+          </tr>
+
+          <!-- 8 -->
+          <tr data-model-type="text">
+            <td>8</td>
+            <td>Kling 2.5</td>
+            <td>28.40</td>
+            <td>35.95</td>
+            <td>27.70</td>
+            <td>66.80</td>
+            <td>31.99</td>
+            <td>48.25</td>
+            <td>96.00</td>
+            <td>99.48</td>
+            <td>56.86</td>
+            <td>71.83</td>
+            <td>39.85</td>
+            <td>81.04</td>
+            <td class="col-avg">60.45</td>
+          </tr>
+
+          <!-- 9 -->
+          <tr data-model-type="action">
+            <td>9</td>
+            <td>WorldPlay</td>
+            <td>49.75</td>
+            <td>27.49</td>
+            <td>33.75</td>
+            <td>51.40</td>
+            <td>26.91</td>
+            <td class="unsupported">—</td>
+            <td>88.06</td>
+            <td>98.09</td>
+            <td>54.19</td>
+            <td>68.76</td>
+            <td>37.86</td>
+            <td>77.28</td>
+            <td class="col-avg">57.57</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- 5. metrics 章节 -->
+<section id="metrics">
+  <h2>Metrics</h2>
+  <p class="desc">Same cases, different models — see how metrics capture quality differences.</p>
+  <!-- 4个 metrics 按钮（统一 pill-btn 样式） -->
+  <div class="pill-buttons-row">
+    <button class="pill-btn active" data-metric="camera_control">Camera Control</button>
+    <button class="pill-btn" data-metric="object_interaction">Object Interaction</button>
+    <button class="pill-btn" data-metric="physics_knowledge">Physics Knowledge</button>
+    <button class="pill-btn" data-metric="scene_revisit">Scene Revisit</button>
+  </div>
+    <!-- 4个 metrics 按钮（统一 pill-btn 样式） -->
+  <div class="pill-buttons-row">
+    <button class="pill-btn" data-metric="subject_control">Subject Control</button>
+    <button class="pill-btn" data-metric="terrain_interaction">Terrain Interaction</button>
+    <button class="pill-btn" data-metric="task_understanding">Task Understanding</button>
+    <button class="pill-btn" data-metric="social_interaction">Social Interaction</button>
+  </div>
+  <!-- 首帧选择 + 视频对比区域 -->
+  <div class="metrics-main-container">
+    <div class="cases-sidebar">
+      <div class="cases-sidebar-header">
+        <h4>Select First Frame</h4>
+      </div>
+      <div class="cases-list" id="cases-list">
+        <!-- 由 JS 动态生成 -->
+      </div>
+    </div>
+    <div class="video-comparison-area">
+      <div class="video-comparison-grid" id="video-comparison-grid">
+        <!-- 由 JS 动态生成 -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. gallery 章节 -->
+<section id="gallery">
+  <h2>Dataset Gallery</h2>
+  <p class="desc">Browse cases by metric. Hover the strip to pause.</p>
+  <!-- metric 筛选按钮（统一 pill-btn 样式） -->
+<!-- Metric 筛选按钮 -->
+<div class="gallery-metric-rows" id="gallery-metric-btns">
+  <!-- 第一行 -->
+  <div class="pill-buttons-row">
+    <button class="pill-btn active" data-metric="all">All</button>
+    <button class="pill-btn" data-metric="camera_control">Camera Control</button>
+    <button class="pill-btn" data-metric="object_interaction">Object Interaction</button>
+    <button class="pill-btn" data-metric="physics_knowledge">Physics Knowledge</button>
+    <button class="pill-btn" data-metric="scene_revisit">Scene Revisit</button>
+  </div>
+  <!-- 第二行 -->
+  <div class="pill-buttons-row">
+    <button class="pill-btn" data-metric="subject_control">Subject Control</button>
+    <button class="pill-btn" data-metric="terrain_interaction">Terrain Interaction</button>
+    <button class="pill-btn" data-metric="task_understanding">Task Understanding</button>
+    <button class="pill-btn" data-metric="social_interaction">Social Interaction</button>
+  </div>
+</div>
+  <!-- 横向无缝滚动带 -->
+  <div class="gallery-strip-wrap" id="gallery-strip-wrap">
+    <div class="gallery-strip-track" id="gallery-strip-track">
+      <!-- 由 JS 动态生成（内容 × 2 实现无缝循环） -->
+    </div>
+  </div>
+</section>
+
+<!-- 7. citation 章节 -->
+<section id="citation">
+  <h2>Citation</h2>
+  <p class="desc">If you find our work useful, please consider citing:</p>
+  <pre style="background:#f5f7fa;border:1px solid #eee;border-radius:8px;padding:16px;font-size:12px;font-family:'JetBrains Mono',monospace;overflow-x:auto;line-height:1.6">@article{...
+  year={2026}
+}</pre>
+</section>
+
+</div><!-- /.container -->
+
+<!-- 侧边导航栏 -->
+<div class="page-sidebar">
+  <div class="toc">
+    <div class="toc-title">Content</div>
+    <a href="#top">Top</a>
+    <a href="#overview">Overview</a>
+    <a href="#comparison">Comparison</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#metrics">Metrics</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#citation">Citation</a>
+  </div>
+</div>
+
+</div><!-- /.page-layout -->
+
+<footer>
+  <a href="https://github.com/meituan-longcat/WBench">GitHub</a>
+  <a href="https://huggingface.co/datasets/meituan-longcat/WBench">Dataset</a>
+  <a href="https://modelscope.cn/datasets/meituan-longcat/WBench">ModelScope</a>
+  <a href="https://mp.weixin.qq.com/s/br3RlOBGtReolLZc5YW2HA">中文解读</a>
+  <a href="https://huggingface.co/meituan-longcat/WBench-weights">Weights</a>
+  <p style="margin-top:12px">© 2026 Meituan LongCat Team & Fudan University</p>
+</footer>
+
+<script>
+// ==========================================================
+// Leaderboard：双排行榜切换与模型类型筛选
+// ==========================================================
+
+const leaderboardState = {
+  currentBoard: 'static',
+
+  // 每张排行榜分别保存自己的筛选状态
+  modelTypes: {
+    static: 'all',
+    dynamic: 'all'
+  }
+};
+
+
+// 切换 Static-Scene / Dynamic-Interaction
+function switchLeaderboard(btn) {
+  const board = btn.dataset.board;
+
+  if (!board) return;
+
+  leaderboardState.currentBoard = board;
+
+  // 更新排行榜按钮状态
+  document
+    .querySelectorAll('#leaderboard-tabs .pill-btn')
+    .forEach(button => {
+      button.classList.toggle(
+        'active',
+        button.dataset.board === board
+      );
+    });
+
+  // 显示对应排行榜面板
+  document
+    .querySelectorAll('#leaderboard .leaderboard-panel')
+    .forEach(panel => {
+      panel.classList.toggle(
+        'active',
+        panel.dataset.boardPanel === board
+      );
+    });
+
+  // 恢复这张排行榜上次选择的模型类型
+  const savedType = leaderboardState.modelTypes[board];
+
+  document
+    .querySelectorAll('#leaderboard-model-filters .pill-btn')
+    .forEach(button => {
+      button.classList.toggle(
+        'active',
+        button.dataset.type === savedType
+      );
+    });
+
+  updateLeaderboardFilterCounts();
+  applyLeaderboardFilter();
+}
+
+
+// 选择 All / Language / Camera / Action
+function filterLeaderboardType(btn) {
+  const type = btn.dataset.type;
+
+  if (!type) return;
+
+  const board = leaderboardState.currentBoard;
+
+  // 保存当前排行榜自己的筛选状态
+  leaderboardState.modelTypes[board] = type;
+
+  // 更新按钮状态
+  document
+    .querySelectorAll('#leaderboard-model-filters .pill-btn')
+    .forEach(button => {
+      button.classList.toggle(
+        'active',
+        button.dataset.type === type
+      );
+    });
+
+  applyLeaderboardFilter();
+}
+
+
+// 对当前显示的排行榜执行模型类型筛选
+function applyLeaderboardFilter() {
+  const board = leaderboardState.currentBoard;
+  const type = leaderboardState.modelTypes[board];
+
+  const panel = document.querySelector(
+    `#leaderboard .leaderboard-panel[data-board-panel="${board}"]`
+  );
+
+  if (!panel) return;
+
+  const table = panel.querySelector('.leaderboard-table');
+  const wrap = panel.querySelector('.table-wrap');
+
+  if (!table || !wrap) return;
+
+  const rows = Array.from(
+    table.querySelectorAll('tbody tr[data-model-type]')
+  );
+
+  let visibleCount = 0;
+
+  rows.forEach(row => {
+    const shouldShow =
+      type === 'all' ||
+      row.dataset.modelType === type;
+
+    row.style.display = shouldShow ? '' : 'none';
+
+    if (shouldShow) {
+      visibleCount++;
+    }
+  });
+
+  // 创建或取得无结果提示
+  let message = wrap.querySelector('.no-results');
+
+  if (!message) {
+    message = document.createElement('p');
+    message.className = 'no-results';
+    wrap.appendChild(message);
+  }
+
+  if (rows.length === 0) {
+    message.textContent =
+      'Leaderboard data will be added soon.';
+    message.style.display = '';
+  } else if (visibleCount === 0) {
+    message.textContent =
+      `No ${getModelTypeLabel(type)} models in this leaderboard.`;
+    message.style.display = '';
+  } else {
+    message.style.display = 'none';
+  }
+
+  updateVisibleRanks(table.id);
+}
+
+
+// 根据当前可见行更新排名
+// 根据当前排序及筛选结果更新排名与前三名底色
+function updateVisibleRanks(tableId) {
+  const table = document.getElementById(tableId);
+
+  if (!table) return;
+
+  const rows = Array.from(
+    table.querySelectorAll('tbody tr[data-model-type]')
+  );
+
+  /* 先清除之前的排名底色，避免筛选或排序后残留 */
+  rows.forEach(row => {
+    row.classList.remove('top-1', 'top-2', 'top-3');
+
+    const rankCell = row.cells[0];
+
+    if (rankCell) {
+      rankCell.classList.remove(
+        'rank-gold',
+        'rank-silver',
+        'rank-bronze'
+      );
+    }
+  });
+
+  /* 只对当前可见行重新排名 */
+  const visibleRows = rows.filter(
+    row => row.style.display !== 'none'
+  );
+
+  visibleRows.forEach((row, index) => {
+    const rankCell = row.cells[0];
+
+    if (!rankCell) return;
+
+    if (index === 0) {
+      rankCell.textContent = '🥇';
+      rankCell.classList.add('rank-gold');
+      row.classList.add('top-1');
+
+    } else if (index === 1) {
+      rankCell.textContent = '🥈';
+      rankCell.classList.add('rank-silver');
+      row.classList.add('top-2');
+
+    } else if (index === 2) {
+      rankCell.textContent = '🥉';
+      rankCell.classList.add('rank-bronze');
+      row.classList.add('top-3');
+
+    } else {
+      rankCell.textContent = index + 1;
+    }
+  });
+}
+
+function updateLeaderboardFilterCounts() {
+  const board = leaderboardState.currentBoard;
+
+  const panel = document.querySelector(
+    `#leaderboard .leaderboard-panel[data-board-panel="${board}"]`
+  );
+
+  if (!panel) return;
+
+  const rows = Array.from(
+    panel.querySelectorAll('tbody tr[data-model-type]')
+  );
+
+  const counts = {
+    all: rows.length,
+    text: rows.filter(row => row.dataset.modelType === 'text').length,
+    camera: rows.filter(row => row.dataset.modelType === 'camera').length,
+    action: rows.filter(row => row.dataset.modelType === 'action').length
+  };
+
+  document
+    .querySelectorAll('#leaderboard-model-filters .pill-btn')
+    .forEach(button => {
+      const count = counts[button.dataset.type] ?? 0;
+      const small = button.querySelector('small');
+
+      if (small) {
+        small.textContent = `(${count})`;
+      }
+    });
+}
+
+// 筛选名称
+function getModelTypeLabel(type) {
+  const labels = {
+    all: '',
+    text: 'language-based',
+    camera: 'camera-based',
+    action: 'action-based'
+  };
+
+  return labels[type] || type;
+}
+
+// ==========================================================
+// Leaderboard：点击表头排序
+// ==========================================================
+
+function sortTable(tableId, columnIndex) {
+  const table = document.getElementById(tableId);
+
+  if (!table) return;
+
+  const tbody = table.querySelector('tbody');
+
+  if (!tbody) return;
+
+  const rows = Array.from(
+    tbody.querySelectorAll('tr[data-model-type]')
+  );
+
+  if (rows.length === 0) return;
+
+  const sameColumn =
+    Number(table.dataset.sortCol) === columnIndex;
+
+  const currentDirection =
+    table.dataset.sortDir || 'desc';
+
+  const nextDirection =
+    sameColumn && currentDirection === 'desc'
+      ? 'asc'
+      : 'desc';
+
+  rows.sort((rowA, rowB) => {
+    const valueA = parseLeaderboardValue(
+      rowA.cells[columnIndex]
+    );
+
+    const valueB = parseLeaderboardValue(
+      rowB.cells[columnIndex]
+    );
+
+    return nextDirection === 'desc'
+      ? valueB - valueA
+      : valueA - valueB;
+  });
+
+  rows.forEach(row => {
+    tbody.appendChild(row);
+  });
+
+  table.dataset.sortCol = columnIndex;
+  table.dataset.sortDir = nextDirection;
+
+  updateVisibleRanks(tableId);
+}
+
+
+// 提取单元格中的数字
+function parseLeaderboardValue(cell) {
+  if (!cell) return Number.NEGATIVE_INFINITY;
+
+  const rankLabel = cell.querySelector('.col-rank');
+
+  const text = rankLabel
+    ? cell.textContent.replace(rankLabel.textContent, '')
+    : cell.textContent;
+
+  const value = parseFloat(
+    text.replace(/,/g, '').trim()
+  );
+
+  return Number.isFinite(value)
+    ? value
+    : Number.NEGATIVE_INFINITY;
+}
+
+// ========== Leaderboard：各列添加名次角标 ==========
+function addColumnRanks(tid) {
+  const t = document.getElementById(tid);
+  if (!t) return;
+  const rows = Array.from(t.querySelector('tbody').querySelectorAll('tr'));
+  const n = rows[0] ? rows[0].cells.length : 0;
+  for (let c = 2; c < n; c++) {
+    const v = rows.map((r, i) => ({ i, v: parseFloat(r.cells[c].textContent) || 0 }));
+    v.sort((a, b) => b.v - a.v);
+    const rk = {};
+    v.forEach((x, r) => { rk[x.i] = r + 1; });
+    rows.forEach((r, i) => {
+      const cell = r.cells[c];
+      let s = cell.querySelector('.col-rank');
+      if (!s) { s = document.createElement('span'); s.className = 'col-rank'; cell.appendChild(s); }
+      const rank = rk[i];
+      if (rank === 1) { s.textContent = '🥇'; s.style.fontSize = '17px'; }
+      else if (rank === 2) { s.textContent = '🥈'; s.style.fontSize = '17px'; }
+      else if (rank === 3) { s.textContent = '🥉'; s.style.fontSize = '17px'; }
+      else { s.textContent = '#' + (rank < 10 ? rank + ' ' : rank); s.style.fontSize = ''; }
+    });
+  }
+}
+
+// ========== 侧边栏高亮当前节 ==========
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll('.toc a');
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+});
+
+
+
+// ========== Metrics：视频对比数据 ==========
+const metricCaseThumbs = {
+  camera_control: [
+    'gallery/camera_control/003.png',
+    'gallery/camera_control/007.png',
+    'gallery/camera_control/012.png',
+    'gallery/camera_control/014.png'
+  ],
+  object_interaction: [
+    'gallery/object_interaction/third_person_human_back_into_movable_obstacle__case_09.jpg',
+    'gallery/object_interaction/third_person_human_pull_wheeled_carrier_sideways_into_movable_obstacle__case_05.jpg',
+    'gallery/object_interaction/third_person_human_pull_wheeled_carrier_sideways_into_rigid_barrier__case_05.jpg',
+    'gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_01.jpg'
+  ],
+  physics_knowledge: [
+    'gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_04.jpg',
+    'gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_06.jpg',
+    'gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_13.jpg',
+    'gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_16.jpg'
+  ],
+  scene_revisit: [
+    'gallery/scene_revisit/003.png',
+    'gallery/scene_revisit/004.png',
+    'gallery/scene_revisit/005.png',
+    'gallery/scene_revisit/006.png'
+  ],
+  subject_control: [
+    'gallery/subject_control/humanoid_101.jpg',
+    'gallery/subject_control/humanoid_11.jpg',
+    'gallery/subject_control/humanoid_114.jpg',
+    'gallery/subject_control/humanoid_118.jpg'
+  ],
+  terrain_interaction: [
+    'gallery/terrain_interaction/third_person_animal_forward_case03_candidate03.jpg',
+    'gallery/terrain_interaction/third_person_animal_forward_case07_candidate05.jpg',
+    'gallery/terrain_interaction/third_person_animal_leftward_case01_candidate01.jpg',
+    'gallery/terrain_interaction/third_person_animal_leftward_case02_candidate05.jpg'
+  ],
+  task_understanding: [
+    'gallery/task_understanding/10_case_01.jpg',
+    'gallery/task_understanding/10_case_02.jpg',
+    'gallery/task_understanding/10_case_03.jpg',
+    'gallery/task_understanding/10_case_04.jpg'
+  ],
+  social_interaction: [
+    'gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_01.jpg',
+    'gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_02.jpg',
+    'gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_04.jpg',
+    'gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_05.jpg'
+  ]
+};
+
+const pairVideoTemplates = {
+  case1: [
+    { label: 'Good', model: 'Good Example', video: 'video/navigation.mp4', score: 90 },
+    { label: 'Bad', model: 'Bad Example', video: 'video/multi.mp4', score: 52 }
+  ],
+  case2: [
+    { label: 'Good', model: 'Good Example', video: 'video/event_editing.mp4', score: 88 },
+    { label: 'Bad', model: 'Bad Example', video: 'video/subbject_action.mp4', score: 48 }
+  ],
+  case3: [
+    { label: 'Good', model: 'Good Example', video: 'video/perspective_switch.mp4', score: 92 },
+    { label: 'Bad', model: 'Bad Example', video: 'video/navigation.mp4', score: 55 }
+  ],
+  case4: [
+    { label: 'Good', model: 'Good Example', video: 'video/multi.mp4', score: 86 },
+    { label: 'Bad', model: 'Bad Example', video: 'video/event_editing.mp4', score: 50 }
+  ]
+};
+
+const metricsData = Object.fromEntries(
+  Object.entries(metricCaseThumbs).map(([metric, thumbs]) => [
+    metric,
+    {
+      cases: thumbs.map((thumb, index) => ({
+        id: `case${index + 1}`,
+        name: `Pair ${index + 1}`,
+        subtitle: 'Good vs Bad',
+        thumb
+      })),
+      videos: {
+        ...pairVideoTemplates,
+        ...(metric === 'terrain_interaction'
+          ? {
+              case1: [
+                { label: 'Good', model: 'Lingbot', video: 'metrics/terrain_interaction/case1/lingbot.mp4', score: 85 },
+                { label: 'Bad', model: 'Kling', video: 'metrics/terrain_interaction/case1/kling.mp4', score: 52 }
+              ]
+            }
+          : {})
+      }
+    }
+  ])
+);
+
+let currentMetric = 'camera_control';
+let currentCase = 'case1';
+
+// 渲染 case 缩略图列表
+function renderCasesList() {
+  const list = document.getElementById('cases-list');
+  if (!list) return;
+  const data = metricsData[currentMetric];
+  list.innerHTML = data.cases.map(c => `
+    <div class="case-thumb-item ${c.id === currentCase ? 'active' : ''}" data-case="${c.id}" title="${c.name}">
+      <img src="${c.thumb}" alt="${c.name}">
+    </div>
+  `).join('');
+  list.querySelectorAll('.case-thumb-item').forEach(item => {
+    item.addEventListener('click', () => {
+      currentCase = item.dataset.case;
+      list.querySelectorAll('.case-thumb-item').forEach(i => i.classList.toggle('active', i.dataset.case === currentCase));
+      renderVideoComparison();
+    });
+  });
+}
+
+// 渲染视频对比
+function renderVideoComparison() {
+  const grid = document.getElementById('video-comparison-grid');
+  if (!grid) return;
+  const videos = metricsData[currentMetric]?.videos[currentCase] || [];
+  grid.innerHTML = videos.map(v => {
+    const cls = v.score >= 80 ? 'good' : v.score <= 60 ? 'low' : 'mid';
+    return `
+      <div class="video-compare-item">
+        <div class="video-wrapper">
+          <video controls loop muted playsinline>
+            <source src="${v.video}" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-label-area">
+          <span class="model-name-label">${v.model}</span>
+          <span class="score-badge ${cls}">${v.score}</span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// 初始化 Metrics 面板
+document.querySelectorAll('#metrics .pill-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#metrics .pill-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMetric = btn.dataset.metric;
+    currentCase = 'case1';
+    renderCasesList();
+    renderVideoComparison();
+  });
+});
+
+// ========== Gallery：横向无缝滚动带 ==========
+// 从 gallery_data.json 动态加载图片数据
+let galleryData = {
+  all: []
+};
+
+// 加载 gallery 数据
+async function loadGalleryData() {
+  try {
+    const response = await fetch('gallery_data.json');
+    const data = await response.json();
+
+    // 构建 galleryData 结构
+    galleryData.all = [];
+
+    // 将所有图片收集到 all 数组
+    for (const [metricName, images] of Object.entries(data)) {
+      // 为每个 metric 创建单独的数组
+      galleryData[metricName] = images.map((imgPath, index) => ({
+        metric: metricName,
+        label: `${formatMetricName(metricName)} · ${index + 1}`,
+        thumb: imgPath
+      }));
+
+      // 添加到 all 数组
+      galleryData.all.push(...galleryData[metricName]);
+    }
+
+    // 初始渲染
+    renderGallery();
+
+  } catch (error) {
+    console.error('Failed to load gallery data:', error);
+    // 如果加载失败，显示空状态
+    const track = document.getElementById('gallery-strip-track');
+    if (track) {
+      track.innerHTML = '<div class="gallery-strip-empty">Failed to load gallery images.</div>';
+    }
+  }
+}
+
+// 格式化 metric 名称用于显示
+function formatMetricName(metricName) {
+  // 将 snake_case 转换为 Title Case
+  return metricName
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+let currentGalleryMetric = 'all';
+
+// 渲染横向滚动带（内容 × 2 实现无缝循环）
+function renderGallery() {
+  const track = document.getElementById('gallery-strip-track');
+  const items = galleryData[currentGalleryMetric] || [];
+
+  if (items.length === 0) {
+    track.innerHTML = '<div class="gallery-strip-empty">No cases for this metric yet.</div>';
+    return;
+  }
+
+  // 生成单张卡片 HTML
+  const makeItem = item => `
+    <div class="gallery-strip-item">
+      <img src="${item.thumb}" alt="${item.label}" loading="lazy">
+      <div class="strip-label">${item.label}</div>
+    </div>`;
+
+  // 内容重复两份，CSS animation 跑完一半时无缝衔接
+  const html = items.map(makeItem).join('');
+  track.innerHTML = html + html;
+
+  // 根据数量动态调整滚动速度（图片越多越快保持视觉节奏）
+  const duration = Math.max(15, items.length * 2.5);
+  track.style.animationDuration = duration + 's';
+}
+
+// Gallery metric 按钮切换
+document.querySelectorAll('#gallery-metric-btns .pill-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#gallery-metric-btns .pill-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentGalleryMetric = btn.dataset.metric;
+    renderGallery();
+  });
+});
+
+// ========== 页面初始化 ==========
+window.addEventListener('load', () => {
+  updateLeaderboardFilterCounts();
+  applyLeaderboardFilter();
+
+  renderCasesList();
+  renderVideoComparison();
+
+  // 加载 gallery 数据（异步）
+  loadGalleryData();
+});
+</script>
+</body>
+</html>

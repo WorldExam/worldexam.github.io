@@ -1,0 +1,44 @@
+{
+    "sample_name": "nonhumanoid_357",
+    "image_path": "/mnt/workspace/yuxue/NeoBench/subject_control/image/nonhumanoid_357.png",
+    "prompt": "Photorealistic single first frame of a broad station forecourt and semi-covered concourse at night after rain with tiled columns, railings, benches, glass entrances, and polished paving, third-person follow camera behind the subject, rear_oblique_left framing, about 20 to 35 degrees behind the subject from the left rear, full subject visible, the protagonist kept relatively small in frame, soft fluorescent spill mixed with distant traffic glow and mild pavement reflections. The protagonist is a single rounded station-assistance robot. It must remain a single clearly nonhumanoid robot with practical ground-moving anatomy, readable front-back orientation, no humanoid face, no rider, no operator, and no handler. Motion family: wheeled_robot. Size class: medium. Concrete appearance: stable four-wheel base, compact sensor mast, clean industrial detailing, sealed shell panels, practical public-space proportions, readable front-back orientation. Environment layout: a broad station forecourt or concourse with columns, railings, benches, and small pedestrian clusters pushed to the edges, leaving a clean central movement corridor ahead; the framing must keep full subject visibility and route readability. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. No human operator, escort, or other hero subject is visible. the subject is not front-facing and not presented as a flat side profile. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+    "subject": "single rounded station-assistance robot with a clearly nonhumanoid ground-moving robot body, stable four-wheel base, compact sensor mast, clean industrial detailing, sealed shell panels",
+    "total_frames": 161,
+    "output_dir": "/mnt/workspace/yuxue/output_root_04292110/lingbot_world/subject_control/nonhumanoid_357",
+    "image_data": {
+        "image": "image/nonhumanoid_357.png",
+        "mask_subject": "mask_subject/nonhumanoid_357.png",
+        "mask_horizon": "mask_horizon/nonhumanoid_357.png",
+        "prompt": "Photorealistic single first frame of a broad station forecourt and semi-covered concourse at night after rain with tiled columns, railings, benches, glass entrances, and polished paving, third-person follow camera behind the subject, rear_oblique_left framing, about 20 to 35 degrees behind the subject from the left rear, full subject visible, the protagonist kept relatively small in frame, soft fluorescent spill mixed with distant traffic glow and mild pavement reflections. The protagonist is a single rounded station-assistance robot. It must remain a single clearly nonhumanoid robot with practical ground-moving anatomy, readable front-back orientation, no humanoid face, no rider, no operator, and no handler. Motion family: wheeled_robot. Size class: medium. Concrete appearance: stable four-wheel base, compact sensor mast, clean industrial detailing, sealed shell panels, practical public-space proportions, readable front-back orientation. Environment layout: a broad station forecourt or concourse with columns, railings, benches, and small pedestrian clusters pushed to the edges, leaving a clean central movement corridor ahead; the framing must keep full subject visibility and route readability. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. No human operator, escort, or other hero subject is visible. the subject is not front-facing and not presented as a flat side profile. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+        "control_path": [
+            "s",
+            "d"
+        ],
+        "subject": "single rounded station-assistance robot with a clearly nonhumanoid ground-moving robot body, stable four-wheel base, compact sensor mast, clean industrial detailing, sealed shell panels",
+        "sample_name": "nonhumanoid_357",
+        "duration_ratio": [
+            0.6,
+            0.4
+        ]
+    },
+    "control_path": [
+        "s",
+        "d"
+    ],
+    "duration_ratio": [
+        0.6,
+        0.4
+    ],
+    "action_segments": [
+        {
+            "action": "s",
+            "start_frame": 0,
+            "end_frame": 97
+        },
+        {
+            "action": "d",
+            "start_frame": 97,
+            "end_frame": 161
+        }
+    ]
+}

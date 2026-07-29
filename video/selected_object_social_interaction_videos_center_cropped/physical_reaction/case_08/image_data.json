@@ -1,0 +1,41 @@
+{
+    "sample_name": "center_of_mass_controls_stability__case_08",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/physics_knowledge/image/center_of_mass_controls_stability__case_08.jpg",
+    "prompt": " Photorealistic laundry room scene, exactly one continuous full-frame image of a single moment, clear third-person follow camera directly behind and slightly above one adult woman at medium distance, angled downward enough to show the appliance tops and the unstable setup ahead. She is shown mostly from the back and stands still facing a white top-loading washing machine. On the washer lid, a white plastic laundry basket packed with folded colorful towels is already tipping outward off the front-right edge, with most of the basket hanging beyond the supported surface. A dryer and utility sink are visible to the right. The unstable center-of-mass geometry and the open fall space ahead must be obvious. No split-screen, no collage, no aftermath.",
+    "subject": "human",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/physics_knowledge/center_of_mass_controls_stability__case_08",
+    "image_data": {
+        "sample_name": "center_of_mass_controls_stability__case_08",
+        "image": "image/center_of_mass_controls_stability__case_08.jpg",
+        "prompt": "Photorealistic laundry room scene, exactly one continuous full-frame image of a single moment, clear third-person follow camera directly behind and slightly above one adult woman at medium distance, angled downward enough to show the appliance tops and the unstable setup ahead. She is shown mostly from the back and stands still facing a white top-loading washing machine. On the washer lid, a white plastic laundry basket packed with folded colorful towels is already tipping outward off the front-right edge, with most of the basket hanging beyond the supported surface. A dryer and utility sink are visible to the right. The unstable center-of-mass geometry and the open fall space ahead must be obvious. No split-screen, no collage, no aftermath.",
+        "control_path": [
+            "stop"
+        ],
+        "duration_ratio": [
+            1
+        ],
+        "subject": "human",
+        "checklist": [
+            "Does the woman remain stationary throughout the short continuation?",
+            "Does the basket continue rotating outward and downward from its already tilted position?",
+            "Does the basket fall off the washing machine rather than sliding back to a fully supported position on top?",
+            "Does the motion begin as a tip about the washer edge or remaining contact point, consistent with overhanging weight pulling it over?",
+            "Does the overhanging towel load move with the basket and contribute to the same outward fall direction?",
+            "Does the basket fall without any new touch, grab, or bump from the woman?",
+            "After leaving support, does the basket and laundry move downward into the open space in front of the machine rather than floating or reversing upward?"
+        ],
+        "physics_pattern": "center_of_mass_controls_stability"
+    },
+    "control_path": [
+        "stop"
+    ],
+    "duration_ratio": [
+        1
+    ],
+    "action_segments": [
+        {
+            "action": "stop"
+        }
+    ]
+}

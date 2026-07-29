@@ -1,0 +1,44 @@
+{
+    "sample_name": "humanoid_317",
+    "image_path": "/mnt/workspace/yuxue/NeoBench/subject_control/image/humanoid_317.jpg",
+    "prompt": "High-end unreal_engine gameplay render of research campus walkway, third-person follow camera behind the subject, rear_three_quarter_left framing, about 30 degrees behind the subject from the left rear, full body visible, the protagonist kept relatively small in frame, soft overcast light, overcast. The protagonist is a single medical support humanoid robot. It has a clearly humanoid robot body with two legs, human-like proportions, and a walkable bipedal stance, and the robot style is fully consistent with the environment style. Concrete appearance: human-proportioned bipedal body, sterile white shell, medical utility pouch, articulated hands, quiet padded feet. Environment layout: broad open paving or path geometry with side landscaping and furniture pushed outward, leaving several readable open continuations ahead; the whole figure remains readable with open maneuvering space around the subject. Background elements at the edges may include benches, planters, signposts, trees, low walls. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. the subject is not front-facing and not presented as a full side profile. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+    "subject": "single medical support humanoid robot with a bipedal walkable human-like robot body, human-proportioned bipedal body, sterile white shell, medical utility pouch, articulated hands, quiet padded feet",
+    "total_frames": 161,
+    "output_dir": "/mnt/workspace/yuxue/output_root_04292110/lingbot_world/subject_control/humanoid_317",
+    "image_data": {
+        "image": "image/humanoid_317.jpg",
+        "mask_subject": "mask_subject/humanoid_317.png",
+        "mask_horizon": "mask_horizon/humanoid_317.png",
+        "prompt": "High-end unreal_engine gameplay render of research campus walkway, third-person follow camera behind the subject, rear_three_quarter_left framing, about 30 degrees behind the subject from the left rear, full body visible, the protagonist kept relatively small in frame, soft overcast light, overcast. The protagonist is a single medical support humanoid robot. It has a clearly humanoid robot body with two legs, human-like proportions, and a walkable bipedal stance, and the robot style is fully consistent with the environment style. Concrete appearance: human-proportioned bipedal body, sterile white shell, medical utility pouch, articulated hands, quiet padded feet. Environment layout: broad open paving or path geometry with side landscaping and furniture pushed outward, leaving several readable open continuations ahead; the whole figure remains readable with open maneuvering space around the subject. Background elements at the edges may include benches, planters, signposts, trees, low walls. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. the subject is not front-facing and not presented as a full side profile. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+        "control_path": [
+            "w",
+            "a"
+        ],
+        "subject": "single medical support humanoid robot with a bipedal walkable human-like robot body, human-proportioned bipedal body, sterile white shell, medical utility pouch, articulated hands, quiet padded feet",
+        "sample_name": "humanoid_317",
+        "duration_ratio": [
+            0.3,
+            0.7
+        ]
+    },
+    "control_path": [
+        "w",
+        "a"
+    ],
+    "duration_ratio": [
+        0.3,
+        0.7
+    ],
+    "action_segments": [
+        {
+            "action": "w",
+            "start_frame": 0,
+            "end_frame": 49
+        },
+        {
+            "action": "a",
+            "start_frame": 49,
+            "end_frame": 161
+        }
+    ]
+}

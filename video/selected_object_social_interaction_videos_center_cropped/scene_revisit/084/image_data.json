@@ -1,0 +1,30 @@
+{
+    "sample_name": "084",
+    "image_path": "/apdcephfs/private_yuppieyang/bench/WorldPrism/data/scene_revisit/image/084.png",
+    "prompt": "Bright modern indoor entry area in a third-person view, featuring a floating dark-wood staircase with black metal railings on the left, white walls, exposed wood beams above, warm horizontal wood paneling under the stairs, a white countertop with sink and dark cabinet center-right, open doorway to a small lit room, and wood plank flooring throughout.",
+    "subject": null,
+    "total_frames": 81,
+    "output_dir": "/apdcephfs_zwfy12/share_303535725/yangyuxue/bench_output_camera/neoverse/scene_revisit/084",
+    "image_data": {
+        "image": "image/084.png",
+        "mask_anchor": "mask_anchor/084.png",
+        "prompt": "Bright modern indoor entry area in a third-person view, featuring a floating dark-wood staircase with black metal railings on the left, white walls, exposed wood beams above, warm horizontal wood paneling under the stairs, a white countertop with sink and dark cabinet center-right, open doorway to a small lit room, and wood plank flooring throughout.",
+        "control_path": [
+            "move_right",
+            "move_left"
+        ],
+        "sample_name": "084",
+        "duration_ratio": [
+            0.4,
+            0.6
+        ]
+    },
+    "control_path": [
+        "move_right",
+        "move_left"
+    ],
+    "duration_ratio": [
+        0.4,
+        0.6
+    ]
+}

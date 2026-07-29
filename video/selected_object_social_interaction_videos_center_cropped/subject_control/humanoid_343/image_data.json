@@ -1,0 +1,53 @@
+{
+    "sample_name": "humanoid_343",
+    "image_path": "/mnt/workspace/yuxue/NeoBench/subject_control/image/humanoid_343.png",
+    "prompt": "Photorealistic single first frame of a warehouse loading aisle with racks, pallet stacks, shrink-wrapped goods, carts, and industrial floor markings under high ceiling lights, third-person follow camera behind the subject, rear_oblique_left framing, about 20 to 35 degrees behind the subject from the left rear, full subject visible, the protagonist kept relatively small in frame, cool industrial overhead lighting with mild floor reflections and soft shadow falloff. The protagonist is a single warehouse inspector. It must remain a single human adult with natural anatomy, grounded gait, readable shoulder-hip orientation, and no vehicle being ridden, no mount, and no secondary main character. Motion family: bipedal_human. Size class: adult human scale. Concrete appearance: muted safety jacket, practical trousers, reinforced work shoes, compact handheld device clipped to the belt, adult human scale, readable work silhouette. Environment layout: a service aisle or loading corridor with racks, pallets, carts, and industrial equipment aligned to the sides, leaving a clean forward traversal lane through the middle; keep the subject fully visible and the route ahead easy to parse. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. No companion, escort, crowd member, or other hero subject is visible. the subject is not front-facing and not presented as a flat side profile. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+    "subject": "single warehouse inspector with natural human body, muted safety jacket, practical trousers, reinforced work shoes, compact handheld device on the belt",
+    "total_frames": 161,
+    "output_dir": "/mnt/workspace/yuxue/output_root_04292110/lingbot_world/subject_control/humanoid_343",
+    "image_data": {
+        "image": "image/humanoid_343.png",
+        "mask_subject": "mask_subject/humanoid_343.png",
+        "mask_horizon": "mask_horizon/humanoid_343.png",
+        "prompt": "Photorealistic single first frame of a warehouse loading aisle with racks, pallet stacks, shrink-wrapped goods, carts, and industrial floor markings under high ceiling lights, third-person follow camera behind the subject, rear_oblique_left framing, about 20 to 35 degrees behind the subject from the left rear, full subject visible, the protagonist kept relatively small in frame, cool industrial overhead lighting with mild floor reflections and soft shadow falloff. The protagonist is a single warehouse inspector. It must remain a single human adult with natural anatomy, grounded gait, readable shoulder-hip orientation, and no vehicle being ridden, no mount, and no secondary main character. Motion family: bipedal_human. Size class: adult human scale. Concrete appearance: muted safety jacket, practical trousers, reinforced work shoes, compact handheld device clipped to the belt, adult human scale, readable work silhouette. Environment layout: a service aisle or loading corridor with racks, pallets, carts, and industrial equipment aligned to the sides, leaving a clean forward traversal lane through the middle; keep the subject fully visible and the route ahead easy to parse. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. No companion, escort, crowd member, or other hero subject is visible. the subject is not front-facing and not presented as a flat side profile. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+        "control_path": [
+            "w",
+            "d",
+            "a"
+        ],
+        "subject": "single warehouse inspector with natural human body, muted safety jacket, practical trousers, reinforced work shoes, compact handheld device on the belt",
+        "sample_name": "humanoid_343",
+        "duration_ratio": [
+            0.25,
+            0.25,
+            0.5
+        ]
+    },
+    "control_path": [
+        "w",
+        "d",
+        "a"
+    ],
+    "duration_ratio": [
+        0.25,
+        0.25,
+        0.5
+    ],
+    "action_segments": [
+        {
+            "action": "w",
+            "start_frame": 0,
+            "end_frame": 41
+        },
+        {
+            "action": "d",
+            "start_frame": 41,
+            "end_frame": 81
+        },
+        {
+            "action": "a",
+            "start_frame": 81,
+            "end_frame": 161
+        }
+    ]
+}

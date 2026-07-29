@@ -1,0 +1,98 @@
+{
+  "camera_control": [
+    "gallery/camera_control/003.png",
+    "gallery/camera_control/007.png",
+    "gallery/camera_control/012.png",
+    "gallery/camera_control/014.png",
+    "gallery/camera_control/015.png",
+    "gallery/camera_control/019.png",
+    "gallery/camera_control/020.png",
+    "gallery/camera_control/025.png",
+    "gallery/camera_control/030.png",
+    "gallery/camera_control/035.png"
+  ],
+  "object_interaction": [
+    "gallery/object_interaction/third_person_human_back_into_movable_obstacle__case_09.jpg",
+    "gallery/object_interaction/third_person_human_pull_wheeled_carrier_sideways_into_movable_obstacle__case_05.jpg",
+    "gallery/object_interaction/third_person_human_pull_wheeled_carrier_sideways_into_rigid_barrier__case_05.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_01.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_02.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_05.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_06.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_09.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_10.jpg",
+    "gallery/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_14.jpg"
+  ],
+  "physics_knowledge": [
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_04.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_06.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_13.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_16.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_17.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_18.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_19.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_20.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_22.jpg",
+    "gallery/physics_knowledge/angular_momentum_and_swinging_motion__case_23.jpg"
+  ],
+  "scene_revisit": [
+    "gallery/scene_revisit/003.png",
+    "gallery/scene_revisit/004.png",
+    "gallery/scene_revisit/005.png",
+    "gallery/scene_revisit/006.png",
+    "gallery/scene_revisit/007.png",
+    "gallery/scene_revisit/008.png",
+    "gallery/scene_revisit/011.png",
+    "gallery/scene_revisit/012.png",
+    "gallery/scene_revisit/014.png",
+    "gallery/scene_revisit/015.png"
+  ],
+  "social_interaction": [
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_01.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_02.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_04.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_05.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_06.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_08.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_10.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_11.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_12.jpg",
+    "gallery/social_interaction/third_person_animal_dart_laterally_across_pedestrian_path__case_15.jpg"
+  ],
+  "subject_control": [
+    "gallery/subject_control/humanoid_101.jpg",
+    "gallery/subject_control/humanoid_11.jpg",
+    "gallery/subject_control/humanoid_114.jpg",
+    "gallery/subject_control/humanoid_118.jpg",
+    "gallery/subject_control/humanoid_119.jpg",
+    "gallery/subject_control/humanoid_12.jpg",
+    "gallery/subject_control/humanoid_120.jpg",
+    "gallery/subject_control/humanoid_122.jpg",
+    "gallery/subject_control/humanoid_123.jpg",
+    "gallery/subject_control/humanoid_125.jpg"
+  ],
+  "task_understanding": [
+    "gallery/task_understanding/10_case_01.jpg",
+    "gallery/task_understanding/10_case_02.jpg",
+    "gallery/task_understanding/10_case_03.jpg",
+    "gallery/task_understanding/10_case_04.jpg",
+    "gallery/task_understanding/10_case_05.jpg",
+    "gallery/task_understanding/10_case_07.jpg",
+    "gallery/task_understanding/10_case_09.jpg",
+    "gallery/task_understanding/11_case_01.jpg",
+    "gallery/task_understanding/11_case_02.jpg",
+    "gallery/task_understanding/11_case_03.jpg"
+  ],
+  "terrain_interaction": [
+    "gallery/terrain_interaction/third_person_animal_forward_case03_candidate03.jpg",
+    "gallery/terrain_interaction/third_person_animal_forward_case07_candidate05.jpg",
+    "gallery/terrain_interaction/third_person_animal_leftward_case01_candidate01.jpg",
+    "gallery/terrain_interaction/third_person_animal_leftward_case02_candidate05.jpg",
+    "gallery/terrain_interaction/third_person_animal_leftward_case03_candidate02.jpg",
+    "gallery/terrain_interaction/third_person_animal_leftward_case07_candidate02.jpg",
+    "gallery/terrain_interaction/third_person_animal_rightward_case04_candidate02.jpg",
+    "gallery/terrain_interaction/third_person_animal_rightward_case10_candidate02.jpg",
+    "gallery/terrain_interaction/third_person_calf_forward_on_narrow_gap_crossing_case03_candidate03.jpg",
+    "gallery/terrain_interaction/third_person_calf_forward_on_obstacle_ahead_case07_candidate03.jpg"
+  ]
+}

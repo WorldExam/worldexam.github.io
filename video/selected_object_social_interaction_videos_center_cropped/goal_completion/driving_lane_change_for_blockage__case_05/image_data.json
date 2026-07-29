@@ -1,0 +1,68 @@
+{
+    "sample_name": "driving_lane_change_for_blockage__case_05",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/task_understanding/image/driving_lane_change_for_blockage/case_05.jpg",
+    "prompt": "Move from the middle lane into the right lane to avoid the highway maintenance truck and cones blocking your lane.",
+    "subject": null,
+    "total_frames": 123,
+    "output_dir": "output/happyhorse/task_understanding/driving_lane_change_for_blockage__case_05",
+    "image_data": {
+        "case_id": "case_05",
+        "task_domain": "driving",
+        "task_pattern": "driving_lane_change_for_blockage",
+        "scene_type": "nighttime freeway with highway maintenance truck tapering off the middle lane",
+        "camera_perspective": "night dashcam with illuminated hood edge",
+        "instruction": "Move from the middle lane into the right lane to avoid the highway maintenance truck and cones blocking your lane.",
+        "goal_state": "The ego car is established in the right lane and has safely passed the maintenance truck and cone taper that blocked the middle lane.",
+        "key_objects": [
+            "maintenance truck with bright arrow board and amber lights in the middle lane",
+            "short cone taper closing the middle lane",
+            "open right lane adjacent to the ego car",
+            "silver sedan traveling in the left lane beside and slightly ahead of the ego car",
+            "reflective lane markings",
+            "ego vehicle hood edge visible at the bottom of the frame"
+        ],
+        "distractors": [
+            "overhead maintenance message sign gantry",
+            "right-side exit sign",
+            "distant vehicles farther ahead",
+            "left concrete barrier"
+        ],
+        "preconditions": [
+            "The ego vehicle starts in the middle lane.",
+            "The middle lane ahead is visibly obstructed by the maintenance truck and cones.",
+            "The right lane is the adjacent available lane for avoiding the blockage.",
+            "The left lane is occupied by a nearby silver sedan."
+        ],
+        "scene_constraints": [
+            "Change only one lane to the right.",
+            "Complete the lane change before reaching the cone taper and truck.",
+            "Do not merge into the occupied left lane.",
+            "Stay within marked travel lanes and avoid the shoulder or gore area.",
+            "Pass the blockage from the right side."
+        ],
+        "checklist": [
+            "Does the ego vehicle begin reacting to the middle-lane blockage promptly?",
+            "Does the ego vehicle choose the right lane rather than the left lane?",
+            "Does the lane change start before the ego vehicle reaches the cones behind the maintenance truck?",
+            "Does the ego vehicle avoid contacting or driving through the cone taper?",
+            "Does the ego vehicle keep clear of the maintenance truck while passing?",
+            "Does the ego vehicle remain clear of the nearby left-lane sedan during the maneuver?",
+            "Does the ego vehicle fully stabilize within the right lane after the lane change?",
+            "Does the ego vehicle continue forward past the blockage once in the right lane?"
+        ],
+        "first_frame_prompt": "Realistic nighttime freeway dashcam view from the ego vehicle, with the dashboard and illuminated front hood edge clearly visible at the bottom of frame. The ego car is centered in the middle lane. Directly ahead in the same lane is a highway maintenance truck with bright amber flashers and a large illuminated arrow board, with several orange cones tapering around it and visibly blocking the lane. The right lane next to the ego vehicle is open, while a silver sedan is traveling in the left lane slightly ahead and beside the ego car. Reflective white lane markings, overhead gantry signs including a maintenance message, distant traffic, and high-contrast night lighting.",
+        "first_frame_path": "images/driving_lane_change_for_blockage/case_05.jpg",
+        "language_control_prompt": "Move from the middle lane into the right lane to avoid the highway maintenance truck and cones blocking your lane.",
+        "image": "image/driving_lane_change_for_blockage/case_05.jpg",
+        "source_first_frame_path": "/data2/shuyao.shang/WorldUndBench/TaskUnderstanding/image/driving_lane_change_for_blockage/case_05/candidate_03.jpg",
+        "prompt": "Move from the middle lane into the right lane to avoid the highway maintenance truck and cones blocking your lane.",
+        "scene_prompt": "Realistic nighttime freeway dashcam view from the ego vehicle, with the dashboard and illuminated front hood edge clearly visible at the bottom of frame. The ego car is centered in the middle lane. Directly ahead in the same lane is a highway maintenance truck with bright amber flashers and a large illuminated arrow board, with several orange cones tapering around it and visibly blocking the lane. The right lane next to the ego vehicle is open, while a silver sedan is traveling in the left lane slightly ahead and beside the ego car. Reflective white lane markings, overhead gantry signs including a maintenance message, distant traffic, and high-contrast night lighting.",
+        "use_raw_prompt": true,
+        "control_path": [],
+        "duration_ratio": [],
+        "sample_name": "driving_lane_change_for_blockage__case_05"
+    },
+    "control_path": [],
+    "duration_ratio": [],
+    "action_segments": []
+}

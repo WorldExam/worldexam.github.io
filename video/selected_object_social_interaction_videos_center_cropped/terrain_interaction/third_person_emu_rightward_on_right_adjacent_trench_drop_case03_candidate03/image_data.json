@@ -1,0 +1,34 @@
+{
+    "sample_name": "third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/terrain_interaction/image/third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03.jpg",
+    "prompt": "The single adult emu with brown-gray shaggy feathers, long legs, and a clearly visible back-facing body posture moves right. Photo-realistic live-action photography, third-person follow camera from behind at medium height, centered on a single adult emu standing on a raised concrete loading slab in an outdoor loading zone. Clearly show the target terrain immediately to its right: a recessed lower drainage trench running parallel to the slab edge and forming a distinct drop. The emu faces away from camera and is still on the upper slab in a neutral ground-walking stance, one step from the edge, not yet entering the trench. Keep the environment open and ordinary, with clean pavement, warehouse walls in the distance, no trucks, no people, and no stacked cargo near the subject. Use crisp natural light and realistic concrete textures to make the slab edge, trench floor, and elevation change extremely easy to judge.",
+    "subject": "single adult emu with brown-gray shaggy feathers, long legs, and a clearly visible back-facing body posture",
+    "total_frames": 144,
+    "output_dir": "output/hailuo/terrain_interaction/third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03",
+    "image_data": {
+        "image": "image/third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03.jpg",
+        "control_path": [
+            "d"
+        ],
+        "subject": "single adult emu with brown-gray shaggy feathers, long legs, and a clearly visible back-facing body posture",
+        "prompt": "Photo-realistic live-action photography, third-person follow camera from behind at medium height, centered on a single adult emu standing on a raised concrete loading slab in an outdoor loading zone. Clearly show the target terrain immediately to its right: a recessed lower drainage trench running parallel to the slab edge and forming a distinct drop. The emu faces away from camera and is still on the upper slab in a neutral ground-walking stance, one step from the edge, not yet entering the trench. Keep the environment open and ordinary, with clean pavement, warehouse walls in the distance, no trucks, no people, and no stacked cargo near the subject. Use crisp natural light and realistic concrete textures to make the slab edge, trench floor, and elevation change extremely easy to judge.",
+        "image_wo_subject": "image_wo_subject/third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03.jpg",
+        "mask_subject": "mask_subject/third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03.png",
+        "mask_horizon": "mask_horizon/third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03.png",
+        "sample_name": "third_person_emu_rightward_on_right_adjacent_trench_drop_case03_candidate03",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "d"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "d"
+        }
+    ]
+}

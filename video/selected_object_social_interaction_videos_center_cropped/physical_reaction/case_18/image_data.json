@@ -1,0 +1,40 @@
+{
+    "sample_name": "elastic_objects_recover_shape__case_18",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/physics_knowledge/image/elastic_objects_recover_shape__case_18.jpg",
+    "prompt": "The human moves backward. Grounded live-action office corridor scene, one continuous full-frame image. Clear third-person follow camera directly behind and slightly above a single adult office worker at medium distance, angled downward enough to show the floor, the worker's lower back and legs, and the trigger zone ahead. The worker is already committed to stepping straight backward down the hallway. On the right side, a wooden cabinet with brass knobs catches a visible transparent coiled ID badge tether clipped near the worker's right hip; the coil is stretched diagonally and under obvious tension. A printer sits recessed on the left side of the corridor. Cool fluorescent office lighting, realistic cubicle hallway background, clear view of the taut coil and the snag point, no split-screen, no collage, no duplicated subjects.",
+    "subject": "human",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/physics_knowledge/elastic_objects_recover_shape__case_18",
+    "image_data": {
+        "sample_name": "elastic_objects_recover_shape__case_18",
+        "image": "image/elastic_objects_recover_shape__case_18.jpg",
+        "prompt": "Grounded live-action office corridor scene, one continuous full-frame image. Clear third-person follow camera directly behind and slightly above a single adult office worker at medium distance, angled downward enough to show the floor, the worker's lower back and legs, and the trigger zone ahead. The worker is already committed to stepping straight backward down the hallway. On the right side, a wooden cabinet with brass knobs catches a visible transparent coiled ID badge tether clipped near the worker's right hip; the coil is stretched diagonally and under obvious tension. A printer sits recessed on the left side of the corridor. Cool fluorescent office lighting, realistic cubicle hallway background, clear view of the taut coil and the snag point, no split-screen, no collage, no duplicated subjects.",
+        "control_path": [
+            "s"
+        ],
+        "duration_ratio": [
+            1
+        ],
+        "subject": "human",
+        "checklist": [
+            "Does the worker continue moving straight backward rather than turning or walking forward?",
+            "Before release, does the tether elongate or stay visibly taut as the backward motion continues?",
+            "Does the tether come free from the cabinet knob during the continuation?",
+            "After coming free, does the coiled tether visibly recoil and shorten toward the worker's hip?",
+            "Does the tether avoid passing rigidly through the knob or cabinet during release and recoil?",
+            "After recoil, does the tether settle in a shorter, less stretched shape than before release?"
+        ],
+        "physics_pattern": "elastic_objects_recover_shape"
+    },
+    "control_path": [
+        "s"
+    ],
+    "duration_ratio": [
+        1
+    ],
+    "action_segments": [
+        {
+            "action": "s"
+        }
+    ]
+}

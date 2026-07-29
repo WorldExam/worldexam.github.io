@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_vehicle_nose_into_pedestrian_crossing__case_15",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/social_interaction/image/third_person_vehicle_nose_into_pedestrian_crossing__case_15.jpg",
+    "prompt": "The small gray ride-on floor-cleaning machine moves forward. Anime or cel-shaded illustration, clear third-person follow camera directly behind one small gray ride-on floor-cleaning machine, medium-wide, slightly elevated and pitched downward around 40 degrees. The machine's rear is centered in the foreground inside a busy but orderly market hall food court with counter signs, tables, and polished floor. A marked pedestrian crossing runs left to right across a narrow service lane in the midground, and the cleaning machine's front nose is already intruding into the crossing. Three customers carrying cafeteria trays are crossing from right to left and are only a short distance from the machine's front path. The conflict zone is the painted crossing directly in front of the machine nose. Bright indoor lighting, grounded everyday commercial environment, clear silhouettes and visible spacing with no key occlusion.",
+    "subject": "small gray ride-on floor-cleaning machine",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/social_interaction/third_person_vehicle_nose_into_pedestrian_crossing__case_15",
+    "image_data": {
+        "checklist": [
+            "Does the ride-on cleaning machine continue creeping straight into the indoor crossing?",
+            "Do the three tray-carrying customers remain visible enough to judge their path change near the machine?",
+            "Does the customer group show a clear reaction such as slowing or curving around the machine nose?",
+            "Is the marked crossing in front of the machine the dominant interaction zone throughout the continuation?",
+            "Does the scene remain an ordinary indoor market or food hall interaction?",
+            "Does the cleaning machine remain the source of social pressure rather than unrelated crowd motion taking over?",
+            "Are the customers' reactions plausible for people balancing trays in a partially blocked crossing?",
+            "Does the continuation stay low-speed and socially readable without collision-heavy escalation?"
+        ],
+        "image": "image/third_person_vehicle_nose_into_pedestrian_crossing__case_15.jpg",
+        "prompt": "Anime or cel-shaded illustration, clear third-person follow camera directly behind one small gray ride-on floor-cleaning machine, medium-wide, slightly elevated and pitched downward around 40 degrees. The machine's rear is centered in the foreground inside a busy but orderly market hall food court with counter signs, tables, and polished floor. A marked pedestrian crossing runs left to right across a narrow service lane in the midground, and the cleaning machine's front nose is already intruding into the crossing. Three customers carrying cafeteria trays are crossing from right to left and are only a short distance from the machine's front path. The conflict zone is the painted crossing directly in front of the machine nose. Bright indoor lighting, grounded everyday commercial environment, clear silhouettes and visible spacing with no key occlusion.",
+        "control_path": [
+            "w"
+        ],
+        "subject": "small gray ride-on floor-cleaning machine",
+        "sample_name": "third_person_vehicle_nose_into_pedestrian_crossing__case_15",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

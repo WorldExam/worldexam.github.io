@@ -1,0 +1,42 @@
+{
+    "sample_name": "132",
+    "image_path": "/mnt/workspace/yuxue/NeoBench/scene_revisit/image/132.png",
+    "prompt": "Third-person view of a quiet indoor cafeteria or food court with warm overhead lighting, polished concrete floor, black square tables with light wood and black chairs in the center, a long bar-height counter with stools along large windows on the right, and a service counter, digital menu board, staircase, and glass exit door in the background.",
+    "subject": null,
+    "total_frames": 161,
+    "output_dir": "/mnt/workspace/yuxue/output_root_0430/lingbot_world/scene_revisit/132",
+    "image_data": {
+        "image": "image/132.png",
+        "mask_anchor": "mask_anchor/132.png",
+        "prompt": "Third-person view of a quiet indoor cafeteria or food court with warm overhead lighting, polished concrete floor, black square tables with light wood and black chairs in the center, a long bar-height counter with stools along large windows on the right, and a service counter, digital menu board, staircase, and glass exit door in the background.",
+        "control_path": [
+            "pan_left",
+            "pan_right"
+        ],
+        "sample_name": "132",
+        "duration_ratio": [
+            0.4,
+            0.6
+        ]
+    },
+    "control_path": [
+        "pan_left",
+        "pan_right"
+    ],
+    "duration_ratio": [
+        0.4,
+        0.6
+    ],
+    "action_segments": [
+        {
+            "action": "pan_left",
+            "start_frame": 0,
+            "end_frame": 65
+        },
+        {
+            "action": "pan_right",
+            "start_frame": 65,
+            "end_frame": 161
+        }
+    ]
+}

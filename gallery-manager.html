@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery 图片清理</title>
+<style>
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #151922;
+  --muted: #667085;
+  --line: #d9dee7;
+  --accent: #1677ff;
+  --danger: #c93535;
+  --danger-soft: #fff0f0;
+  --selected: #eaf3ff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button, select {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+}
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  padding: 20px;
+}
+
+.sidebar h1 {
+  margin: 0 0 18px;
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.folder-list {
+  display: grid;
+  gap: 8px;
+}
+
+.folder-button {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  padding: 9px 10px;
+  text-align: left;
+}
+
+.folder-button:hover,
+.folder-button.active {
+  border-color: var(--accent);
+  background: var(--selected);
+}
+
+.main {
+  min-width: 0;
+  padding: 24px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  padding: 14px 16px;
+}
+
+.folder-title {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.count {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
+.button.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.button.danger {
+  border-color: var(--danger);
+  background: var(--danger);
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 2px 12px rgba(15, 23, 42, .08);
+}
+
+.image-card.selected {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.image-card label {
+  display: block;
+  cursor: pointer;
+}
+
+.image-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #111827;
+}
+
+.image-meta {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 52px;
+  padding: 10px;
+}
+
+.image-meta input {
+  width: 18px;
+  height: 18px;
+}
+
+.file-name {
+  overflow: hidden;
+  color: #344054;
+  font-size: 13px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.empty,
+.status {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+  padding: 22px;
+}
+
+.status {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+}
+
+.pager {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+  .folder-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toolbar { align-items: flex-start; flex-direction: column; }
+  .actions { justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .main, .sidebar { padding: 14px; }
+  .folder-list, .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <h1>Gallery 图片清理</h1>
+    <div id="folderList" class="folder-list"></div>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <div>
+        <h2 id="folderTitle" class="folder-title">请选择文件夹</h2>
+        <div id="countText" class="count">剩余图片：0</div>
+      </div>
+      <div class="actions">
+        <button id="selectAllButton" class="button" type="button" disabled>全选本页</button>
+        <button id="clearButton" class="button" type="button" disabled>取消选择</button>
+        <button id="deleteButton" class="button danger" type="button" disabled>删除选中</button>
+      </div>
+    </div>
+
+    <div id="status" class="status" hidden></div>
+    <div id="grid" class="grid"></div>
+    <div id="empty" class="empty">从左侧选择一个子文件夹。</div>
+    <div class="pager">
+      <button id="prevButton" class="button" type="button" disabled>上一页</button>
+      <button id="nextButton" class="button primary" type="button" disabled>下一页</button>
+    </div>
+  </main>
+</div>
+
+<script>
+const state = {
+  folder: "",
+  folders: [],
+  images: [],
+  selected: new Set(),
+  offset: 0,
+  limit: 6,
+  total: 0,
+};
+
+const folderList = document.querySelector("#folderList");
+const folderTitle = document.querySelector("#folderTitle");
+const countText = document.querySelector("#countText");
+const grid = document.querySelector("#grid");
+const empty = document.querySelector("#empty");
+const statusBox = document.querySelector("#status");
+const prevButton = document.querySelector("#prevButton");
+const nextButton = document.querySelector("#nextButton");
+const selectAllButton = document.querySelector("#selectAllButton");
+const clearButton = document.querySelector("#clearButton");
+const deleteButton = document.querySelector("#deleteButton");
+
+function setStatus(message, isError = false) {
+  statusBox.hidden = !message;
+  statusBox.textContent = message || "";
+  statusBox.style.color = isError ? "#c93535" : "#667085";
+}
+
+async function requestJson(url, options) {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || "请求失败");
+  return data;
+}
+
+function imageUrl(file) {
+  const params = new URLSearchParams({ folder: state.folder, file });
+  return `/api/image?${params.toString()}`;
+}
+
+function renderFolders() {
+  folderList.innerHTML = "";
+  state.folders.forEach((folder) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `folder-button${folder === state.folder ? " active" : ""}`;
+    button.textContent = folder;
+    button.addEventListener("click", () => loadFolder(folder));
+    folderList.append(button);
+  });
+}
+
+function renderImages() {
+  grid.innerHTML = "";
+  const hasFolder = Boolean(state.folder);
+  const hasImages = state.images.length > 0;
+  empty.hidden = hasImages;
+  empty.textContent = hasFolder ? "这个文件夹没有更多图片。" : "从左侧选择一个子文件夹。";
+
+  state.images.forEach((file) => {
+    const card = document.createElement("article");
+    card.className = `image-card${state.selected.has(file) ? " selected" : ""}`;
+
+    const label = document.createElement("label");
+    const img = document.createElement("img");
+    img.src = imageUrl(file);
+    img.alt = file;
+    img.loading = "lazy";
+
+    const meta = document.createElement("div");
+    meta.className = "image-meta";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = state.selected.has(file);
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) state.selected.add(file);
+      else state.selected.delete(file);
+      renderImages();
+      updateControls();
+    });
+
+    const name = document.createElement("div");
+    name.className = "file-name";
+    name.textContent = file;
+
+    meta.append(checkbox, name);
+    label.append(img, meta);
+    card.append(label);
+    grid.append(card);
+  });
+
+  updateControls();
+}
+
+function updateControls() {
+  folderTitle.textContent = state.folder || "请选择文件夹";
+  countText.textContent = `剩余图片：${state.total}`;
+  prevButton.disabled = !state.folder || state.offset <= 0;
+  nextButton.disabled = !state.folder || state.offset + state.limit >= state.total;
+  selectAllButton.disabled = state.images.length === 0;
+  clearButton.disabled = state.selected.size === 0;
+  deleteButton.disabled = state.selected.size === 0;
+  deleteButton.textContent = state.selected.size ? `删除选中 ${state.selected.size} 张` : "删除选中";
+}
+
+async function loadFolder(folder, offset = 0) {
+  state.folder = folder;
+  state.offset = offset;
+  state.selected.clear();
+  renderFolders();
+  setStatus("加载中...");
+
+  try {
+    const params = new URLSearchParams({
+      folder,
+      offset: String(state.offset),
+      limit: String(state.limit),
+    });
+    const data = await requestJson(`/api/images?${params.toString()}`);
+    state.images = data.images;
+    state.total = data.total;
+    setStatus("");
+    renderImages();
+  } catch (error) {
+    setStatus(error.message, true);
+  }
+}
+
+async function loadFolders() {
+  setStatus("正在读取 gallery 子文件夹...");
+  try {
+    const data = await requestJson("/api/folders");
+    state.folders = data.folders;
+    renderFolders();
+    setStatus("");
+    if (state.folders.length) loadFolder(state.folders[0]);
+  } catch (error) {
+    setStatus(error.message, true);
+  }
+}
+
+prevButton.addEventListener("click", () => {
+  loadFolder(state.folder, Math.max(0, state.offset - state.limit));
+});
+
+nextButton.addEventListener("click", () => {
+  loadFolder(state.folder, state.offset + state.limit);
+});
+
+selectAllButton.addEventListener("click", () => {
+  state.images.forEach((file) => state.selected.add(file));
+  renderImages();
+});
+
+clearButton.addEventListener("click", () => {
+  state.selected.clear();
+  renderImages();
+});
+
+deleteButton.addEventListener("click", async () => {
+  const files = [...state.selected];
+  if (!files.length) return;
+  const confirmed = window.confirm(`确认永久删除 ${files.length} 张图片？`);
+  if (!confirmed) return;
+
+  deleteButton.disabled = true;
+  setStatus("正在删除...");
+
+  try {
+    const data = await requestJson("/api/delete", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ folder: state.folder, files }),
+    });
+    const nextOffset = Math.min(state.offset, Math.max(0, data.total - state.limit));
+    setStatus(`已删除 ${data.deleted.length} 张图片。`);
+    await loadFolder(state.folder, nextOffset);
+  } catch (error) {
+    setStatus(error.message, true);
+    updateControls();
+  }
+});
+
+loadFolders();
+</script>
+</body>
+</html>

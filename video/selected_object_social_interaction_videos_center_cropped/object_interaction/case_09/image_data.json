@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_human_push_wheeled_carrier_into_movable_obstacle__case_09",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/object_interaction/image/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_09.jpg",
+    "prompt": "The cafe worker moves forward. Photorealistic cafe interior from a clear third-person follow camera directly behind and slightly above a cafe worker, angled downward around 35 degrees toward the floor and doorway. The worker is mostly back-facing on the right side of the frame, wearing a dark T-shirt and jeans, with both hands on a gray plastic two-shelf bus cart carrying stacked black trays, cups, and dishes. He is already moving straight forward toward an open double glass storefront doorway. Directly ahead near the threshold stands a lightweight black A-frame chalkboard menu sign reading DAILY SPECIALS, close enough for imminent impact, with the cart's front-left edge and corner lined up to hit the sign low on its frame and legs. Seated customers at tables remain secondary on both sides, while the short straight cart-to-sign approach dominates the image.",
+    "subject": "cafe worker",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/object_interaction/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_09",
+    "image_data": {
+        "subject": "cafe worker",
+        "checklist": [
+            "Does the worker keep the bus cart rolling straight forward on the same approach line into the sign without steering away before impact?",
+            "Does the bus cart make the first contact with the sign, specifically low on the sign's lower frame, panel edge, or legs, rather than the worker's body hitting it directly?",
+            "After contact, does the A-frame sign behave like a light freestanding hinged sign by tipping, folding, sliding, or getting shoved aside?",
+            "Does the sign remain visibly unattached and mobile, rather than acting as if fixed rigidly to the floor or doorway?",
+            "Does the sign's motion follow the cart's low forward push, with the base and legs reacting first instead of the top moving in an implausible independent way?",
+            "Does the worker stay behind the cart with a continued forward pushing posture through the moment of impact?",
+            "If the cart continues through the doorway area, is that continuation enabled by the sign being displaced or collapsing aside rather than unrealistically blocking the cart like a solid barrier?",
+            "Does the continuation keep the cart-sign contact zone and the sign's passive response visible enough to judge the impact clearly?"
+        ],
+        "image": "image/third_person_human_push_wheeled_carrier_into_movable_obstacle__case_09.jpg",
+        "prompt": "Photorealistic cafe interior from a clear third-person follow camera directly behind and slightly above a cafe worker, angled downward around 35 degrees toward the floor and doorway. The worker is mostly back-facing on the right side of the frame, wearing a dark T-shirt and jeans, with both hands on a gray plastic two-shelf bus cart carrying stacked black trays, cups, and dishes. He is already moving straight forward toward an open double glass storefront doorway. Directly ahead near the threshold stands a lightweight black A-frame chalkboard menu sign reading DAILY SPECIALS, close enough for imminent impact, with the cart's front-left edge and corner lined up to hit the sign low on its frame and legs. Seated customers at tables remain secondary on both sides, while the short straight cart-to-sign approach dominates the image.",
+        "control_path": [
+            "w"
+        ],
+        "sample_name": "third_person_human_push_wheeled_carrier_into_movable_obstacle__case_09",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "sample_name": "daily_screwdriver_use__case_04",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/task_understanding/image/daily_screwdriver_use/case_04.jpg",
+    "prompt": "Use the screwdriver to loosen the battery-compartment screw on the blue toy car, not the red toy vehicle beside it.",
+    "subject": null,
+    "total_frames": 123,
+    "output_dir": "output/happyhorse/task_understanding/daily_screwdriver_use__case_04",
+    "image_data": {
+        "case_id": "case_04",
+        "task_domain": "daily",
+        "task_pattern": "daily_screwdriver_use",
+        "scene_type": "toy vehicles upside down on a colorful living room rug",
+        "camera_perspective": "top-down close tabletop style with both hands visible",
+        "instruction": "Use the screwdriver to loosen the battery-compartment screw on the blue toy car, not the red toy vehicle beside it.",
+        "goal_state": "The battery-compartment screw on the blue toy car is loosened and its cover is visibly ready to open or slightly lifted.",
+        "key_objects": [
+            "small screwdriver",
+            "blue toy car",
+            "blue toy car battery-compartment screw",
+            "red toy vehicle",
+            "human hands"
+        ],
+        "distractors": [
+            "red toy vehicle battery-compartment screw",
+            "coin",
+            "AA batteries",
+            "plastic building blocks"
+        ],
+        "preconditions": [
+            "Both toy vehicles are visible upside down on the rug.",
+            "The battery-compartment screw on the blue toy car is clearly visible from above.",
+            "The screwdriver is within reach of the right hand."
+        ],
+        "scene_constraints": [
+            "Act only on the blue toy car.",
+            "Use the visible screwdriver rather than the coin or fingers.",
+            "Approach the screw from above in the visible workspace on the rug."
+        ],
+        "checklist": [
+            "Does the person pick up and use the visible screwdriver?",
+            "Does the action target the blue toy car rather than the red toy vehicle?",
+            "Does the screwdriver tip align with the blue car's battery-compartment screw?",
+            "Does the continuation show a clear screw-loosening motion on the blue car?",
+            "Does the red toy vehicle remain unused throughout the task?",
+            "Does the person avoid using the nearby coin as a tool?",
+            "Does the blue car's battery cover end visibly loosened or ready to open?"
+        ],
+        "first_frame_prompt": "Bright realistic living room scene viewed from a top-down close tabletop-style angle over a colorful rug, with both human hands visible in the workspace. Two toy vehicles lie upside down side by side: a blue toy car on the left and a red toy vehicle on the right, each showing a battery compartment and visible screws. A gray-handled screwdriver lies near the right hand. Nearby are two coins, two AA batteries, and a small stack of colorful building blocks. Soft daylight, compact play-area setup, and all relevant tools, targets, screws, and hands clearly visible for immediate action.",
+        "first_frame_path": "images/daily_screwdriver_use/case_04.jpg",
+        "language_control_prompt": "Use the screwdriver to loosen the battery-compartment screw on the blue toy car, not the red toy vehicle beside it.",
+        "image": "image/daily_screwdriver_use/case_04.jpg",
+        "source_first_frame_path": "/data2/shuyao.shang/WorldUndBench/TaskUnderstanding/image/daily_screwdriver_use/case_04/candidate_02.jpg",
+        "prompt": "Use the screwdriver to loosen the battery-compartment screw on the blue toy car, not the red toy vehicle beside it.",
+        "scene_prompt": "Bright realistic living room scene viewed from a top-down close tabletop-style angle over a colorful rug, with both human hands visible in the workspace. Two toy vehicles lie upside down side by side: a blue toy car on the left and a red toy vehicle on the right, each showing a battery compartment and visible screws. A gray-handled screwdriver lies near the right hand. Nearby are two coins, two AA batteries, and a small stack of colorful building blocks. Soft daylight, compact play-area setup, and all relevant tools, targets, screws, and hands clearly visible for immediate action.",
+        "use_raw_prompt": true,
+        "control_path": [],
+        "duration_ratio": [],
+        "sample_name": "daily_screwdriver_use__case_04"
+    },
+    "control_path": [],
+    "duration_ratio": [],
+    "action_segments": []
+}

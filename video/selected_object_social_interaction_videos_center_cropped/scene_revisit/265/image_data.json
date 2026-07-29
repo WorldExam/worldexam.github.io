@@ -1,0 +1,30 @@
+{
+    "sample_name": "265",
+    "image_path": "/apdcephfs/private_yuppieyang/bench/WorldPrism/data/scene_revisit/image/265.png",
+    "prompt": "Third-person follow view inside a futuristic industrial corridor or cargo bay, lit by red and cool white lights; perforated metal floor panels glow red in the foreground, two cargo crates sit near the back wall, white-gray paneled walls and black mesh vents line the room, orange insulated pipes run along the ceiling, and a curved doorway on the right opens into a dark sci-fi hallway.",
+    "subject": null,
+    "total_frames": 81,
+    "output_dir": "/apdcephfs_zwfy12/share_303535725/yangyuxue/bench_output_camera/neoverse/scene_revisit/265",
+    "image_data": {
+        "image": "image/265.png",
+        "mask_anchor": "mask_anchor/265.png",
+        "prompt": "Third-person follow view inside a futuristic industrial corridor or cargo bay, lit by red and cool white lights; perforated metal floor panels glow red in the foreground, two cargo crates sit near the back wall, white-gray paneled walls and black mesh vents line the room, orange insulated pipes run along the ceiling, and a curved doorway on the right opens into a dark sci-fi hallway.",
+        "control_path": [
+            "tilt_down",
+            "tilt_up"
+        ],
+        "sample_name": "265",
+        "duration_ratio": [
+            0.4,
+            0.6
+        ]
+    },
+    "control_path": [
+        "tilt_down",
+        "tilt_up"
+    ],
+    "duration_ratio": [
+        0.4,
+        0.6
+    ]
+}

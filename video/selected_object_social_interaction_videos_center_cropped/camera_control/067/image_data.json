@@ -1,0 +1,34 @@
+{
+    "sample_name": "067",
+    "image_path": "/apdcephfs/private_yuppieyang/bench/WorldPrism/data/camera_control/image/067.png",
+    "prompt": "Third-person frontal view of a small outdoor garage in bright daylight, with weathered gray shingle siding, teal roof trim, and a pale mint garage door painted with a bird perched on a leafy branch with blue berries; cracked concrete driveway in front, wooden fences and neighboring dark green house on the sides, and bare tree branches filling the background.",
+    "subject": null,
+    "total_frames": 81,
+    "output_dir": "output/camera_based/neoverse/camera_control/067",
+    "image_data": {
+        "image": "image/067.png",
+        "mask_anchor": "mask_anchor/067.png",
+        "prompt": "Third-person frontal view of a small outdoor garage in bright daylight, with weathered gray shingle siding, teal roof trim, and a pale mint garage door painted with a bird perched on a leafy branch with blue berries; cracked concrete driveway in front, wooden fences and neighboring dark green house on the sides, and bare tree branches filling the background.",
+        "control_path": [
+            "move_left",
+            "pan_left",
+            "pan_right"
+        ],
+        "sample_name": "067",
+        "duration_ratio": [
+            0.26,
+            0.31,
+            0.43
+        ]
+    },
+    "control_path": [
+        "move_left",
+        "pan_left",
+        "pan_right"
+    ],
+    "duration_ratio": [
+        0.26,
+        0.31,
+        0.43
+    ]
+}

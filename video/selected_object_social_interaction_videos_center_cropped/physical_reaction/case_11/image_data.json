@@ -1,0 +1,41 @@
+{
+    "sample_name": "buoyancy_separates_floaters_and_sinkers__case_11",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/physics_knowledge/image/buoyancy_separates_floaters_and_sinkers__case_11.jpg",
+    "prompt": "The human moves backward. Photorealistic storage room aisle, exactly one continuous full-frame image of a single moment, clear third-person follow camera directly behind and slightly above one adult at medium distance, angled downward about 30 to 45 degrees. The adult is shown mostly from the back and is already committed to stepping straight backward away from a yellow mop bucket on wheels. One hand hangs over the bucket holding a cork stopper just above the visible water surface. The bucket opening, water surface, and the trigger zone ahead are clearly visible. Shelving with boxes and cleaning supplies lines the sides, plain utility-room lighting, no split-screen, no collage, no storyboard.",
+    "subject": "human",
+    "total_frames": 150,
+    "output_dir": "output/wan2_6_i2v_flash/physics_knowledge/buoyancy_separates_floaters_and_sinkers__case_11",
+    "image_data": {
+        "sample_name": "buoyancy_separates_floaters_and_sinkers__case_11",
+        "image": "image/buoyancy_separates_floaters_and_sinkers__case_11.jpg",
+        "prompt": "Photorealistic storage room aisle, exactly one continuous full-frame image of a single moment, clear third-person follow camera directly behind and slightly above one adult at medium distance, angled downward about 30 to 45 degrees. The adult is shown mostly from the back and is already committed to stepping straight backward away from a yellow mop bucket on wheels. One hand hangs over the bucket holding a cork stopper just above the visible water surface. The bucket opening, water surface, and the trigger zone ahead are clearly visible. Shelving with boxes and cleaning supplies lines the sides, plain utility-room lighting, no split-screen, no collage, no storyboard.",
+        "control_path": [
+            "s"
+        ],
+        "duration_ratio": [
+            1.0
+        ],
+        "subject": "human",
+        "checklist": [
+            "Does the cork stopper get released and fall into the bucket water?",
+            "After contacting the water, does the cork remain in the bucket rather than missing the opening or bouncing out?",
+            "Does the cork bob upward or stay at the water surface instead of sinking below it?",
+            "Are small ripples or splashes visible on the water when the cork lands?",
+            "Does the continuation avoid showing the cork sink to the bottom or stay submerged for the rest of the shot?",
+            "Does the protagonist continue moving straight backward rather than stepping forward or sideways across the bucket?",
+            "Is the bucket interior and the cork's floating behavior kept visible enough during the continuation to judge the buoyancy event?"
+        ],
+        "physics_pattern": "buoyancy_separates_floaters_and_sinkers"
+    },
+    "control_path": [
+        "s"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "s"
+        }
+    ]
+}

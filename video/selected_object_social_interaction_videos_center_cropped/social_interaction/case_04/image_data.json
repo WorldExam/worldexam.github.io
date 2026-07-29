@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_animal_run_into_dense_crowd__case_04",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/social_interaction/image/third_person_animal_run_into_dense_crowd__case_04.jpg",
+    "prompt": "The beagle moves forward. Photorealistic live-action style, clear third-person follow camera directly behind one tan beagle at medium follow distance, slightly elevated and pitched downward around 40 degrees, the dog's back centered in the foreground as it sprints across a train station forecourt. In the midground, nine commuters form a dense cluster at the sliding glass entrance doors around a timetable stand: four adults waiting near the center, two people with rolling carry-ons slightly left, and three walkers converging from the right, together compressing the door approach zone. The station facade and bike racks sit in the background, but the dominant conflict zone is the packed entrance area only a few meters ahead of the running dog. Early morning commuter light, realistic urban detail, all key people and the dog clearly visible.",
+    "subject": "beagle",
+    "total_frames": 97,
+    "output_dir": "output/seeddance1_5/social_interaction/third_person_animal_run_into_dense_crowd__case_04",
+    "image_data": {
+        "checklist": [
+            "Does the beagle continue directly toward the station door crowd rather than turning away into open forecourt space?",
+            "Do the closest commuters by the entrance remain visible enough to evaluate their movement?",
+            "Does at least one commuter visibly alter walking or waiting posture when the dog reaches the entrance cluster?",
+            "Is the reaction localized to the doorway crowd that the dog intrudes into?",
+            "Do suitcase carriers or standing commuters make plausible small adjustments rather than unrelated large motions?",
+            "Does the crowd remain dense enough during the continuation for the intrusion to stay socially meaningful?",
+            "Does the sequence stay grounded as an everyday loose-dog incident at a station entrance?",
+            "Does the dog pass into the occupied door approach zone within the first few seconds?"
+        ],
+        "image": "image/third_person_animal_run_into_dense_crowd__case_04.jpg",
+        "prompt": "Photorealistic live-action style, clear third-person follow camera directly behind one tan beagle at medium follow distance, slightly elevated and pitched downward around 40 degrees, the dog's back centered in the foreground as it sprints across a train station forecourt. In the midground, nine commuters form a dense cluster at the sliding glass entrance doors around a timetable stand: four adults waiting near the center, two people with rolling carry-ons slightly left, and three walkers converging from the right, together compressing the door approach zone. The station facade and bike racks sit in the background, but the dominant conflict zone is the packed entrance area only a few meters ahead of the running dog. Early morning commuter light, realistic urban detail, all key people and the dog clearly visible.",
+        "control_path": [
+            "w"
+        ],
+        "subject": "beagle",
+        "sample_name": "third_person_animal_run_into_dense_crowd__case_04",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

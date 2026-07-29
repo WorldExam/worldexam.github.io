@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_human_push_wheeled_carrier_into_rigid_barrier__case_01",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/object_interaction/image/third_person_human_push_wheeled_carrier_into_rigid_barrier__case_01.jpg",
+    "prompt": "The shopper moves forward. Photorealistic live-action supermarket scene from a clear third-person follow camera directly behind and slightly above an adult male shopper, centered on the aisle and pitched downward around 35 degrees. The shopper is shown mostly from the back with both hands on the handle of a metal grocery cart filled with packaged food. The cart rolls straight forward along the aisle centerline toward a bare gray concrete wall that completely closes off the aisle ahead. Shelves stocked with cereal and boxed groceries line both sides symmetrically. The cart is only a short distance from the wall, making imminent contact obvious, and the dominant contact zone is the cart's front edge aimed squarely at the middle of the wall. Bright grocery store lighting, realistic floor tiles, no occlusion of the cart front or wall face.",
+    "subject": "shopper",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/object_interaction/third_person_human_push_wheeled_carrier_into_rigid_barrier__case_01",
+    "image_data": {
+        "subject": "shopper",
+        "checklist": [
+            "Does the shopper continue walking straight forward behind the cart on the same aisle centerline until the cart reaches the wall?",
+            "Does the cart's front rail or front corners make direct contact with the concrete wall rather than missing it or striking a shelf first?",
+            "After contact, does the wall stay fixed in place with no visible shift, swing, or sliding response?",
+            "After the cart meets the wall, is the cart's forward travel visibly stopped or sharply arrested by the barrier?",
+            "Does the shopper's upper body carry forward into the handle area or show a brief forward compression when the cart is blocked?",
+            "Does the cart remain generally square to the wall at impact instead of glancing off and rotating away immediately?",
+            "Does the continuation avoid any larger competing collision event, keeping the cart-to-wall stop as the main physical interaction?",
+            "Does the camera keep the cart front and wall contact zone visible enough during and just after impact to judge the stoppage clearly?"
+        ],
+        "image": "image/third_person_human_push_wheeled_carrier_into_rigid_barrier__case_01.jpg",
+        "prompt": "Photorealistic live-action supermarket scene from a clear third-person follow camera directly behind and slightly above an adult male shopper, centered on the aisle and pitched downward around 35 degrees. The shopper is shown mostly from the back with both hands on the handle of a metal grocery cart filled with packaged food. The cart rolls straight forward along the aisle centerline toward a bare gray concrete wall that completely closes off the aisle ahead. Shelves stocked with cereal and boxed groceries line both sides symmetrically. The cart is only a short distance from the wall, making imminent contact obvious, and the dominant contact zone is the cart's front edge aimed squarely at the middle of the wall. Bright grocery store lighting, realistic floor tiles, no occlusion of the cart front or wall face.",
+        "control_path": [
+            "w"
+        ],
+        "sample_name": "third_person_human_push_wheeled_carrier_into_rigid_barrier__case_01",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

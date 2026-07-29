@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_vehicle_hit_rigid_barrier__case_19",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/object_interaction/image/third_person_vehicle_hit_rigid_barrier__case_19.jpg",
+    "prompt": "The riding lawn mower moves forward. Painterly realistic garden center scene, clear third-person follow camera directly behind and above a green riding lawn mower, centered on its motion path, with a downward angle around 35 degrees. The mower is shown mostly from the back with the seat, rear tires, and steering area visible. It is already moving straight forward down the middle of a concrete aisle lined on both sides with rows of black plant pots, flowers, and wooden lattice displays. Directly ahead, less than a meter away, a low thick stacked-stone planter wall spans the aisle and clearly blocks the mower's path. The imminent contact zone is the mower's front end aligned squarely toward the center of the wall, with no alternate obstacle in front.",
+    "subject": "riding lawn mower",
+    "total_frames": 144,
+    "output_dir": "output/hailuo/object_interaction/third_person_vehicle_hit_rigid_barrier__case_19",
+    "image_data": {
+        "subject": "riding lawn mower",
+        "checklist": [
+            "Does the mower keep the same straight heading into the wall instead of steering away before contact?",
+            "Does the first impact occur at the mower's front end against the near face or top edge of the stone wall?",
+            "Does the stone wall stay fixed in place without sliding, tipping, or being pushed aside by the mower?",
+            "After contact, is the mower visibly blocked or stopped by the wall rather than climbing over or penetrating through it?",
+            "Does the continuation preserve one dominant front-to-wall collision zone rather than introducing a different target or side scrape?",
+            "Does the mower avoid unrealistic rebound behavior such as a violent bounce backward from this low-speed impact?",
+            "Does the wall remain visible enough after contact to judge that it is resisting the mower as a rigid barrier?",
+            "Does the event remain physically plausible for a low-speed riding mower striking a heavy aisle-blocking stone planter wall?"
+        ],
+        "image": "image/third_person_vehicle_hit_rigid_barrier__case_19.jpg",
+        "prompt": "Painterly realistic garden center scene, clear third-person follow camera directly behind and above a green riding lawn mower, centered on its motion path, with a downward angle around 35 degrees. The mower is shown mostly from the back with the seat, rear tires, and steering area visible. It is already moving straight forward down the middle of a concrete aisle lined on both sides with rows of black plant pots, flowers, and wooden lattice displays. Directly ahead, less than a meter away, a low thick stacked-stone planter wall spans the aisle and clearly blocks the mower's path. The imminent contact zone is the mower's front end aligned squarely toward the center of the wall, with no alternate obstacle in front.",
+        "control_path": [
+            "w"
+        ],
+        "sample_name": "third_person_vehicle_hit_rigid_barrier__case_19",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

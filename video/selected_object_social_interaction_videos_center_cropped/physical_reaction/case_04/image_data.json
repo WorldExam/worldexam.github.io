@@ -1,0 +1,40 @@
+{
+    "sample_name": "angular_momentum_and_swinging_motion__case_04",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/physics_knowledge/image/angular_momentum_and_swinging_motion__case_04.jpg",
+    "prompt": "The human moves forward. Mild cinematic live-action style, exactly one continuous full-frame image of a single moment, clear third-person follow camera directly behind and slightly above one adult shopper at medium distance, angled downward about 30 to 45 degrees. Show a narrow souvenir shop aisle with wooden shelves on both sides and a wooden floor. The shopper is centered and seen mostly from the back, already moving straight forward. On the right shelf, a metal display arm extends into the aisle with a small rectangular wooden price tag hanging by a string; the tag is already touching or lightly caught against the shopper's upper back near shoulder height. Keep the metal arm, string, tag, shopper's back, and the aisle ahead all clearly visible. No split-screen, no collage, no duplicated scene, no aftermath.",
+    "subject": "human",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/physics_knowledge/angular_momentum_and_swinging_motion__case_04",
+    "image_data": {
+        "sample_name": "angular_momentum_and_swinging_motion__case_04",
+        "image": "image/angular_momentum_and_swinging_motion__case_04.jpg",
+        "prompt": "Mild cinematic live-action style, exactly one continuous full-frame image of a single moment, clear third-person follow camera directly behind and slightly above one adult shopper at medium distance, angled downward about 30 to 45 degrees. Show a narrow souvenir shop aisle with wooden shelves on both sides and a wooden floor. The shopper is centered and seen mostly from the back, already moving straight forward. On the right shelf, a metal display arm extends into the aisle with a small rectangular wooden price tag hanging by a string; the tag is already touching or lightly caught against the shopper's upper back near shoulder height. Keep the metal arm, string, tag, shopper's back, and the aisle ahead all clearly visible. No split-screen, no collage, no duplicated scene, no aftermath.",
+        "control_path": [
+            "w"
+        ],
+        "duration_ratio": [
+            1
+        ],
+        "subject": "human",
+        "checklist": [
+            "After the contact, does the wooden tag swing visibly around its top string attachment instead of staying stuck motionless on the shopper?",
+            "Does the tag move back and forth along a pendulum-like arc rather than drifting away in a straight line?",
+            "Does the top end of the string remain attached to the metal display arm throughout the motion?",
+            "Does the tag rotate or change angle naturally as it swings, consistent with being suspended by the string?",
+            "Does the swing amplitude decrease over the next moments instead of growing for no reason or freezing immediately?",
+            "Does the tag avoid passing through the display arm, shelf, or the shopper's body during the swing?"
+        ],
+        "physics_pattern": "angular_momentum_and_swinging_motion"
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

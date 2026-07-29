@@ -1,0 +1,30 @@
+{
+    "sample_name": "015",
+    "image_path": "/apdcephfs/private_yuppieyang/bench/WorldPrism/data/camera_control/image/015.png",
+    "prompt": "Third-person follow view along a weathered wooden boardwalk beside a calm canal at dusk, passing under a massive pale stone railway arch bridge with repeating arches, overhead power lines, bare winter trees, a glowing black lamppost on the left, and soft sunset reflections in still water.",
+    "subject": null,
+    "total_frames": 81,
+    "output_dir": "output/camera_based/neoverse/camera_control/015",
+    "image_data": {
+        "image": "image/015.png",
+        "mask_anchor": "mask_anchor/015.png",
+        "prompt": "Third-person follow view along a weathered wooden boardwalk beside a calm canal at dusk, passing under a massive pale stone railway arch bridge with repeating arches, overhead power lines, bare winter trees, a glowing black lamppost on the left, and soft sunset reflections in still water.",
+        "control_path": [
+            "tilt_up",
+            "pan_left"
+        ],
+        "sample_name": "015",
+        "duration_ratio": [
+            0.56,
+            0.44
+        ]
+    },
+    "control_path": [
+        "tilt_up",
+        "pan_left"
+    ],
+    "duration_ratio": [
+        0.56,
+        0.44
+    ]
+}

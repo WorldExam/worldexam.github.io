@@ -1,0 +1,36 @@
+{
+    "sample_name": "third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05",
+    "image_path": "/mnt/workspace/yuxue/NeoBench/terrain_interaction/image/third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05.jpg",
+    "prompt": "Photo-realistic live-action photography, third-person follow camera behind a single goat, medium distance, slight upward camera angle, the goat centered on a flat concrete approach and facing away from the camera. Directly in front of it and less than one natural step away is the first step of a broad outdoor staircase, fully visible and aligned with its forward path. The stairway must clearly show an ascending first flight, a rectangular landing in the middle, and a second ascending flight continuing upward beyond the landing. Keep the goat not yet on the stairs, only one step from entering them, standing in a neutral natural posture with the contact relationship easy to judge. Preserve enough forward space to show the full stair geometry and landing, with open campus plaza surroundings, clean paving, simple rail edges or low planters, no other people, no vehicles, no clutter, bright natural daylight, crisp shadows, and highly readable step edges and elevation changes.",
+    "subject": "single goat with short hair and clear rear-facing body orientation",
+    "total_frames": 161,
+    "output_dir": "/mnt/workspace/yuxue/output_root_04292110/lingbot_world/terrain_interaction/third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05",
+    "image_data": {
+        "image": "image/third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05.jpg",
+        "control_path": [
+            "w"
+        ],
+        "subject": "single goat with short hair and clear rear-facing body orientation",
+        "prompt": "Photo-realistic live-action photography, third-person follow camera behind a single goat, medium distance, slight upward camera angle, the goat centered on a flat concrete approach and facing away from the camera. Directly in front of it and less than one natural step away is the first step of a broad outdoor staircase, fully visible and aligned with its forward path. The stairway must clearly show an ascending first flight, a rectangular landing in the middle, and a second ascending flight continuing upward beyond the landing. Keep the goat not yet on the stairs, only one step from entering them, standing in a neutral natural posture with the contact relationship easy to judge. Preserve enough forward space to show the full stair geometry and landing, with open campus plaza surroundings, clean paving, simple rail edges or low planters, no other people, no vehicles, no clutter, bright natural daylight, crisp shadows, and highly readable step edges and elevation changes.",
+        "image_wo_subject": "image_wo_subject/third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05.jpg",
+        "mask_subject": "mask_subject/third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05.png",
+        "mask_horizon": "mask_horizon/third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05.png",
+        "sample_name": "third_person_goat_forward_on_ascending_stairs_with_landing_case01_candidate05",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w",
+            "start_frame": 0,
+            "end_frame": 161
+        }
+    ]
+}

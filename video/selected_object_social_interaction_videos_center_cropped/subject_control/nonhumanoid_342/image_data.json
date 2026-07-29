@@ -1,0 +1,53 @@
+{
+    "sample_name": "nonhumanoid_342",
+    "image_path": "/mnt/workspace/yuxue/NeoBench/subject_control/image/nonhumanoid_342.jpg",
+    "prompt": "Photorealistic single first frame of park promenade, third-person follow camera behind the subject, high_trailing_center framing, slightly elevated behind the subject with route space opened up ahead, full subject visible, the protagonist kept relatively small in frame, cool interior ambient lighting, after-rain damp ground. The protagonist is a single small tuxedo cat. It must remain a clearly nonhumanoid animal with natural anatomy, grounded gait, readable head-tail orientation, and no humanoid limbs, no rider, and no handler. Motion family: legged_quadruped. Size class: small. Concrete appearance: black and white tuxedo coat, upright ears, slender body, long tail, small collar. Environment layout: broad walkway with a clear central corridor, side railings and benches pushed outward, and several neutral route options ahead; the framing may stay slightly closer than usual, but the full subject and open ground around it must remain easy to read; a mildly elevated follow angle is allowed, but the shot must not become top-down. Background elements at the edges may include railings, benches, lamp posts, bollards, planters. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. No rider, driver, handler, pusher, or secondary character is visible. keep the elevation mild and readable; do not turn the shot into a top-down view. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+    "subject": "single small tuxedo cat with a clearly nonhumanoid ground-moving animal body, black and white tuxedo coat, upright ears, slender body, long tail, small collar",
+    "total_frames": 161,
+    "output_dir": "/mnt/workspace/yuxue/output_root_04292110/lingbot_world/subject_control/nonhumanoid_342",
+    "image_data": {
+        "image": "image/nonhumanoid_342.jpg",
+        "mask_subject": "mask_subject/nonhumanoid_342.png",
+        "mask_horizon": "mask_horizon/nonhumanoid_342.png",
+        "prompt": "Photorealistic single first frame of park promenade, third-person follow camera behind the subject, high_trailing_center framing, slightly elevated behind the subject with route space opened up ahead, full subject visible, the protagonist kept relatively small in frame, cool interior ambient lighting, after-rain damp ground. The protagonist is a single small tuxedo cat. It must remain a clearly nonhumanoid animal with natural anatomy, grounded gait, readable head-tail orientation, and no humanoid limbs, no rider, and no handler. Motion family: legged_quadruped. Size class: small. Concrete appearance: black and white tuxedo coat, upright ears, slender body, long tail, small collar. Environment layout: broad walkway with a clear central corridor, side railings and benches pushed outward, and several neutral route options ahead; the framing may stay slightly closer than usual, but the full subject and open ground around it must remain easy to read; a mildly elevated follow angle is allowed, but the shot must not become top-down. Background elements at the edges may include railings, benches, lamp posts, bollards, planters. Path ahead is visible and nearby traversable space remains readable. The protagonist is the only clear visual center and the only evaluation target. No rider, driver, handler, pusher, or secondary character is visible. keep the elevation mild and readable; do not turn the shot into a top-down view. Neutral controllable first frame, grounded and style-coherent, no implied next direction.",
+        "control_path": [
+            "w",
+            "d",
+            "w"
+        ],
+        "subject": "single small tuxedo cat with a clearly nonhumanoid ground-moving animal body, black and white tuxedo coat, upright ears, slender body, long tail, small collar",
+        "sample_name": "nonhumanoid_342",
+        "duration_ratio": [
+            0.5,
+            0.3,
+            0.2
+        ]
+    },
+    "control_path": [
+        "w",
+        "d",
+        "w"
+    ],
+    "duration_ratio": [
+        0.5,
+        0.3,
+        0.2
+    ],
+    "action_segments": [
+        {
+            "action": "w",
+            "start_frame": 0,
+            "end_frame": 81
+        },
+        {
+            "action": "d",
+            "start_frame": 81,
+            "end_frame": 129
+        },
+        {
+            "action": "w",
+            "start_frame": 129,
+            "end_frame": 161
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sample_name": "281",
+    "image_path": "/apdcephfs/private_yuppieyang/bench/WorldPrism/data/camera_control/image/281.png",
+    "prompt": "Third-person view of a bright covered courtyard lounge with a bamboo pergola roof, hanging lantern, white stucco walls, vine-covered screens, carved wooden daybed with striped cushions on the left, wicker chairs around a dark wooden coffee table on pale stone tile, and an open doorway and shuttered windows leading to a sunlit inner yard.",
+    "subject": null,
+    "total_frames": 81,
+    "output_dir": "output/camera_based/neoverse/camera_control/281",
+    "image_data": {
+        "image": "image/281.png",
+        "mask_anchor": "mask_anchor/281.png",
+        "prompt": "Third-person view of a bright covered courtyard lounge with a bamboo pergola roof, hanging lantern, white stucco walls, vine-covered screens, carved wooden daybed with striped cushions on the left, wicker chairs around a dark wooden coffee table on pale stone tile, and an open doorway and shuttered windows leading to a sunlit inner yard.",
+        "control_path": [
+            "move_left"
+        ],
+        "sample_name": "281",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "move_left"
+    ],
+    "duration_ratio": [
+        1.0
+    ]
+}

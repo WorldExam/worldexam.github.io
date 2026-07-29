@@ -1,0 +1,41 @@
+{
+    "sample_name": "third_person_human_run_into_rigid_immovable_barrier__case_17",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/object_interaction/image/third_person_human_run_into_rigid_immovable_barrier__case_17.jpg",
+    "prompt": "The worker moves forward. Photorealistic overcast live-action style, clear third-person follow camera directly behind and slightly above a worker, centered on the ramp with about a 35 degree downward angle. The worker is seen mostly from the back, wearing a tan knit cap, dark long-sleeve top, neon yellow high-visibility vest, blue jeans, and work boots, already running straight forward down the middle of a wet concrete loading dock ramp. Low concrete walls border the ramp, with simple metal handrails above them on both sides. Tall stacks of wooden pallets line both upper dock edges. Directly ahead across the ramp is a rigid steel guardrail barrier made of three horizontal metal rails mounted between two square steel posts bolted to the concrete sides. The imminent impact zone is clearly visible, with the worker's hips and upper thighs aligned to strike the middle of the barrier.",
+    "subject": "worker",
+    "total_frames": 121,
+    "output_dir": "output/viduq3-turbo/object_interaction/third_person_human_run_into_rigid_immovable_barrier__case_17",
+    "image_data": {
+        "subject": "worker",
+        "checklist": [
+            "Does the worker continue running straight down the ramp into the center of the steel barrier without veering around either side or attempting to vault it?",
+            "Does the first clear impact occur with the worker's front hips, upper thighs, or lower torso striking the middle horizontal rails rather than only a hand, knee, or shoulder glancing off?",
+            "Does the steel barrier remain rigidly in place between its anchored posts with no meaningful swing, slide, or collapse after impact?",
+            "Does the worker's forward motion get abruptly stopped or sharply checked by the barrier instead of carrying through past it?",
+            "After contact, does the worker show a passive blocked response such as jolting, folding forward, bouncing back, or stumbling away from the rails?",
+            "Does the continuation keep both the worker and the full barrier visible enough to judge the point of contact and the blocked outcome?",
+            "Does the barrier collision remain the main event, without the worker rerouting into the side walls, handrails, or pallet stacks instead?",
+            "Is the barrier behavior consistent with a heavy bolted steel guardrail across a concrete ramp, resisting the impact rather than acting like a lightweight movable gate?"
+        ],
+        "image": "image/third_person_human_run_into_rigid_immovable_barrier__case_17.jpg",
+        "prompt": "Photorealistic overcast live-action style, clear third-person follow camera directly behind and slightly above a worker, centered on the ramp with about a 35 degree downward angle. The worker is seen mostly from the back, wearing a tan knit cap, dark long-sleeve top, neon yellow high-visibility vest, blue jeans, and work boots, already running straight forward down the middle of a wet concrete loading dock ramp. Low concrete walls border the ramp, with simple metal handrails above them on both sides. Tall stacks of wooden pallets line both upper dock edges. Directly ahead across the ramp is a rigid steel guardrail barrier made of three horizontal metal rails mounted between two square steel posts bolted to the concrete sides. The imminent impact zone is clearly visible, with the worker's hips and upper thighs aligned to strike the middle of the barrier.",
+        "control_path": [
+            "w"
+        ],
+        "sample_name": "third_person_human_run_into_rigid_immovable_barrier__case_17",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "sample_name": "embodied_multi_step_transfer_between_containers__case_06",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/task_understanding/image/embodied_multi_step_transfer_between_containers/case_06.jpg",
+    "prompt": "Pick the blue cube out of the left gray bin and drop it into the right white bin.",
+    "subject": null,
+    "total_frames": 141,
+    "output_dir": "output/hailuo/task_understanding/embodied_multi_step_transfer_between_containers__case_06",
+    "image_data": {
+        "case_id": "case_06",
+        "task_domain": "embodied",
+        "task_pattern": "embodied_multi_step_transfer_between_containers",
+        "scene_type": "robot demo cell with colored blocks and bins",
+        "camera_perspective": "wide front-facing lab camera",
+        "instruction": "Pick the blue cube out of the left gray bin and drop it into the right white bin.",
+        "goal_state": "The blue cube is inside the right white bin, no longer in the left gray bin.",
+        "key_objects": [
+            "visible robot gripper",
+            "blue cube",
+            "left gray bin",
+            "right white bin"
+        ],
+        "distractors": [
+            "red cube in the left gray bin",
+            "middle gray bin",
+            "yellow cylinder on the table"
+        ],
+        "preconditions": [
+            "A robot gripper is visible above the bins and positioned to act in the reachable workspace.",
+            "The left gray bin contains both a blue cube and a red cube.",
+            "The right white bin is visible, open, and empty.",
+            "The middle gray bin and yellow cylinder are visible as alternative nearby objects."
+        ],
+        "scene_constraints": [
+            "Move only the blue cube.",
+            "Do not move or tip any bin.",
+            "Place the blue cube into the right white bin, not the middle gray bin.",
+            "Use a direct grasp-carry-release transfer within the visible tabletop workspace."
+        ],
+        "checklist": [
+            "Does the robot grasp the blue cube rather than the red cube or yellow cylinder?",
+            "Does the robot remove the blue cube from the left gray bin before moving toward the destination?",
+            "Does the robot approach the right white bin rather than the middle gray bin as the destination?",
+            "Does the robot release the blue cube inside the right white bin?",
+            "Do the left gray bin, middle gray bin, and right white bin remain in place throughout the transfer?"
+        ],
+        "first_frame_prompt": "Wide front-facing lab camera view of a robotics workcell. A robot arm segment and open two-finger gripper are clearly visible hanging over the tabletop near the center, making the acting embodiment explicit. On the left is an open gray bin containing a blue cube and a red cube. In the middle is an empty gray bin. On the right is an open white bin. A yellow cylinder stands on the table between the middle gray bin and the white bin as a distractor. Clean lab background, even lighting, all bins and the reachable manipulation area visible in a pre-action moment.",
+        "first_frame_path": "images/embodied_multi_step_transfer_between_containers/case_06.jpg",
+        "language_control_prompt": "Pick the blue cube out of the left gray bin and drop it into the right white bin.",
+        "image": "image/embodied_multi_step_transfer_between_containers/case_06.jpg",
+        "source_first_frame_path": "/data2/shuyao.shang/WorldUndBench/TaskUnderstanding/image/embodied_multi_step_transfer_between_containers/case_06/candidate_01.jpg",
+        "prompt": "Pick the blue cube out of the left gray bin and drop it into the right white bin.",
+        "scene_prompt": "Wide front-facing lab camera view of a robotics workcell. A robot arm segment and open two-finger gripper are clearly visible hanging over the tabletop near the center, making the acting embodiment explicit. On the left is an open gray bin containing a blue cube and a red cube. In the middle is an empty gray bin. On the right is an open white bin. A yellow cylinder stands on the table between the middle gray bin and the white bin as a distractor. Clean lab background, even lighting, all bins and the reachable manipulation area visible in a pre-action moment.",
+        "use_raw_prompt": true,
+        "control_path": [],
+        "duration_ratio": [],
+        "sample_name": "embodied_multi_step_transfer_between_containers__case_06"
+    },
+    "control_path": [],
+    "duration_ratio": [],
+    "action_segments": []
+}

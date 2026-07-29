@@ -1,0 +1,49 @@
+{
+    "sample_name": "third_person_human_intrude_dense_pedestrian_zone__case_15",
+    "image_path": "/data2/shuyao.shang/bench_project/WorldModelBench-clean/data/NeoBench/social_interaction/image/third_person_human_intrude_dense_pedestrian_zone__case_15.jpg",
+    "prompt": "The pedestrian moves forward. Photorealistic live-action style, clear third-person follow camera directly behind one pedestrian holding a folded wet umbrella, medium follow distance, slightly elevated and pitched downward around 35 degrees. The protagonist is centered in the foreground from the back and already stepping under a store entrance awning during light rain. In the midground, six pedestrians stand tightly packed under the narrow shelter near the glass doorway, coats damp and bodies angled inward to avoid the rain, clearly claiming the limited dry space. The protagonist's stride is already committed into the middle of that compact cluster with only a step between the umbrella hand and the nearest shoulders. Background shows wet sidewalk reflections, storefront posters, and passing umbrellas, but the dominant conflict zone is the crowded awning shelter immediately ahead. Everyday weather, grounded proportions, all key actors visible.",
+    "subject": "pedestrian",
+    "total_frames": 153,
+    "output_dir": "output/kling-video/social_interaction/third_person_human_intrude_dense_pedestrian_zone__case_15",
+    "image_data": {
+        "checklist": [
+            "Does the pedestrian continue into the packed awning shelter space?",
+            "Do the six sheltering pedestrians remain visible enough to judge their reactions?",
+            "Does at least one nearby pedestrian visibly squeeze over, turn, or make space under the awning?",
+            "Does the interaction remain centered on the storefront shelter zone?",
+            "Is the protagonist's intrusion into the compact waiting area clearly sustained?",
+            "Do the reactions fit a realistic rainy storefront crowd?",
+            "Does the continuation stay socially coherent rather than treating the shelter as open empty space?"
+        ],
+        "image": "image/third_person_human_intrude_dense_pedestrian_zone__case_15.jpg",
+        "prompt": "Photorealistic live-action style, clear third-person follow camera directly behind one pedestrian holding a folded wet umbrella, medium follow distance, slightly elevated and pitched downward around 35 degrees. The protagonist is centered in the foreground from the back and already stepping under a store entrance awning during light rain. In the midground, six pedestrians stand tightly packed under the narrow shelter near the glass doorway, coats damp and bodies angled inward to avoid the rain, clearly claiming the limited dry space. The protagonist's stride is already committed into the middle of that compact cluster with only a step between the umbrella hand and the nearest shoulders. Background shows wet sidewalk reflections, storefront posters, and passing umbrellas, but the dominant conflict zone is the crowded awning shelter immediately ahead. Everyday weather, grounded proportions, all key actors visible.",
+        "control_path": [
+            "w"
+        ],
+        "subject": "pedestrian",
+        "sample_name": "third_person_human_intrude_dense_pedestrian_zone__case_15",
+        "duration_ratio": [
+            1.0
+        ]
+    },
+    "control_path": [
+        "w"
+    ],
+    "duration_ratio": [
+        1.0
+    ],
+    "checklist": [
+        "Does the pedestrian continue into the packed awning shelter space?",
+        "Do the six sheltering pedestrians remain visible enough to judge their reactions?",
+        "Does at least one nearby pedestrian visibly squeeze over, turn, or make space under the awning?",
+        "Does the interaction remain centered on the storefront shelter zone?",
+        "Is the protagonist's intrusion into the compact waiting area clearly sustained?",
+        "Do the reactions fit a realistic rainy storefront crowd?",
+        "Does the continuation stay socially coherent rather than treating the shelter as open empty space?"
+    ],
+    "action_segments": [
+        {
+            "action": "w"
+        }
+    ]
+}
