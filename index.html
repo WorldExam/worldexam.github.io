@@ -66,7 +66,12 @@ section .desc{margin-bottom:22px;color:var(--muted);font-size:24px;line-height:1
   margin:0 18px 8px;
   white-space:nowrap;
 }
-.affiliation-item sup{margin-right:2px}
+.affiliation-item sup{
+  align-self:flex-start;
+  margin-right:2px;
+  font-size:.62em;
+  line-height:1;
+}
 .aff-icon{height:30px;margin:0 3px 0 0;vertical-align:middle}
 
 /* Publication links */
@@ -2654,23 +2659,23 @@ th.sortable:hover .sort-arrow{
 
 </section>
 
-<!-- 5. metrics 章节 -->
+<!-- 5. samples 章节 -->
 <section id="metrics">
-  <h2>Metrics</h2>
-  <p class="desc">Same cases, different models — see how metrics capture quality differences.</p>
+  <h2>Samples</h2>
+  <p class="desc">Same cases, different models — browse representative samples and quality differences.</p>
   <!-- 4个 metrics 按钮（统一 pill-btn 样式） -->
   <div class="pill-buttons-row">
     <button class="pill-btn active" data-metric="camera_control">Camera Control</button>
-    <button class="pill-btn" data-metric="object_interaction">Object Interaction</button>
-    <button class="pill-btn" data-metric="physical_reaction">Physical Reaction</button>
+    <button class="pill-btn" data-metric="subject_control">Subject Control</button>
     <button class="pill-btn" data-metric="scene_revisit">Scene Revisit</button>
+    <button class="pill-btn" data-metric="terrain_interaction">Terrain Interaction</button>
   </div>
     <!-- 4个 metrics 按钮（统一 pill-btn 样式） -->
   <div class="pill-buttons-row">
-    <button class="pill-btn" data-metric="subject_control">Subject Control</button>
-    <button class="pill-btn" data-metric="terrain_interaction">Terrain Interaction</button>
-    <button class="pill-btn" data-metric="goal_completion">Goal Completion</button>
+    <button class="pill-btn" data-metric="object_interaction">Object Interaction</button>
     <button class="pill-btn" data-metric="social_interaction">Social Interaction</button>
+    <button class="pill-btn" data-metric="physical_reaction">Physical Reaction</button>
+    <button class="pill-btn" data-metric="goal_completion">Goal Completion</button>
   </div>
   <!-- 首帧选择 + 视频对比区域 -->
   <div class="metrics-main-container">
@@ -2708,16 +2713,16 @@ th.sortable:hover .sort-arrow{
   <div class="pill-buttons-row">
     <button class="pill-btn active" data-metric="all">All</button>
     <button class="pill-btn" data-metric="camera_control">Camera Control</button>
-    <button class="pill-btn" data-metric="object_interaction">Object Interaction</button>
-    <button class="pill-btn" data-metric="physical_reaction">Physical Reaction</button>
+    <button class="pill-btn" data-metric="subject_control">Subject Control</button>
     <button class="pill-btn" data-metric="scene_revisit">Scene Revisit</button>
+    <button class="pill-btn" data-metric="terrain_interaction">Terrain Interaction</button>
   </div>
   <!-- 第二行 -->
   <div class="pill-buttons-row">
-    <button class="pill-btn" data-metric="subject_control">Subject Control</button>
-    <button class="pill-btn" data-metric="terrain_interaction">Terrain Interaction</button>
-    <button class="pill-btn" data-metric="goal_completion">Goal Completion</button>
+    <button class="pill-btn" data-metric="object_interaction">Object Interaction</button>
     <button class="pill-btn" data-metric="social_interaction">Social Interaction</button>
+    <button class="pill-btn" data-metric="physical_reaction">Physical Reaction</button>
+    <button class="pill-btn" data-metric="goal_completion">Goal Completion</button>
   </div>
 </div>
   <!-- 横向无缝滚动带 -->
@@ -2747,7 +2752,7 @@ th.sortable:hover .sort-arrow{
     <a href="#overview">Overview</a>
     <a href="#comparison">Comparison</a>
     <a href="#leaderboard">Leaderboard</a>
-    <a href="#metrics">Metrics</a>
+    <a href="#metrics">Samples</a>
     <a href="#gallery">Gallery</a>
     <a href="#citation">Citation</a>
   </div>
@@ -3113,6 +3118,16 @@ window.addEventListener('scroll', () => {
 
 // ========== Metrics：视频对比数据 ==========
 const preparedVideoRoot = 'video/selected_object_social_interaction_videos_center_cropped';
+const sampleTaskOrder = [
+  'camera_control',
+  'subject_control',
+  'scene_revisit',
+  'terrain_interaction',
+  'object_interaction',
+  'social_interaction',
+  'physical_reaction',
+  'goal_completion'
+];
 
 const preparedMetricCases = {
   camera_control: [
@@ -3356,23 +3371,23 @@ const metricTaskGoals = {
 };
 
 const caseTaskDescriptions = Object.fromEntries(
-  Object.entries(metricPairMetadata).map(([metric, pairs]) => [
+  sampleTaskOrder.filter(metric => metricPairMetadata[metric]).map(metric => [
     metric,
-    Object.fromEntries(pairs.map((pair, index) => [`case${index + 1}`, pair.test]))
+    Object.fromEntries(metricPairMetadata[metric].map((pair, index) => [`case${index + 1}`, pair.test]))
   ])
 );
 
 const metricsData = Object.fromEntries(
-  Object.entries(preparedMetricCases).map(([metric, preparedCases]) => [
+  sampleTaskOrder.filter(metric => preparedMetricCases[metric]).map(metric => [
     metric,
     {
-      cases: preparedCases.map((preparedCase, index) => ({
+      cases: preparedMetricCases[metric].map((preparedCase, index) => ({
         id: `case${index + 1}`,
         name: `Pair ${index + 1}`,
         subtitle: metricPairMetadata[metric][index].test,
         thumb: `${preparedVideoRoot}/${preparedCase.dir}/first_frame.png`
       })),
-      videos: Object.fromEntries(preparedCases.map((preparedCase, index) => {
+      videos: Object.fromEntries(preparedMetricCases[metric].map((preparedCase, index) => {
         const caseId = `case${index + 1}`;
         const metadata = metricPairMetadata[metric][index];
         return [
@@ -3470,7 +3485,7 @@ function renderVideoComparison() {
   grid.innerHTML = videos.map(v => `
       <div class="video-compare-item">
         <div class="video-wrapper">
-          <video controls loop muted playsinline>
+          <video controls loop muted autoplay playsinline>
             <source src="${v.video}" type="video/mp4">
           </video>
         </div>
@@ -3480,6 +3495,9 @@ function renderVideoComparison() {
         </div>
       </div>`).join('');
   bindSynchronizedVideoControls();
+  document.querySelectorAll('#video-comparison-grid video').forEach(video => {
+    video.play().catch(() => {});
+  });
 }
 
 // 初始化 Metrics 面板
@@ -3525,9 +3543,12 @@ async function loadGalleryData() {
         thumb: imgPath
       }));
 
-      // 添加到 all 数组
-      galleryData.all.push(...galleryData[displayMetricName]);
     }
+
+    // 添加到 all 数组，保持与 Samples 按钮一致的 task 顺序
+    sampleTaskOrder.forEach(metricName => {
+      if (galleryData[metricName]) galleryData.all.push(...galleryData[metricName]);
+    });
 
     // 初始渲染
     renderGallery();
