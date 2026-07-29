@@ -241,7 +241,7 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 .comparison-caption{margin-bottom:16px;color:#475569;font-size:21px;line-height:1.8}
 .comparison-caption strong{color:#111827;font-weight:700}
 .comparison-table-wrap{
-  overflow-x:auto;
+  overflow-x:hidden;
   overflow-y:hidden;
   border:1px solid #e5e7eb;
   border-radius:18px;
@@ -250,22 +250,22 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 }
 .comparison-table{
   width:100%;
-  min-width:1024px;
+  table-layout:fixed;
   border-spacing:0;
   border-collapse:separate;
   background:#fff;
   color:#1f2937;
-  font-size:14px;
+  font-size:11px;
 }
 .comparison-table thead th{
   position:static;
-  padding:11px 8px;
+  padding:7px 4px;
   border:0;
   background:var(--surface);
   color:var(--heading);
   font-family:var(--font-sans);
   font-weight:700;
-  line-height:1.3;
+  line-height:1.2;
   text-align:center;
   text-transform:none;
   white-space:normal;
@@ -273,45 +273,49 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   user-select:text;
 }
 .comparison-table thead tr:first-child th{
-  padding-top:16px;
-  padding-bottom:10px;
+  padding-top:10px;
+  padding-bottom:6px;
   border-bottom:0;
-  font-size:18px;
+  font-size:12px;
   font-weight:800;
 }
 .comparison-table thead tr:last-child th{
-  padding-top:8px;
-  padding-bottom:16px;
+  padding-top:5px;
+  padding-bottom:10px;
   border-bottom:1px solid #dbe3ee;
   color:#1e293b;
-  font-size:13px;
+  font-size:10px;
 }
 .comparison-table thead tr:first-child th:first-child{border-top-left-radius:18px}
 .comparison-table thead tr:first-child th:last-child{border-top-right-radius:18px}
 .comparison-table thead th:hover{background:var(--surface);color:var(--heading)}
 .comparison-table tbody td{
-  padding:11px 10px;
+  padding:7px 4px;
   border:0;
   border-bottom:1px solid var(--line-soft);
   background:#fff;
   color:#1f2937;
   font-family:var(--font-sans);
-  font-size:18px;
-  line-height:1.35;
+  font-size:11px;
+  line-height:1.25;
   text-align:center;
   vertical-align:middle;
 }
 .comparison-table tbody tr:hover td{background:#fafcff}
-.comparison-table tbody td:first-child{text-align:left;white-space:nowrap;font-weight:500}
+.comparison-table tbody td:first-child{text-align:left;white-space:normal;font-weight:500;word-break:break-word}
+.comparison-table th:first-child{width:14%}
+.comparison-table th:nth-child(2){width:9%}
+.comparison-table th:nth-last-child(1),
+.comparison-table th:nth-last-child(2){width:6%}
 .comparison-table .num{color:#111827;font-weight:700}
-.paradigm{font-family:var(--font-sans);font-weight:700;letter-spacing:.01em;white-space:nowrap}
+.paradigm{font-family:var(--font-sans);font-weight:700;letter-spacing:.01em;white-space:normal}
 .paradigm .c{color:var(--blue)}
 .paradigm .a{color:#d97706}
 .paradigm .l{color:var(--purple)}
-.mark{display:inline-block;font-family:var(--font-sans);font-size:18px;font-weight:700;line-height:1}
+.mark{display:inline-block;font-family:var(--font-sans);font-size:11px;font-weight:700;line-height:1}
 .mark.yes{color:var(--green)}
 .mark.no{color:#ef4444}
-.mark.note{margin-left:1px;color:#475569;font-size:12px;vertical-align:super}
+.mark.note{margin-left:1px;color:#475569;font-size:8px;vertical-align:super}
 .comparison-table .ours-row td{
   border-top:1px solid #f1df9b;
   border-bottom:1px solid #f1df9b;
@@ -830,7 +834,7 @@ footer a{margin:0 12px;color:#666;text-decoration:none}
   .case-thumb-item{flex:1}
 }
 @media(max-width:1024px){
-  .comparison-table{min-width:1180px}
+  .comparison-table{min-width:0}
 }
 @media(max-width:1000px){
   .page-sidebar{
@@ -867,7 +871,7 @@ footer a{margin:0 12px;color:#666;text-decoration:none}
   .overview-findings li{padding-left:21px;font-size:12px}
 
   .comparison-caption{font-size:12px;line-height:1.7}
-  .comparison-table{min-width:880px;font-size:11px}
+  .comparison-table{min-width:0;font-size:11px}
   .comparison-table thead tr:first-child th{padding-top:13px;padding-bottom:8px;font-size:12px}
   .comparison-table thead tr:last-child th{padding-bottom:11px;font-size:10px}
   .comparison-table tbody td{padding:10px 8px;font-size:11px}
@@ -1341,7 +1345,7 @@ th.sortable:hover .sort-arrow{
   <div class="stat-card">
     <span class="stat-pin">🗂️</span>
     <div class="stat-num">4</div>
-    <div class="stat-title">Diagnostic Dimensions</div>
+    <div class="stat-title">Levels</div>
 
     <div class="stat-details">
       <span>🏆 2 Hierarchical Leaderboards</span>
@@ -1368,11 +1372,6 @@ th.sortable:hover .sort-arrow{
 <section id="overview">
   <h2>Overview</h2>
   <p class="desc">
-    Controllable video generation is increasingly expected to function as a world model,
-    yet existing benchmarks largely measure whether a model reproduces explicitly
-    specified targets. They do not fully reveal whether the model understands the
-    initial scene and generates the consequences that an instruction leaves unstated.
-    <br>
     We introduce <strong>WorldExam</strong>, a
     <strong>hierarchical diagnostic</strong> benchmark that evaluate world models together with 4 diagnostic levels, namely: visual quality, control adherence, spatial consistency, and world reactivity.
   </p>
@@ -1443,24 +1442,6 @@ th.sortable:hover .sort-arrow{
     src="overview/task.png"
     alt="WorldExam Overview"
   >
-  <!-- Key Findings -->
-  <div class="overview-findings">
-    <h3>Key Findings</h3>
-    <ul>
-      <li>
-        Strong visual quality, control adherence, and spatial consistency do not imply that a model can infer unstated reactions or execution paths; conversely, success on World Reactivity tasks does not compensate for visual artifacts, control errors, or spatial drift.
-      </li>
-      <li>
-        Existing video world models exhibit a clear capability divide. Camera-driven models excel at precise camera control and scene revisiting; action-driven models provide stronger direct subject control; and language-driven models perform better in semantic interactions and high-level goal completion, although they remain less precise in composed and fine-grained control.
-      </li>
-      <li>
-        Instruction following does not necessarily imply world reactivity. A model’s ability to execute explicitly specified targets does not mean that it can infer unstated execution processes or the resulting consequences.
-      </li>
-      <li>
-        World reactivity remains a major bottleneck for current models. Although many models can control a subject’s actions, terrain, objects, nearby agents, and physical processes often fail to respond appropriately, indicating a limited understanding and simulation of dynamic environments.
-      </li>
-    </ul>
-  </div>
 
 </section>
 
@@ -2747,7 +2728,7 @@ th.sortable:hover .sort-arrow{
 <!-- 侧边导航栏 -->
 <div class="page-sidebar">
   <div class="toc">
-    <div class="toc-title">Content</div>
+    <div class="toc-title">WorldExam</div>
     <a href="#top">Top</a>
     <a href="#overview">Overview</a>
     <a href="#comparison">Comparison</a>
