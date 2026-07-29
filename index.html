@@ -32,7 +32,7 @@
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font:22px/1.6 var(--font-sans)}
-.container{max-width:1600px;margin:auto;padding:0 48px}
+.container{max-width:1400px;margin:auto;padding:0 72px}
 section{margin:88px 0}
 section h2{margin-bottom:24px;font:700 50px/1.3 var(--font-serif)}
 section .desc{margin-bottom:22px;color:var(--muted);font-size:24px;line-height:1.85}
@@ -60,7 +60,14 @@ section .desc{margin-bottom:22px;color:var(--muted);font-size:24px;line-height:1
     linear-gradient(180deg,rgba(7,17,31,.72),rgba(7,17,31,.96)),
     url('overview/gallary_overview.png') center top/100% auto no-repeat;
 }
-.aff-icon{height:30px;margin:0 4px 0 2px;vertical-align:middle}
+.affiliation-item{
+  display:inline-flex;
+  align-items:center;
+  margin:0 18px 8px;
+  white-space:nowrap;
+}
+.affiliation-item sup{margin-right:2px}
+.aff-icon{height:30px;margin:0 3px 0 0;vertical-align:middle}
 
 /* Publication links */
 .publication-links{
