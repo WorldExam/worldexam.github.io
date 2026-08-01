@@ -1697,19 +1697,19 @@ th.sortable:hover .sort-arrow{
         <button
           class="pill-btn active"
           type="button"
-          data-board="static"
+          data-board="dynamic"
           onclick="switchLeaderboard(this)"
         >
-          Static-Scene Evaluation
+          Dynamic-Interaction Evaluation
         </button>
 
         <button
           class="pill-btn"
           type="button"
-          data-board="dynamic"
+          data-board="static"
           onclick="switchLeaderboard(this)"
         >
-          Dynamic-Interaction Evaluation
+          Static-Scene Evaluation
         </button>
 
       </div>
@@ -1769,7 +1769,7 @@ th.sortable:hover .sort-arrow{
        Leaderboard 1：Static-Scene Evaluation
        ===================================================== -->
   <div
-    class="leaderboard-panel active"
+    class="leaderboard-panel"
     data-board-panel="static"
   >
 
@@ -2267,7 +2267,7 @@ th.sortable:hover .sort-arrow{
        Leaderboard 2：Dynamic-Interaction Evaluation
        ===================================================== -->
   <div
-    class="leaderboard-panel"
+    class="leaderboard-panel active"
     data-board-panel="dynamic"
   >
 
@@ -2748,7 +2748,7 @@ th.sortable:hover .sort-arrow{
 // ==========================================================
 
 const leaderboardState = {
-  currentBoard: 'static',
+  currentBoard: 'dynamic',
 
   // 每张排行榜分别保存自己的筛选状态
   modelTypes: {
