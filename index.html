@@ -26,11 +26,13 @@
   --purple:#a78bfa;
   --cyan:#22d3ee;
   --amber:#fbbf24;
+  --brand-gradient:linear-gradient(135deg,#eaf6ff,#5bb7ff 48%,#22d3ee);
   --shadow-sm:0 10px 28px rgba(0,0,0,.24);
   --shadow-md:0 18px 42px rgba(0,0,0,.34);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
 body{background:var(--bg);color:var(--text);font:18px/1.6 var(--font-sans)}
 .container{max-width:1120px;margin:auto;padding:0 88px}
 section{margin:70px 0}
@@ -43,22 +45,37 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   margin-bottom:32px;
   font:800 64px/1.6 var(--font-serif);
   letter-spacing:-.01em;
-  background:linear-gradient(135deg,#eaf6ff,#53b0f7 48%,#22d3ee);
+  background:var(--brand-gradient);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.hero .desc{margin-bottom:12px;color:#d8e7f7;font-size:21px;font-weight:500}
+.hero .desc{margin-bottom:12px;color:#d8e7f7;font-size:24px;font-weight:500}
 .hero .authors{margin-bottom:5px;color:#c9d7e8;font-size:19px}
 .hero .affiliations{margin-bottom:5px;color:#a7b7ca;font-size:19px}
-.hero .footnotes{margin-bottom:22px;color:#8fa2ba;font-size:14px}
+.hero .footnotes{margin-bottom:22px;color:#8fa2ba;font-size:16px}
+.hero .footnotes span{display:inline-flex;align-items:center;gap:.25em;margin:0 .35em}
+.footnote-icon{font-size:.9em}
+.author-email-icon{margin-left:.08em;font-size:.78em}
+.author-item{
+  display:inline-block;
+  white-space:nowrap;
+}
+.author-item:not(:last-of-type)::after{content:","}
 .hero-with-bg{
   margin:0;
-  padding:48px 0 64px;
+  padding:48px clamp(16px,5vw,72px) 64px;
   background:
     radial-gradient(circle at 50% 0%,rgba(88,166,255,.24),transparent 34%),
     linear-gradient(180deg,rgba(7,17,31,.72),rgba(7,17,31,.96)),
-    url('overview/gallary_overview.png') center top/100% auto no-repeat;
+    url('overview/gallary_overview.png') center/cover no-repeat;
+}
+.hero .desc,
+.hero .authors{
+  max-width:1400px;
+  margin-left:auto;
+  margin-right:auto;
+  text-wrap:balance;
 }
 .affiliation-item{
   display:inline-flex;
@@ -106,7 +123,26 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   box-shadow:0 4px 12px rgba(37,99,235,.15);
 }
 .link-card-icon{display:flex;align-items:center;justify-content:center;width:24px;height:24px;flex-shrink:0}
-.link-card-icon img{width:22px!important;height:22px!important}
+.link-card-icon img{width:22px!important;height:22px!important;object-fit:contain}
+.link-card-icon .resource-brand-icon{
+  width:25px!important;
+  height:25px!important;
+  padding:0!important;
+  border-radius:0;
+  background:transparent!important;
+}
+.resource-brand-mask{
+  display:block;
+  width:25px;
+  height:25px;
+  flex:0 0 auto;
+  background:currentColor;
+  -webkit-mask:var(--resource-icon) center/contain no-repeat;
+  mask:var(--resource-icon) center/contain no-repeat;
+}
+.resource-brand-mask--arxiv{--resource-icon:url('top/arxiv.svg')}
+.resource-brand-mask--huggingface{--resource-icon:url('top/huggingface.svg')}
+.link-card-icon i{color:currentColor;font-size:22px}
 .link-card-text{transition:color .3s}
 .link-card-arrow{
   width:21px;
@@ -120,7 +156,7 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 .link-card:hover .link-card-arrow{transform:translate(2px,-2px);color:var(--blue)}
 
 /* Stats */
-.stats-expanded{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:19px 0 13px}
+.stats-expanded{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:19px 0 13px}
 .stat-card{
   position:relative;
   overflow:hidden;
@@ -131,7 +167,15 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   text-align:center;
   transition:.3s;
 }
-.stat-card .stat-pin{position:absolute;top:14px;right:14px;font-size:24px;opacity:.4}
+.stat-card .stat-pin{
+  position:absolute;
+  top:12px;
+  right:13px;
+  font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+  font-size:24px;
+  line-height:1;
+  opacity:.78;
+}
 .stat-card .stat-num{color:var(--text);font:700 34px/1.2 var(--font-serif)}
 .stat-card .stat-title{margin-top:2px;color:#555;font-size:16px;font-weight:600}
 .stat-card .stat-details{
@@ -145,9 +189,10 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   text-align:left;
   transition:max-height .4s,opacity .3s,margin .3s;
 }
-.stat-card .stat-details span{color:#777;font-size:14px}
+.stat-card .stat-details span{color:#777;font-size:13px;line-height:1.45}
+.stat-card .stat-details i{width:18px;margin-right:4px;color:#7dd3fc;text-align:center}
 .stats-expanded:hover .stat-card{border-color:#ddd;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-.stats-expanded:hover .stat-details{max-height:200px;margin-top:12px;opacity:1}
+.stats-expanded:hover .stat-details{max-height:320px;margin-top:12px;opacity:1}
 
 /* Overview */
 #overview{margin-top:0}
@@ -205,6 +250,179 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 .overview-feature-card p{color:var(--muted);font-size:18px;line-height:1.9}
 .overview-feature-card p strong{color:#334155;font-weight:700}
 
+.reactivity-callout{
+  position:relative;
+  margin:26px 0 34px;
+  padding:24px 30px 24px 68px;
+  overflow:hidden;
+  border:1px solid rgba(34,211,238,.34);
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 0 0,rgba(34,211,238,.15),transparent 38%),
+    linear-gradient(135deg,rgba(17,36,59,.94),rgba(9,24,40,.94));
+  color:#d9e8f7;
+  box-shadow:var(--shadow-sm);
+}
+.reactivity-callout::before{
+  content:"“";
+  position:absolute;
+  top:2px;
+  left:22px;
+  color:#67e8f9;
+  font:700 58px/1 var(--font-serif);
+  opacity:.85;
+}
+.reactivity-callout p{font:italic 500 20px/1.75 var(--font-serif)}
+.reactivity-callout strong{color:#7dd3fc;font-style:normal}
+.reactivity-callout cite{
+  display:block;
+  margin-top:8px;
+  color:#7f94ac;
+  font:600 11px/1.4 var(--font-sans);
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+
+.overview-feature-card[data-level="visual"]{--level-accent:#4ade80;--level-tint:rgba(74,222,128,.12)}
+.overview-feature-card[data-level="control"]{--level-accent:#fbbf24;--level-tint:rgba(251,191,36,.12)}
+.overview-feature-card[data-level="spatial"]{--level-accent:#58a6ff;--level-tint:rgba(88,166,255,.13)}
+.overview-feature-card[data-level="reactivity"]{--level-accent:#a78bfa;--level-tint:rgba(167,139,250,.13)}
+.metric-pills{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 19px}
+.metric-pill{
+  display:inline-flex;
+  min-height:29px;
+  align-items:center;
+  padding:5px 10px;
+  border:1px solid color-mix(in srgb,var(--level-accent) 42%,transparent);
+  border-radius:999px;
+  background:var(--level-tint);
+  color:color-mix(in srgb,var(--level-accent) 78%,white);
+  font-size:11px;
+  font-weight:700;
+  line-height:1.25;
+}
+
+.overview-section-heading{margin:54px 0 22px}
+.overview-section-heading .eyebrow{
+  display:block;
+  margin-bottom:6px;
+  color:#67e8f9;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.overview-section-heading h3{color:var(--heading);font:700 30px/1.25 var(--font-serif)}
+.overview-section-heading p{max-width:780px;margin-top:8px;color:var(--muted);font-size:15px;line-height:1.75}
+
+.hierarchy-explorer{
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 60% 0,rgba(88,166,255,.1),transparent 36%),
+    rgba(9,22,38,.86);
+  box-shadow:var(--shadow-md);
+}
+.hierarchy-flow{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) 30px minmax(0,1.05fr) 30px minmax(0,1.55fr);
+  align-items:stretch;
+  gap:8px;
+}
+.flow-stage{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  padding:24px;
+  border:1px solid var(--line-soft);
+  border-radius:17px;
+  background:rgba(16,28,47,.82);
+}
+.hierarchy-flow > .flow-stage:not(.explorer-output){justify-content:center}
+.flow-stage-label{display:flex;align-items:center;gap:11px;margin-bottom:19px}
+.flow-stage-index{
+  display:inline-flex;
+  width:32px;
+  height:32px;
+  align-items:center;
+  justify-content:center;
+  border-radius:9px;
+  background:rgba(88,166,255,.14);
+  color:#80c2ff;
+  font-size:12px;
+  font-weight:800;
+}
+.flow-stage h4{color:var(--heading);font-size:17px;line-height:1.3}
+.flow-stage-note{margin-top:18px;color:#8fa4bb;font-size:13px;line-height:1.65}
+.flow-arrow{display:flex;align-items:center;justify-content:center;color:#5a83aa;font-size:19px}
+.flow-chip-list{display:flex;flex-wrap:wrap;gap:8px}
+.hierarchy-flow > .flow-stage:first-child .flow-chip-list{display:grid;grid-template-columns:1fr;gap:10px}
+.flow-chip{
+  display:inline-flex;
+  min-height:42px;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border:1px solid rgba(125,211,252,.18);
+  border-radius:10px;
+  background:rgba(125,211,252,.07);
+  color:#cfe7f7;
+  font-size:13px;
+  font-weight:650;
+  line-height:1.25;
+}
+.level-selector{display:grid;gap:10px}
+.level-option{
+  display:flex;
+  width:100%;
+  align-items:center;
+  gap:10px;
+  min-height:46px;
+  padding:11px 13px;
+  border:1px solid var(--line-soft);
+  border-radius:11px;
+  background:rgba(7,17,31,.55);
+  color:#b9c8da;
+  font:650 13px/1.3 var(--font-sans);
+  text-align:left;
+  cursor:pointer;
+  transition:.22s;
+}
+.level-option::before{content:"";width:8px;height:8px;flex:0 0 auto;border-radius:50%;background:var(--option-color)}
+.level-option:hover{transform:translateX(3px);border-color:color-mix(in srgb,var(--option-color) 50%,transparent);color:#fff}
+.level-option:focus-visible{outline:2px solid #67e8f9;outline-offset:2px}
+.level-option.active{
+  border-color:color-mix(in srgb,var(--option-color) 62%,transparent);
+  background:color-mix(in srgb,var(--option-color) 13%,rgba(7,17,31,.8));
+  color:#fff;
+  box-shadow:inset 3px 0 0 var(--option-color);
+}
+.explorer-output{display:flex;min-width:0;flex-direction:column}
+.explorer-output-kicker{color:#67e8f9;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.explorer-output h4{margin:5px 0 9px;font:700 28px/1.2 var(--font-serif)}
+.explorer-output-copy{color:#b8c7d8;font-size:14px;line-height:1.7}
+.explorer-group{margin-top:16px}
+.explorer-group-title{display:block;margin-bottom:8px;color:#849ab2;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.explorer-token-list{display:flex;flex-wrap:wrap;gap:7px}
+#explorer-tasks,#explorer-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.explorer-token{
+  display:flex;
+  min-height:32px;
+  align-items:center;
+  padding:6px 9px;
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:8px;
+  background:rgba(255,255,255,.045);
+  color:#d6e2ef;
+  font-size:11px;
+  font-weight:650;
+  line-height:1.25;
+}
+#explorer-metrics .explorer-token{min-height:40px}
+.explorer-track{margin-top:auto;padding-top:17px;color:#95a9be;font-size:11px;line-height:1.5}
+.explorer-track i{margin-right:6px;color:#67e8f9}
+
 .overview-findings{
   margin-top:43px;
   padding:27px 30px;
@@ -241,7 +459,7 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 .comparison-caption{margin-bottom:16px;color:#475569;font-size:21px;line-height:1.8}
 .comparison-caption strong{color:#111827;font-weight:700}
 .comparison-table-wrap{
-  overflow-x:hidden;
+  overflow-x:auto;
   overflow-y:hidden;
   border:1px solid #e5e7eb;
   border-radius:18px;
@@ -250,16 +468,17 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 }
 .comparison-table{
   width:100%;
+  min-width:1180px;
   table-layout:fixed;
   border-spacing:0;
   border-collapse:separate;
   background:#fff;
   color:#1f2937;
-  font-size:11px;
+  font-size:14px;
 }
 .comparison-table thead th{
   position:static;
-  padding:7px 4px;
+  padding:10px 8px;
   border:0;
   background:var(--surface);
   color:var(--heading);
@@ -273,49 +492,55 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   user-select:text;
 }
 .comparison-table thead tr:first-child th{
-  padding-top:10px;
-  padding-bottom:6px;
+  padding-top:14px;
+  padding-bottom:10px;
   border-bottom:0;
-  font-size:12px;
+  font-size:16px;
   font-weight:800;
 }
+.comparison-table thead tr:first-child th[colspan]{
+  border-bottom:0;
+}
+.comparison-table .comparison-viewpoint-group{box-shadow:inset 0 4px 0 #64748b}
+.comparison-table .comparison-task-group{box-shadow:inset 0 4px 0 var(--purple)}
 .comparison-table thead tr:last-child th{
-  padding-top:5px;
-  padding-bottom:10px;
+  padding-top:9px;
+  padding-bottom:12px;
   border-bottom:1px solid #dbe3ee;
   color:#1e293b;
-  font-size:10px;
+  font-size:13px;
 }
 .comparison-table thead tr:first-child th:first-child{border-top-left-radius:18px}
 .comparison-table thead tr:first-child th:last-child{border-top-right-radius:18px}
 .comparison-table thead th:hover{background:var(--surface);color:var(--heading)}
 .comparison-table tbody td{
-  padding:7px 4px;
+  padding:12px 8px;
   border:0;
   border-bottom:1px solid var(--line-soft);
   background:#fff;
   color:#1f2937;
   font-family:var(--font-sans);
-  font-size:11px;
-  line-height:1.25;
+  font-size:14px;
+  line-height:1.35;
   text-align:center;
   vertical-align:middle;
 }
 .comparison-table tbody tr:hover td{background:#fafcff}
 .comparison-table tbody td:first-child{text-align:left;white-space:normal;font-weight:500;word-break:break-word}
-.comparison-table th:first-child{width:14%}
-.comparison-table th:nth-child(2){width:9%}
+.comparison-table th:first-child{width:160px}
+.comparison-table th:nth-child(2){width:105px}
 .comparison-table th:nth-last-child(1),
-.comparison-table th:nth-last-child(2){width:6%}
+.comparison-table th:nth-last-child(2){width:76px}
 .comparison-table .num{color:#111827;font-weight:700}
 .paradigm{font-family:var(--font-sans);font-weight:700;letter-spacing:.01em;white-space:normal}
 .paradigm .c{color:var(--blue)}
 .paradigm .a{color:#d97706}
 .paradigm .l{color:var(--purple)}
-.mark{display:inline-block;font-family:var(--font-sans);font-size:11px;font-weight:700;line-height:1}
+.mark{display:inline-block;font-family:var(--font-sans);font-size:14px;font-weight:700;line-height:1}
 .mark.yes{color:var(--green)}
 .mark.no{color:#ef4444}
-.mark.note{margin-left:1px;color:#475569;font-size:8px;vertical-align:super}
+.mark.note{margin-left:2px;color:#475569;font-size:12px;font-weight:800;vertical-align:super}
+.comparison-table .mark.note{color:#fff}
 .comparison-table .ours-row td{
   border-top:1px solid #f1df9b;
   border-bottom:1px solid #f1df9b;
@@ -341,19 +566,23 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 .comparison-legend-note strong{color:#111827;font-weight:700}
 
 /* Shared pill buttons */
-.pill-buttons-row{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin:0 0 16px}
+.pill-buttons-row{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:0 0 14px}
 .pill-btn{
   display:flex;
+  min-height:38px;
   align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  border:2px solid var(--line);
-  border-radius:12px;
+  justify-content:center;
+  gap:6px;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:10px;
   background:#fff;
   color:#475569;
   font-family:var(--font-sans);
-  font-size:14px;
-  font-weight:600;
+  font-size:13px;
+  font-weight:650;
+  line-height:1.2;
+  text-align:center;
   cursor:pointer;
   transition:.3s;
 }
@@ -363,6 +592,7 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   background:var(--surface);
   box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
+.pill-btn:focus-visible{outline:2px solid #67e8f9;outline-offset:2px}
 .pill-btn.active{
   border-color:var(--blue);
   background:linear-gradient(135deg,var(--blue),#1e40af);
@@ -375,8 +605,8 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 #gallery .pill-buttons-row{
   display:grid;
   width:100%;
-  gap:13px;
-  margin:14px 0;
+  gap:9px;
+  margin:12px 0;
 }
 
 #metrics > .pill-buttons-row{
@@ -393,16 +623,16 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 
 #metrics > .pill-buttons-row .pill-btn,
 #gallery .pill-buttons-row .pill-btn{
-  min-height:46px;
+  min-height:42px;
   justify-content:center;
-  padding:13px 14px;
+  padding:10px 12px;
   border-width:1px;
-  border-radius:14px;
+  border-radius:12px;
   background:
     linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,0)),
     rgba(11,22,39,.9);
   color:#e6f0fb;
-  font-size:14px;
+  font-size:13px;
   font-weight:750;
   line-height:1.2;
   text-align:center;
@@ -413,7 +643,7 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 
 #metrics > .pill-buttons-row .pill-btn:hover,
 #gallery .pill-buttons-row .pill-btn:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
   border-color:rgba(88,166,255,.66);
   background:
     linear-gradient(180deg,rgba(88,166,255,.18),rgba(34,211,238,.04)),
@@ -438,25 +668,26 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 
 /* Leaderboard controls */
 #leaderboard .leaderboard-controls{
-  margin:18px 0 19px;
-  padding:14px 16px;
+  margin:16px 0 18px;
+  padding:12px 14px;
   border:1px solid var(--line);
   border-radius:16px;
   background:var(--surface);
 }
-#leaderboard .filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:11px}
+#leaderboard .filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:9px}
 #leaderboard .filter-row:last-child{margin-bottom:0}
 #leaderboard .filter-label{
-  width:160px;
+  width:142px;
   flex-shrink:0;
   color:#475569;
-  font-size:19px;
+  font-size:16px;
   font-weight:700;
 }
-#leaderboard .pill-buttons-row{justify-content:flex-start;align-items:center;gap:10px;margin:0}
-#leaderboard .leaderboard-tabs .pill-btn{min-width:168px;justify-content:center}
-#leaderboard .model-type-buttons .pill-btn{min-width:96px;justify-content:center}
-#leaderboard .pill-btn small{font-size:16px;opacity:.62}
+#leaderboard .pill-buttons-row{justify-content:flex-start;align-items:center;gap:8px;margin:0}
+#leaderboard .pill-btn{min-height:40px;padding:9px 14px;border-radius:10px;font-size:13px}
+#leaderboard .leaderboard-tabs .pill-btn{min-width:0;padding-inline:16px}
+#leaderboard .model-type-buttons .pill-btn{min-width:0;padding-inline:14px}
+#leaderboard .pill-btn small{font-size:13px;opacity:.62}
 
 /* Leaderboard panels */
 .leaderboard-panel{display:none}
@@ -589,39 +820,23 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
 #leaderboard .rank-bronze{color:#b45309}
 #leaderboard .no-results{padding:34px 20px;color:#94a3b8;font-size:14px;text-align:center}
 
-/* =========================================================
-   Leaderboard 前三名整行高亮
-   ========================================================= */
-/* 第一名：浅金黄色 */
-#leaderboard .leaderboard-table tbody tr.top-1 td{
-  background:#fffbea !important;
+/* Leaderboard: each metric column highlights its own top three cells. */
+#leaderboard .leaderboard-table tbody td.metric-top-1{
   border-bottom-color:#f1df9b;
+  background:#fffbea!important;
+  box-shadow:inset 0 0 0 1px rgba(217,119,6,.18);
 }
-/* 第二名：浅银灰色 */
-#leaderboard .leaderboard-table tbody tr.top-2 td{
-  background:#f5f7fa !important;
+#leaderboard .leaderboard-table tbody td.metric-top-2{
   border-bottom-color:#dce3ea;
+  background:#f5f7fa!important;
+  box-shadow:inset 0 0 0 1px rgba(100,116,139,.16);
 }
-/* 第三名：浅铜橙色 */
-#leaderboard .leaderboard-table tbody tr.top-3 td{
-  background:#fff6ed !important;
+#leaderboard .leaderboard-table tbody td.metric-top-3{
   border-bottom-color:#f0d2b7;
+  background:#fff6ed!important;
+  box-shadow:inset 0 0 0 1px rgba(180,83,9,.16);
 }
-/* 第一名悬停 */
-#leaderboard .leaderboard-table tbody tr.top-1:hover td{
-  background:#fff5d6 !important;
-}
-/* 第二名悬停 */
-#leaderboard .leaderboard-table tbody tr.top-2:hover td{
-  background:#edf1f5 !important;
-}
-/* 第三名悬停 */
-#leaderboard .leaderboard-table tbody tr.top-3:hover td{
-  background:#ffead8 !important;
-}
-/* 普通行悬停 */
-#leaderboard .leaderboard-table tbody
-tr:not(.top-1):not(.top-2):not(.top-3):hover td{
+#leaderboard .leaderboard-table tbody tr:hover td:not(.metric-top-1):not(.metric-top-2):not(.metric-top-3){
   background:#f8fafc;
 }
 
@@ -701,6 +916,7 @@ tr:not(.top-1):not(.top-2):not(.top-3):hover td{
   font-size:21px;
   line-height:1.55;
 }
+.metric-task-goal{margin-bottom:0;padding-top:0;padding-bottom:6px}
 .metric-task-goal:empty::before,
 .metric-case-goal:empty::before{
   content:"";
@@ -799,7 +1015,7 @@ tr:not(.top-1):not(.top-2):not(.top-3):hover td{
   color:var(--heading);
   font:800 24px/1.2 var(--font-serif);
   white-space:nowrap;
-  background:linear-gradient(135deg,#eaf6ff,#5bb7ff 48%,#22d3ee);
+  background:var(--brand-gradient);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -828,13 +1044,41 @@ footer a{margin:0 12px;color:#666;text-decoration:none}
   .page-sidebar{left:0}
 }
 @media(max-width:1100px){
+  .hero h1{
+    margin-bottom:22px;
+    font-size:clamp(48px,8vw,64px);
+    line-height:1.15;
+  }
+  .hero .desc{
+    max-width:850px;
+    font-size:clamp(20px,2.5vw,24px);
+    line-height:1.5;
+  }
+  .hero .authors{
+    max-width:900px;
+    padding:0 20px;
+    font-size:clamp(14px,1.8vw,18px);
+    line-height:1.55;
+  }
+  .hero .authors br{display:none}
+  .publication-links{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,320px));
+    justify-content:center;
+    max-width:680px;
+    margin:22px auto 0;
+  }
+  .link-card{
+    min-width:0;
+    justify-content:center;
+  }
   .metrics-main-container{flex-direction:column}
   .cases-sidebar{width:100%}
   .cases-list{grid-template-columns:repeat(4,minmax(0,1fr))}
   .case-thumb-item{flex:1}
 }
 @media(max-width:1024px){
-  .comparison-table{min-width:0}
+  .comparison-table{min-width:1180px}
 }
 @media(max-width:1000px){
   .page-sidebar{
@@ -852,29 +1096,50 @@ footer a{margin:0 12px;color:#666;text-decoration:none}
   .toc-title{display:none}
   .toc a{flex:0 0 auto}
 }
+@media(max-width:900px){
+  .hierarchy-flow{grid-template-columns:1fr}
+  .flow-arrow{min-height:18px;transform:rotate(90deg)}
+}
 @media(max-width:768px){
   .container{padding:0 14px}
   body{font-size:16px;padding-top:61px}
   section h2{font-size:27px}
   section .desc{font-size:14px}
+  .stats-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
   .publication-links{gap:.65rem}
   .link-card{padding:.6rem .8rem;font-size:.8rem}
   .link-card-icon{width:19px;height:19px}
   .link-card-icon img{width:18px!important;height:18px!important}
+  .link-card-icon .resource-brand-icon{width:19px!important;height:19px!important}
+  .resource-brand-mask{width:19px;height:19px}
+  .link-card-icon i{font-size:18px}
   .link-card-arrow{width:18px;height:18px;margin-left:.28rem}
   .link-card-arrow svg{width:14px;height:14px}
 
   .overview-feature-grid{grid-template-columns:1fr;gap:13px;margin-top:21px}
   .overview-feature-card{min-height:0;padding:21px}
   .overview-feature-card h3{font-size:21px}
+  .overview-feature-card p{font-size:14px;line-height:1.7}
+  .overview-feature-header{gap:14px;margin-bottom:18px}
+  .metric-pills{gap:6px;margin-bottom:15px}
+  .metric-pill{min-height:25px;padding:4px 8px;font-size:9px}
+  .reactivity-callout{margin:20px 0 25px;padding:20px 18px 20px 50px}
+  .reactivity-callout::before{left:15px;font-size:45px}
+  .reactivity-callout p{font-size:16px;line-height:1.6}
+  .overview-section-heading{margin-top:39px}
+  .overview-section-heading h3{font-size:24px}
+  .overview-section-heading p{font-size:12px}
+  .hierarchy-explorer{padding:14px}
+  .flow-stage{padding:16px}
+  .explorer-output h4{font-size:21px}
   .overview-findings{padding:19px 18px}
   .overview-findings li{padding-left:21px;font-size:12px}
 
   .comparison-caption{font-size:12px;line-height:1.7}
-  .comparison-table{min-width:0;font-size:11px}
-  .comparison-table thead tr:first-child th{padding-top:13px;padding-bottom:8px;font-size:12px}
-  .comparison-table thead tr:last-child th{padding-bottom:11px;font-size:10px}
-  .comparison-table tbody td{padding:10px 8px;font-size:11px}
+  .comparison-table{min-width:1180px;font-size:14px}
+  .comparison-table thead tr:first-child th{padding-top:14px;padding-bottom:10px;font-size:16px}
+  .comparison-table thead tr:last-child th{padding-bottom:12px;font-size:13px}
+  .comparison-table tbody td{padding:12px 8px;font-size:14px}
   .comparison-legend{padding:13px}
   .comparison-legend-item,.comparison-legend-note{font-size:10px}
 
@@ -882,7 +1147,9 @@ footer a{margin:0 12px;color:#666;text-decoration:none}
   #leaderboard .filter-row{display:block}
   #leaderboard .filter-label{width:auto;margin-bottom:8px}
   #leaderboard .leaderboard-tabs .pill-btn{min-width:0;flex:1 1 144px}
-  #leaderboard .model-type-buttons .pill-btn{min-width:0}
+  #leaderboard .model-type-buttons .pill-btn{min-width:0;flex:1 1 calc(50% - 4px)}
+  #leaderboard .pill-btn{min-height:40px;padding:8px 10px;font-size:11px}
+  #leaderboard .pill-btn small{font-size:11px}
   .leaderboard-panel-header h3{font-size:15px}
 
   .video-comparison-grid{grid-template-columns:1fr}
@@ -897,12 +1164,59 @@ footer a{margin:0 12px;color:#666;text-decoration:none}
   }
   #metrics > .pill-buttons-row .pill-btn,
   #gallery .pill-buttons-row .pill-btn{
-    min-height:38px;
-    padding:10px 8px!important;
+    min-height:40px;
+    padding:9px 7px!important;
     font-size:11px!important;
   }
   .pill-buttons-row{gap:4px}
-  .pill-btn{padding:5px 6px;font-size:10px}
+  .pill-btn{min-height:36px;padding:7px 9px;font-size:11px}
+
+  #top{margin-top:0}
+  .hero-with-bg{
+    padding:30px 14px 38px;
+    background:
+      radial-gradient(circle at 50% 0%,rgba(88,166,255,.24),transparent 34%) center/100% 100% no-repeat,
+      linear-gradient(180deg,rgba(7,17,31,.72),rgba(7,17,31,.96)) center/100% 100% no-repeat,
+      url('overview/gallary_overview.png') center top/auto 260px repeat-y;
+  }
+  .hero h1{
+    margin-bottom:18px;
+    font-size:clamp(40px,14vw,54px);
+  }
+  .hero .desc{
+    max-width:680px;
+    padding:0 8px;
+    font-size:18px;
+    line-height:1.5;
+  }
+  .hero .authors{
+    padding:0 4px;
+    font-size:13px;
+    line-height:1.55;
+  }
+  .hero .affiliations{
+    font-size:14px;
+    line-height:1.5;
+  }
+  .affiliation-item{margin:0 8px 6px}
+  .hero .footnotes{
+    margin-bottom:18px;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .publication-links{
+    width:100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+  .link-card{
+    gap:6px;
+    padding:10px 6px;
+    font-size:11px;
+    line-height:1.25;
+    white-space:normal;
+  }
+  .link-card-arrow{display:none}
 }
 
 /* 可排序表头 */
@@ -988,9 +1302,9 @@ strong{color:#f4f9ff}
 }
 
 .link-card-icon img{
-  border-radius:4px;
-  background:#fff;
-  padding:1px;
+  border-radius:0;
+  background:transparent;
+  padding:0;
 }
 
 .hero .affiliations span{color:#7dd3fc!important}
@@ -1073,7 +1387,7 @@ footer a{
 }
 
 .comparison-table tbody tr:hover td,
-#leaderboard .leaderboard-table tbody tr:not(.top-1):not(.top-2):not(.top-3):hover td{
+#leaderboard .leaderboard-table tbody tr:hover td:not(.metric-top-1):not(.metric-top-2):not(.metric-top-3){
   background:#12233a;
 }
 
@@ -1091,30 +1405,31 @@ footer a{
   color:#f2f7ff;
 }
 
-.comparison-table .ours-row td,
-#leaderboard .leaderboard-table tbody tr.top-1 td{
+.comparison-table .ours-row td{
   border-color:rgba(251,191,36,.36);
   background:rgba(251,191,36,.13)!important;
   color:#fff8db;
 }
 
-#leaderboard .leaderboard-table tbody tr.top-2 td{
+#leaderboard .leaderboard-table tbody td.metric-top-1{
+  border-color:rgba(251,191,36,.36);
+  background:rgba(251,191,36,.15)!important;
+  color:#fff8db;
+}
+
+#leaderboard .leaderboard-table tbody td.metric-top-2{
   border-color:rgba(148,163,184,.32);
   background:rgba(148,163,184,.12)!important;
 }
 
-#leaderboard .leaderboard-table tbody tr.top-3 td{
+#leaderboard .leaderboard-table tbody td.metric-top-3{
   border-color:rgba(251,146,60,.32);
   background:rgba(251,146,60,.12)!important;
 }
 
-.comparison-table tbody .ours-row:hover td,
-#leaderboard .leaderboard-table tbody tr.top-1:hover td{
+.comparison-table tbody .ours-row:hover td{
   background:rgba(251,191,36,.18)!important;
 }
-
-#leaderboard .leaderboard-table tbody tr.top-2:hover td{background:rgba(148,163,184,.17)!important}
-#leaderboard .leaderboard-table tbody tr.top-3:hover td{background:rgba(251,146,60,.17)!important}
 
 .case-thumb-item{
   border-color:var(--line);
@@ -1239,26 +1554,26 @@ th.sortable:hover .sort-arrow{
   <h1>WorldExam</h1>
   <p class="desc"><strong>Benchmarking World Models from Apparent Appearance to Inherent Reactivity</strong></p>
 <p class="authors">
-  Yuxue Yang<sup>1,*,†</sup>,
-  Shuyao Shang<sup>1,*</sup>,
-  Jiahe Wang<sup>1</sup>,
-  Zitong Zhou<sup>1</sup>,
-  Liang Tan<sup>1</sup>
+  <span class="author-item">Yuxue Yang<sup>1,*,†</sup></span>
+  <span class="author-item">Shuyao Shang<sup>1,*</sup></span>
+  <span class="author-item">Jiahe Wang<sup>1</sup></span>
+  <span class="author-item">Zitong Zhou<sup>1</sup></span>
+  <span class="author-item">Liang Tan<sup>1</sup></span>
   <br>
 
-  Junhan Zeng<sup>1</sup>,
-  Ruizhi Li<sup>1</sup>,
-  Junyan Li<sup>1</sup>,
-  Yu Liu<sup>4</sup>,
-  Xiao Yang<sup>5</sup>,
-  Yong Li<sup>5</sup>
+  <span class="author-item">Junhan Zeng<sup>1</sup></span>
+  <span class="author-item">Ruizhi Li<sup>1</sup></span>
+  <span class="author-item">Junyan Li<sup>1</sup></span>
+  <span class="author-item">Yu Liu<sup>4</sup></span>
+  <span class="author-item">Xiao Yang<sup>5</sup></span>
+  <span class="author-item">Yong Li<sup>5</sup></span>
   <br>
 
-  Jun Zhu<sup>5</sup>,
-  Hongsheng Li<sup>2,3</sup>,
-  Tieniu Tan<sup>1</sup>,
-  Lue Fan<sup>1,†,✉</sup>,
-  Zhaoxiang Zhang<sup>1,✉</sup>
+  <span class="author-item">Jun Zhu<sup>5</sup></span>
+  <span class="author-item">Hongsheng Li<sup>2,3</sup></span>
+  <span class="author-item">Tieniu Tan<sup>1</sup></span>
+  <span class="author-item">Lue Fan<sup>1,†,<i class="fa-regular fa-envelope author-email-icon" role="img" aria-label="Corresponding author"></i></sup></span>
+  <span class="author-item">Zhaoxiang Zhang<sup>1,<i class="fa-regular fa-envelope author-email-icon" role="img" aria-label="Corresponding author"></i></sup></span>
 </p>
 
 <p class="affiliations">
@@ -1295,29 +1610,29 @@ th.sortable:hover .sort-arrow{
 
 <p class="footnotes">
   <span><sup>*</sup> Equal Contribution</span>
-  <span><sup>†</sup> Project Lead</span>
-  <span><sup>✉</sup> Corresponding Authors</span>
+  <span><sup>†</sup> Project Leaders</span>
+  <span><i class="fa-regular fa-envelope footnote-icon" aria-hidden="true"></i> Corresponding Authors</span>
 </p>
   <!-- 按钮区域 -->
   <div class="publication-links">
     <a href="https://worldexam.github.io/" class="link-card" target="_blank">
-      <div class="link-card-icon"><img src="top/arxiv-logomark-small@2x.jpg" alt="Paper" style="width:18px;height:18px;"></div>
-      <span class="link-card-text"><b>Paper</b></span>
+      <div class="link-card-icon"><span class="resource-brand-mask resource-brand-mask--arxiv" role="img" aria-label="arXiv"></span></div>
+      <span class="link-card-text"><b>arXiv</b></span>
       <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
     </a>
-    <a href="https://worldexam.github.io/" class="link-card" target="_blank">
-      <div class="link-card-icon"><img src="top/GitHub_Invertocat_Black.png" alt="Code" style="width:18px;height:18px;"></div>
+    <a href="WorldExam.pdf" class="link-card" target="_blank">
+      <div class="link-card-icon"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i></div>
+      <span class="link-card-text"><b>PDF</b></span>
+      <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
+    </a>
+    <a href="https://github.com/YuxueYang1204/worldexam" class="link-card" target="_blank" rel="noopener noreferrer">
+      <div class="link-card-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></div>
       <span class="link-card-text"><b>Code</b></span>
       <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
     </a>
     <a href="https://worldexam.github.io/" class="link-card" target="_blank">
-      <div class="link-card-icon"><img src="top/hf-logo.png" alt="Dataset" style="width:18px;height:18px;"></div>
-      <span class="link-card-text"><b>Dataset(HuggingFace)</b></span>
-      <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
-    </a>
-    <a href="https://worldexam.github.io/" class="link-card" target="_blank">
-      <div class="link-card-icon"><img src="top/modelscope.png" alt="Dataset" style="width:18px;height:18px;"></div>
-      <span class="link-card-text"><b>Dataset(ModelScope)</b></span>
+      <div class="link-card-icon"><span class="resource-brand-mask resource-brand-mask--huggingface" role="img" aria-label="Hugging Face"></span></div>
+      <span class="link-card-text"><b>Test Case</b></span>
       <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
     </a>
   </div>
@@ -1330,39 +1645,57 @@ th.sortable:hover .sort-arrow{
 <div class="stats-expanded">
 
   <div class="stat-card">
-    <span class="stat-pin">🌍</span>
-    <div class="stat-num">1474</div>
-    <div class="stat-title">Test Cases</div>
+    <span class="stat-pin" aria-hidden="true">🕹️</span>
+    <div class="stat-num">3</div>
+    <div class="stat-title">Control Interfaces</div>
 
     <div class="stat-details">
-      <span>👀 2 Viewpoints</span>
-      <span>🧍 4 Subject Types</span>
-      <span>🎨 7 Styles</span>
-      <span>🏞️ 13 Scenes</span>
+      <span><i class="fa-solid fa-camera"></i>Camera-driven</span>
+      <span><i class="fa-solid fa-keyboard"></i>Action-driven</span>
+      <span><i class="fa-solid fa-comment-dots"></i>Language-driven</span>
     </div>
   </div>
 
   <div class="stat-card">
-    <span class="stat-pin">🗂️</span>
+    <span class="stat-pin" aria-hidden="true">🔍</span>
     <div class="stat-num">4</div>
     <div class="stat-title">Diagnostic Levels</div>
 
     <div class="stat-details">
-      <span>🏆 2 Hierarchical Leaderboards</span>
-      <span>🧩 8 Evaluation Tasks</span>
-      <span>📊 14 Total Metrics</span>
+      <span><i class="fa-solid fa-eye"></i>Visual Quality</span>
+      <span><i class="fa-solid fa-circle-check"></i>Control Adherence</span>
+      <span><i class="fa-solid fa-map"></i>Spatial Consistency</span>
+      <span><i class="fa-solid fa-lightbulb"></i>World Reactivity</span>
     </div>
   </div>
 
   <div class="stat-card">
-    <span class="stat-pin">🤖</span>
-    <div class="stat-num">20</div>
-    <div class="stat-title">Evaluated Models</div>
+    <span class="stat-pin" aria-hidden="true">📋</span>
+    <div class="stat-num">8</div>
+    <div class="stat-title">Evaluation Tasks</div>
 
     <div class="stat-details">
-      <span>📝 7 Language-based Models</span>
-      <span>📷 6 Camera-based Models</span>
-      <span>🎮 7 Action-based Models</span>
+      <span><i class="fa-solid fa-camera"></i>Camera Control</span>
+      <span><i class="fa-solid fa-person-walking"></i>Subject Control</span>
+      <span><i class="fa-solid fa-clock-rotate-left"></i>Scene Revisit</span>
+      <span><i class="fa-solid fa-mountain"></i>Terrain Interaction</span>
+      <span><i class="fa-solid fa-cube"></i>Object Interaction</span>
+      <span><i class="fa-solid fa-users"></i>Social Interaction</span>
+      <span><i class="fa-solid fa-scale-balanced"></i>Physical Reaction</span>
+      <span><i class="fa-solid fa-flag-checkered"></i>Goal Completion</span>
+    </div>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-pin" aria-hidden="true">🗂️</span>
+    <div class="stat-num">1,474</div>
+    <div class="stat-title">Test Cases</div>
+
+    <div class="stat-details">
+      <span><i class="fa-solid fa-image"></i>First- and third-person viewpoints</span>
+      <span><i class="fa-solid fa-user"></i>Human, animal, vehicle, and robot subjects</span>
+      <span><i class="fa-solid fa-building"></i>Outdoor and indoor real scenes</span>
+      <span><i class="fa-solid fa-star"></i>3D renderings, cinematic footage, close-up views, animation, and dashcam videos</span>
     </div>
   </div>
 
@@ -1372,76 +1705,159 @@ th.sortable:hover .sort-arrow{
 <section id="overview">
   <h2>Overview</h2>
   <p class="desc">
-    We introduce <strong>WorldExam</strong>, a
-    <strong>hierarchical diagnostic</strong> benchmark that evaluate world models together with 4 diagnostic levels, namely: visual quality, control adherence, spatial consistency, and world reactivity.
+    <strong>WorldExam</strong> is a hierarchical diagnostic benchmark for controllable video world models. Beyond visual appearance and explicit instruction following, it asks whether a model preserves a coherent world and exhibits <strong>inherent reactivity</strong>. Across camera-, action-, and language-driven interfaces, WorldExam organizes 1,474 test cases into four diagnostic levels and eight dedicated tasks under a unified evaluation protocol.
   </p>
+  <blockquote class="reactivity-callout">
+    <p><strong>Inherent Reactivity</strong>: the ability to infer from the scene state how the world should react and to generate plausible consequences not explicitly described in the input</p>
+    <cite>WorldExam’s central diagnostic capability</cite>
+  </blockquote>
   <img
     class="overview-image"
-    src="overview/teaser_01.png"
+    src="overview/teaser.png"
     alt="WorldExam Overview"
   />
 
   <!-- 四个分立模块 -->
   <div class="overview-feature-grid">
     <!-- 模块 1 -->
-    <article class="overview-feature-card">
+    <article class="overview-feature-card" data-level="visual">
       <div class="overview-feature-header">
         <div class="overview-feature-icon green">
           <i class="fa-solid fa-wand-magic-sparkles"></i>
         </div>
         <h3>Visual Quality</h3>
       </div>
+      <div class="metric-pills" aria-label="Visual Quality metrics">
+        <span class="metric-pill">Imaging Quality</span>
+        <span class="metric-pill">Photometric Consistency</span>
+        <span class="metric-pill">Temporal Flickering</span>
+        <span class="metric-pill">Subject Consistency</span>
+        <span class="metric-pill">Motion Smoothness</span>
+        <span class="metric-pill">Aesthetic Quality</span>
+      </div>
       <p>
-        measures the quality of the video itself, including perceptual plausibility, temporal stability, and visible artifacts
+        Visual Quality measures the video's apparent appearance, including perceptual plausibility, temporal stability, and aesthetic quality.
       </p>
     </article>
     <!-- 模块 2 -->
-    <article class="overview-feature-card">
+    <article class="overview-feature-card" data-level="control">
       <div class="overview-feature-header">
         <div class="overview-feature-icon orange">
           <i class="fa-solid fa-gears"></i>
         </div>
         <h3>Control Adherence</h3>
       </div>
+      <div class="metric-pills" aria-label="Control Adherence metrics">
+        <span class="metric-pill">Camera Control</span>
+        <span class="metric-pill">Subject Control</span>
+      </div>
       <p>
-        measures whether the controlled camera or subject moves as instructed.
+        Control Adherence measures whether the controlled camera or subject follows the input control.
       </p>
     </article>
     <!-- 模块 3 -->
-    <article class="overview-feature-card">
+    <article class="overview-feature-card" data-level="spatial">
       <div class="overview-feature-header">
         <div class="overview-feature-icon blue">
           <i class="fa-solid fa-keyboard"></i>
         </div>
         <h3>Spatial Consistency</h3>
       </div>
+      <div class="metric-pills" aria-label="Spatial Consistency metrics">
+        <span class="metric-pill">Scene Revisit</span>
+        <span class="metric-pill">3D Consistency</span>
+      </div>
       <p>
-        measures whether the model maintains a coherent world, especially when the camera revisits a previously observed viewpoint.
+        Spatial Consistency measures whether the model preserves a coherent world when the camera revisits a previously observed viewpoint.
       </p>
     </article>
     <!-- 模块 4 -->
-    <article class="overview-feature-card">
+    <article class="overview-feature-card" data-level="reactivity">
       <div class="overview-feature-header">
         <div class="overview-feature-icon purple">
           <i class="fa-solid fa-eye"></i>
         </div>
         <h3>World Reactivity</h3>
       </div>
+      <div class="metric-pills" aria-label="World Reactivity metrics">
+        <span class="metric-pill">Terrain Interaction</span>
+        <span class="metric-pill">Object Interaction</span>
+        <span class="metric-pill">Social Interaction</span>
+        <span class="metric-pill">Physical Reaction</span>
+        <span class="metric-pill">Goal Completion</span>
+      </div>
       <p>
-        evaluates whether a model can infer and generate the scene-conditioned reactions or valid execution paths left unstated by the input.
+        World Reactivity level evaluates scene-conditioned reactions and goal-directed behaviors beyond what is explicitly specified in the input.
       </p>
     </article>
   </div>
 
-  <p class="desc">
-    We instantiate this hierarchy through eight dedicated tasks: Camera Control, Subject Control, Scene Revisit, Terrain Interaction, Object Interaction, Social Interaction, Physical Reaction, and Goal Completion. Together with six visual-quality metrics, these tasks yield a total of 14 evaluation metrics, forming two complementary scoring systems—static-scene evaluation and dynamic-interaction evaluation—that assess distinct aspects of world-model capability.
-  </p>
+  <div class="overview-section-heading" hidden>
+    <span class="eyebrow">Interactive diagnostic map</span>
+    <h3>From control interface to diagnostic evidence</h3>
+    <p>Four diagnostic levels map to eight evaluation tasks, which are assigned to static-scene or dynamic-interaction tracks according to scene assumptions and model applicability. Each track reports task-specific and general metrics.</p>
+  </div>
 
-  <img
-    class="overview-image"
-    src="overview/task.png"
-    alt="WorldExam Overview"
-  >
+  <div class="hierarchy-explorer" aria-label="Interactive WorldExam diagnostic hierarchy" hidden>
+    <div class="hierarchy-flow">
+      <article class="flow-stage">
+        <div class="flow-stage-label">
+          <span class="flow-stage-index">01</span>
+          <h4>Control Interfaces</h4>
+        </div>
+        <div class="flow-chip-list">
+          <span class="flow-chip"><i class="fa-solid fa-camera" aria-hidden="true"></i>Camera-driven</span>
+          <span class="flow-chip"><i class="fa-solid fa-gamepad" aria-hidden="true"></i>Action-driven</span>
+          <span class="flow-chip"><i class="fa-solid fa-comment" aria-hidden="true"></i>Language-driven</span>
+        </div>
+        <p class="flow-stage-note">WorldExam represents controllable behavior as an ordered composition of atomic control units and adapts this control intent into an SE(3) camera trajectory, a discrete action sequence, or a natural-language prompt.</p>
+      </article>
+
+      <div class="flow-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+
+      <article class="flow-stage">
+        <div class="flow-stage-label">
+          <span class="flow-stage-index">02</span>
+          <h4>Diagnostic Levels</h4>
+        </div>
+        <div class="level-selector" role="tablist" aria-label="Diagnostic levels">
+          <button class="level-option" style="--option-color:#4ade80" type="button" role="tab" aria-selected="false" data-level="visual">Visual Quality</button>
+          <button class="level-option" style="--option-color:#fbbf24" type="button" role="tab" aria-selected="false" data-level="control">Control Adherence</button>
+          <button class="level-option" style="--option-color:#58a6ff" type="button" role="tab" aria-selected="false" data-level="spatial">Spatial Consistency</button>
+          <button class="level-option active" style="--option-color:#a78bfa" type="button" role="tab" aria-selected="true" data-level="reactivity">World Reactivity</button>
+        </div>
+      </article>
+
+      <div class="flow-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+
+      <article class="flow-stage explorer-output" aria-live="polite">
+        <span class="explorer-output-kicker" id="explorer-kicker">Core capability</span>
+        <h4 id="explorer-title">World Reactivity</h4>
+        <p class="explorer-output-copy" id="explorer-description">By contrast, the World Reactivity level evaluates scene-conditioned reactions and goal-directed behaviors beyond what is explicitly specified in the input.</p>
+        <div class="explorer-group">
+          <span class="explorer-group-title">Evaluation tasks</span>
+          <div class="explorer-token-list" id="explorer-tasks">
+            <span class="explorer-token">Terrain Interaction</span>
+            <span class="explorer-token">Object Interaction</span>
+            <span class="explorer-token">Social Interaction</span>
+            <span class="explorer-token">Physical Reaction</span>
+            <span class="explorer-token">Goal Completion</span>
+          </div>
+        </div>
+        <div class="explorer-group">
+          <span class="explorer-group-title">Diagnostic metrics</span>
+          <div class="explorer-token-list" id="explorer-metrics">
+            <span class="explorer-token">Terrain Interaction Score</span>
+            <span class="explorer-token">Object Interaction Score</span>
+            <span class="explorer-token">Social Interaction Score</span>
+            <span class="explorer-token">Physical Reaction Score</span>
+            <span class="explorer-token">Goal Completion Score</span>
+          </div>
+        </div>
+        <p class="explorer-track" id="explorer-track"><i class="fa-solid fa-route" aria-hidden="true"></i>The dynamic-interaction track contains Subject Control and the five World Reactivity tasks and applies only to compatible action- and language-driven models; Goal Completion is language-only.</p>
+      </article>
+    </div>
+  </div>
 
 </section>
 
@@ -1451,7 +1867,7 @@ th.sortable:hover .sort-arrow{
 
   <p class="comparison-caption">
     <strong>Comparison with representative world-model benchmarks.</strong>
-    The table compares supported paradigms, viewpoints, task coverage, case counts,
+    The table compares supported model paradigms, viewpoints, task coverage, case counts,
     and evaluated models.
   </p>
 
@@ -1461,8 +1877,8 @@ th.sortable:hover .sort-arrow{
         <tr>
           <th rowspan="2">Benchmark</th>
           <th rowspan="2">Model<br>Paradigm</th>
-          <th colspan="2">Viewpoint</th>
-          <th colspan="8">WorldExam Evaluation Tasks</th>
+          <th colspan="2" class="comparison-viewpoint-group">Viewpoint</th>
+          <th colspan="8" class="comparison-task-group">WorldExam Evaluation Tasks</th>
           <th rowspan="2">#Cases</th>
           <th rowspan="2">#Models</th>
         </tr>
@@ -1665,11 +2081,8 @@ th.sortable:hover .sort-arrow{
     </div>
 
     <div class="comparison-legend-note">
-      <strong>† Note:</strong>
-      The dagger symbol indicates that the instruction in that benchmark
-      explicitly specifies the expected interaction consequence.
-      By contrast, the corresponding <strong>WorldExam</strong> tasks provide only the
-      control intent, and require the model to infer the consequence from the scene.
+      <strong>†</strong> indicates that the instruction specifies the expected interaction consequence;
+      the corresponding <strong>WorldExam</strong> tasks leave the evaluated reaction unstated.
     </div>
   </div>
 </section>
@@ -1680,7 +2093,7 @@ th.sortable:hover .sort-arrow{
   <h2>Leaderboard</h2>
 
   <p class="desc">
-    Select an evaluation system and model paradigm.
+    Select an evaluation track and model paradigm.
     Click column headers to sort the results. All retained metrics are normalized
     so that higher values indicate better performance.
   </p>
@@ -1688,9 +2101,9 @@ th.sortable:hover .sort-arrow{
   <!-- 两级筛选区域 -->
   <div class="leaderboard-controls">
 
-    <!-- 第一层：选择排行榜 -->
+    <!-- 第一层：选择评估 Track -->
     <div class="filter-row">
-      <div class="filter-label">Leaderboard:</div>
+      <div class="filter-label">Track:</div>
 
       <div class="pill-buttons-row leaderboard-tabs" id="leaderboard-tabs">
 
@@ -1700,7 +2113,7 @@ th.sortable:hover .sort-arrow{
           data-board="dynamic"
           onclick="switchLeaderboard(this)"
         >
-          Dynamic-Interaction Evaluation
+          Dynamic-Interaction Track
         </button>
 
         <button
@@ -1709,15 +2122,15 @@ th.sortable:hover .sort-arrow{
           data-board="static"
           onclick="switchLeaderboard(this)"
         >
-          Static-Scene Evaluation
+          Static-Scene Track
         </button>
 
       </div>
     </div>
 
-    <!-- 第二层：选择模型类型 -->
+    <!-- 第二层：选择模型范式 -->
     <div class="filter-row">
-      <div class="filter-label">Model Type:</div>
+      <div class="filter-label">Model Paradigm:</div>
 
       <div
         class="pill-buttons-row model-type-buttons"
@@ -1736,19 +2149,10 @@ th.sortable:hover .sort-arrow{
         <button
           class="pill-btn"
           type="button"
-          data-type="text"
-          onclick="filterLeaderboardType(this)"
-        >
-          Language based <small></small>
-        </button>
-
-        <button
-          class="pill-btn"
-          type="button"
           data-type="camera"
           onclick="filterLeaderboardType(this)"
         >
-          Camera based <small></small>
+          Camera-Driven <small></small>
         </button>
 
         <button
@@ -1757,7 +2161,16 @@ th.sortable:hover .sort-arrow{
           data-type="action"
           onclick="filterLeaderboardType(this)"
         >
-          Action based <small></small>
+          Action-Driven <small></small>
+        </button>
+
+        <button
+          class="pill-btn"
+          type="button"
+          data-type="text"
+          onclick="filterLeaderboardType(this)"
+        >
+          Language-Driven <small></small>
         </button>
 
       </div>
@@ -1775,10 +2188,10 @@ th.sortable:hover .sort-arrow{
 
     <div class="leaderboard-panel-header">
       <div>
-        <h3>Static-Scene Evaluation</h3>
+        <h3>Static-Scene Track</h3>
         <p>
-          Evaluates camera control, scene revisiting, spatial consistency,
-          temporal stability, and visual quality.
+          The task scores diagnose Control Adherence and Spatial Consistency,
+          whereas the general metrics characterize Visual Quality.
         </p>
       </div>
     </div>
@@ -1812,7 +2225,7 @@ th.sortable:hover .sort-arrow{
 
             <!-- 平均分提前到最前面 -->
             <th colspan="3" class="average-metric-group">
-              Summary Scores
+              Average
             </th>
 
             <th colspan="2" class="task-metric-group">
@@ -1827,7 +2240,7 @@ th.sortable:hover .sort-arrow{
           <!-- 第二层：具体指标 -->
           <tr class="leaderboard-metric-row">
 
-            <!-- Summary Scores -->
+            <!-- Average scores -->
             <th class="sortable"
                 onclick="sortTable('table-static', 2, this)">
               <span class="metric-heading">
@@ -1842,7 +2255,7 @@ th.sortable:hover .sort-arrow{
                 onclick="sortTable('table-static', 3, this)">
               <span class="metric-heading">
                 <span class="metric-text">
-                  Task<br>Average
+                  Task
                 </span>
                 <span class="sort-arrow">↕</span>
               </span>
@@ -1852,7 +2265,7 @@ th.sortable:hover .sort-arrow{
                 onclick="sortTable('table-static', 4, this)">
               <span class="metric-heading">
                 <span class="metric-text">
-                  General<br>Average
+                  General
                 </span>
                 <span class="sort-arrow">↕</span>
               </span>
@@ -2273,10 +2686,10 @@ th.sortable:hover .sort-arrow{
 
     <div class="leaderboard-panel-header">
       <div>
-        <h3>Dynamic-Interaction Evaluation</h3>
+        <h3>Dynamic-Interaction Track</h3>
         <p>
-          Evaluates subject control, scene-conditioned interactions,
-          physical reactions, and goal-directed execution.
+          The dynamic-interaction track contains Subject Control and the five World Reactivity
+          tasks and applies only to compatible action- and language-driven models; Goal Completion is language-only.
         </p>
       </div>
     </div>
@@ -2310,7 +2723,7 @@ th.sortable:hover .sort-arrow{
 
             <!-- 平均分提前到最前面 -->
             <th colspan="3" class="average-metric-group">
-              Summary Scores
+              Average
             </th>
 
             <th colspan="6" class="task-metric-group">
@@ -2325,7 +2738,7 @@ th.sortable:hover .sort-arrow{
           <!-- 第二层：具体指标 -->
           <tr class="leaderboard-metric-row">
 
-            <!-- Summary Scores -->
+            <!-- Average scores -->
             <th class="sortable"
                 onclick="sortTable('table-dynamic', 2, this)">
               <span class="metric-heading">
@@ -2340,7 +2753,7 @@ th.sortable:hover .sort-arrow{
                 onclick="sortTable('table-dynamic', 3, this)">
               <span class="metric-heading">
                 <span class="metric-text">
-                  Task<br>Average
+                  Task
                 </span>
                 <span class="sort-arrow">↕</span>
               </span>
@@ -2350,7 +2763,7 @@ th.sortable:hover .sort-arrow{
                 onclick="sortTable('table-dynamic', 4, this)">
               <span class="metric-heading">
                 <span class="metric-text">
-                  General<br>Average
+                  General
                 </span>
                 <span class="sort-arrow">↕</span>
               </span>
@@ -2418,7 +2831,7 @@ th.sortable:hover .sort-arrow{
             </th>
 
             <th class="sortable"
-                onclick="sortTable('table-dynamic', 10, this)">
+                onclick="sortTable('table-dynamic', 11, this)">
               <span class="metric-heading">
                 <span class="metric-text">
                   Subject<br>Consistency
@@ -2428,7 +2841,7 @@ th.sortable:hover .sort-arrow{
             </th>
 
             <th class="sortable"
-                onclick="sortTable('table-dynamic', 10, this)">
+                onclick="sortTable('table-dynamic', 12, this)">
               <span class="metric-heading">
                 <span class="metric-text">
                   Motion<br>Smoothness
@@ -2438,7 +2851,7 @@ th.sortable:hover .sort-arrow{
             </th>
 
             <th class="sortable"
-                onclick="sortTable('table-dynamic', 10, this)">
+                onclick="sortTable('table-dynamic', 13, this)">
               <span class="metric-heading">
                 <span class="metric-text">
                   Aesthetic<br>Quality
@@ -2448,7 +2861,7 @@ th.sortable:hover .sort-arrow{
             </th>
 
             <th class="sortable"
-                onclick="sortTable('table-dynamic', 10, this)">
+                onclick="sortTable('table-dynamic', 14, this)">
               <span class="metric-heading">
                 <span class="metric-text">
                   Imaging<br>Quality
@@ -2643,7 +3056,7 @@ th.sortable:hover .sort-arrow{
 <!-- 5. samples 章节 -->
 <section id="metrics">
   <h2>Samples</h2>
-  <p class="desc">Same cases, different models — browse representative samples and quality differences.</p>
+  <p class="desc">Representative cases across the eight evaluation tasks are shown below.</p>
   <!-- 4个 metrics 按钮（统一 pill-btn 样式） -->
   <div class="pill-buttons-row">
     <button class="pill-btn active" data-metric="camera_control">Camera Control</button>
@@ -2660,11 +3073,11 @@ th.sortable:hover .sort-arrow{
   </div>
   <!-- 首帧选择 + 视频对比区域 -->
   <div class="metrics-main-container">
+    <div class="metric-task-goal" id="metric-task-goal"></div>
     <div class="cases-sidebar">
       <div class="cases-sidebar-header">
         <h4>Select First Frame</h4>
       </div>
-      <div class="metric-task-goal" id="metric-task-goal"></div>
       <div class="cases-list" id="cases-list">
         <!-- 由 JS 动态生成 -->
       </div>
@@ -2675,7 +3088,10 @@ th.sortable:hover .sort-arrow{
           <h4>Video Comparison</h4>
         </div>
       </div>
+      <!--
+      Case input / instruction description (temporarily hidden until final copy is provided):
       <div class="metric-case-goal" id="metric-case-goal"></div>
+      -->
       <div class="video-comparison-grid" id="video-comparison-grid">
         <!-- 由 JS 动态生成 -->
       </div>
@@ -2685,8 +3101,8 @@ th.sortable:hover .sort-arrow{
 
 <!-- 6. gallery 章节 -->
 <section id="gallery">
-  <h2>Dataset Gallery</h2>
-  <p class="desc">Browse cases by metric. Hover the strip to pause.</p>
+  <h2>Gallery</h2>
+  <p class="desc">Representative test cases by evaluation tasks. Hover the strip to pause.</p>
   <!-- metric 筛选按钮（统一 pill-btn 样式） -->
 <!-- Metric 筛选按钮 -->
 <div class="gallery-metric-rows" id="gallery-metric-btns">
@@ -2877,7 +3293,7 @@ function applyLeaderboardFilter() {
     message.style.display = '';
   } else if (visibleCount === 0) {
     message.textContent =
-      `No ${getModelTypeLabel(type)} models in this leaderboard.`;
+      `No ${getModelTypeLabel(type)} models in this track.`;
     message.style.display = '';
   } else {
     message.style.display = 'none';
@@ -2887,8 +3303,7 @@ function applyLeaderboardFilter() {
 }
 
 
-// 根据当前可见行更新排名
-// 根据当前排序及筛选结果更新排名与前三名底色
+// 根据当前排序及筛选结果更新行号，并在每个指标列中独立标出前三名。
 function updateVisibleRanks(tableId) {
   const table = document.getElementById(tableId);
 
@@ -2898,9 +3313,13 @@ function updateVisibleRanks(tableId) {
     table.querySelectorAll('tbody tr[data-model-type]')
   );
 
-  /* 先清除之前的排名底色，避免筛选或排序后残留 */
+  /* 清除筛选或排序前留下的行号和单元格排名样式。 */
   rows.forEach(row => {
     row.classList.remove('top-1', 'top-2', 'top-3');
+
+    Array.from(row.cells).forEach(cell => {
+      cell.classList.remove('metric-top-1', 'metric-top-2', 'metric-top-3');
+    });
 
     const rankCell = row.cells[0];
 
@@ -2926,22 +3345,41 @@ function updateVisibleRanks(tableId) {
     if (index === 0) {
       rankCell.textContent = '🥇';
       rankCell.classList.add('rank-gold');
-      row.classList.add('top-1');
 
     } else if (index === 1) {
       rankCell.textContent = '🥈';
       rankCell.classList.add('rank-silver');
-      row.classList.add('top-2');
 
     } else if (index === 2) {
       rankCell.textContent = '🥉';
       rankCell.classList.add('rank-bronze');
-      row.classList.add('top-3');
 
     } else {
       rankCell.textContent = index + 1;
     }
   });
+
+  highlightMetricTopCells(visibleRows);
+}
+
+function highlightMetricTopCells(visibleRows) {
+  if (!visibleRows.length) return;
+
+  const columnCount = visibleRows[0].cells.length;
+
+  for (let columnIndex = 2; columnIndex < columnCount; columnIndex++) {
+    const rankedCells = visibleRows
+      .map(row => ({
+        cell: row.cells[columnIndex],
+        value: parseLeaderboardValue(row.cells[columnIndex])
+      }))
+      .filter(entry => Number.isFinite(entry.value))
+      .sort((entryA, entryB) => entryB.value - entryA.value);
+
+    rankedCells.slice(0, 3).forEach((entry, rankIndex) => {
+      entry.cell.classList.add(`metric-top-${rankIndex + 1}`);
+    });
+  }
 }
 
 function updateLeaderboardFilterCounts() {
@@ -2980,9 +3418,9 @@ function updateLeaderboardFilterCounts() {
 function getModelTypeLabel(type) {
   const labels = {
     all: '',
-    text: 'language-based',
-    camera: 'camera-based',
-    action: 'action-based'
+    text: 'Language-Driven',
+    camera: 'Camera-Driven',
+    action: 'Action-Driven'
   };
 
   return labels[type] || type;
@@ -3060,30 +3498,6 @@ function parseLeaderboardValue(cell) {
   return Number.isFinite(value)
     ? value
     : Number.NEGATIVE_INFINITY;
-}
-
-// ========== Leaderboard：各列添加名次角标 ==========
-function addColumnRanks(tid) {
-  const t = document.getElementById(tid);
-  if (!t) return;
-  const rows = Array.from(t.querySelector('tbody').querySelectorAll('tr'));
-  const n = rows[0] ? rows[0].cells.length : 0;
-  for (let c = 2; c < n; c++) {
-    const v = rows.map((r, i) => ({ i, v: parseFloat(r.cells[c].textContent) || 0 }));
-    v.sort((a, b) => b.v - a.v);
-    const rk = {};
-    v.forEach((x, r) => { rk[x.i] = r + 1; });
-    rows.forEach((r, i) => {
-      const cell = r.cells[c];
-      let s = cell.querySelector('.col-rank');
-      if (!s) { s = document.createElement('span'); s.className = 'col-rank'; cell.appendChild(s); }
-      const rank = rk[i];
-      if (rank === 1) { s.textContent = '🥇'; s.style.fontSize = '17px'; }
-      else if (rank === 2) { s.textContent = '🥈'; s.style.fontSize = '17px'; }
-      else if (rank === 3) { s.textContent = '🥉'; s.style.fontSize = '17px'; }
-      else { s.textContent = '#' + (rank < 10 ? rank + ' ' : rank); s.style.fontSize = ''; }
-    });
-  }
 }
 
 // ========== 侧边栏高亮当前节 ==========
@@ -3342,13 +3756,13 @@ const metricPairMetadata = {
 
 const metricTaskGoals = {
   camera_control: 'Camera Control tests whether the generated camera motion follows the prescribed controls.',
-  subject_control: 'Subject Control applies the control to a designated third-person subject rather than to the camera.',
-  scene_revisit: 'Scene Revisit tests the model’s spatial memory of the initial observation.',
-  terrain_interaction: 'Terrain Interaction model must infer how the subject should adapt its height and maintain contact with the terrain.',
-  object_interaction: 'Object Interaction shows both the contact and an appropriate reaction.',
-  social_interaction: 'Social Interaction tests whether the controlled subject or nearby agents should react.',
-  physical_reaction: 'Physical Reaction The expected physical reaction should occur naturally.',
-  goal_completion: 'Goal Completion The model should understand the initial environment, select the correct entities, ignore distractors, and infer a valid execution path that makes visible progress toward the goal.'
+  subject_control: 'Subject Control applies atomic controls to a designated third-person subject.',
+  scene_revisit: 'Scene Revisit couples a round-trip camera motion with a spatial-memory requirement: the camera should return to the initial viewpoint while preserving the scene.',
+  terrain_interaction: 'Terrain Interaction specifies only horizontal subject motion. The model must infer the vertical adaptation required by the visible terrain.',
+  object_interaction: "Object Interaction tests whether contact with a designated target causes a response consistent with the target's physical type.",
+  social_interaction: 'Social Interaction evaluates whether nearby agents respond plausibly when a controlled subject enters their social or safety space.',
+  physical_reaction: 'Physical Reaction evaluates the temporal development of a physical process, not merely whether contact occurs.',
+  goal_completion: 'Goal Completion provides a high-level goal instead of an atomic control sequence. The model must ground the goal in the initial scene and generate coherent execution steps toward the desired target.'
 };
 
 const caseTaskDescriptions = Object.fromEntries(
@@ -3596,8 +4010,75 @@ document.querySelectorAll('#gallery-metric-btns .pill-btn').forEach(btn => {
   });
 });
 
+// ========== Overview：交互式诊断层级 ==========
+const diagnosticExplorerData = {
+  visual: {
+    kicker: 'Apparent appearance',
+    title: 'Visual Quality',
+    description: "Visual Quality measures the video's apparent appearance, including perceptual plausibility, temporal stability, and aesthetic quality.",
+    tasks: ['All eight task outputs'],
+    metrics: ['3D Consistency', 'Photometric Consistency', 'Temporal Flickering', 'Subject Consistency', 'Motion Smoothness', 'Aesthetic Quality', 'Imaging Quality'],
+    track: 'Each track reports task-specific metrics together with task-agnostic general metrics for visual quality.'
+  },
+  control: {
+    kicker: 'Explicit control',
+    title: 'Control Adherence',
+    description: 'Control Adherence measures whether the controlled camera or subject follows the input control.',
+    tasks: ['Camera Control', 'Subject Control'],
+    metrics: ['Camera Control Score', 'Translation / Rotation Error', 'Subject Control Score', 'Subject Trajectory Error'],
+    track: 'Control Adherence includes Camera Control and Subject Control.'
+  },
+  spatial: {
+    kicker: 'Persistent world state',
+    title: 'Spatial Consistency',
+    description: 'Spatial Consistency measures whether the model preserves a coherent world when the camera revisits a previously observed viewpoint.',
+    tasks: ['Scene Revisit'],
+    metrics: ['Scene Revisit Score', 'Revisit Success', 'PSNR', 'LPIPS', 'SSIM'],
+    track: 'The static-scene track contains Camera Control and Scene Revisit and is available to all three model paradigms because each interface can express camera motion.'
+  },
+  reactivity: {
+    kicker: 'Core capability',
+    title: 'World Reactivity',
+    description: 'By contrast, the World Reactivity level evaluates scene-conditioned reactions and goal-directed behaviors beyond what is explicitly specified in the input.',
+    tasks: ['Terrain Interaction', 'Object Interaction', 'Social Interaction', 'Physical Reaction', 'Goal Completion'],
+    metrics: ['Terrain Interaction Score', 'Object Interaction Score', 'Social Interaction Score', 'Physical Reaction Score', 'Goal Completion Score'],
+    track: 'The dynamic-interaction track contains Subject Control and the five World Reactivity tasks and applies only to compatible action- and language-driven models; Goal Completion is language-only.'
+  }
+};
+
+function renderExplorerTokens(target, items) {
+  if (!target) return;
+  target.innerHTML = items.map(item => `<span class="explorer-token">${item}</span>`).join('');
+}
+
+function renderDiagnosticExplorer(levelKey) {
+  const level = diagnosticExplorerData[levelKey];
+  if (!level) return;
+  document.getElementById('explorer-kicker').textContent = level.kicker;
+  document.getElementById('explorer-title').textContent = level.title;
+  document.getElementById('explorer-description').textContent = level.description;
+  renderExplorerTokens(document.getElementById('explorer-tasks'), level.tasks);
+  renderExplorerTokens(document.getElementById('explorer-metrics'), level.metrics);
+  document.getElementById('explorer-track').innerHTML = `<i class="fa-solid fa-route" aria-hidden="true"></i>${level.track}`;
+}
+
+function initDiagnosticExplorer() {
+  const buttons = document.querySelectorAll('.level-option[data-level]');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(item => {
+        const selected = item === button;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-selected', String(selected));
+      });
+      renderDiagnosticExplorer(button.dataset.level);
+    });
+  });
+}
+
 // ========== 页面初始化 ==========
 window.addEventListener('load', () => {
+  initDiagnosticExplorer();
   updateLeaderboardFilterCounts();
   applyLeaderboardFilter();
 
