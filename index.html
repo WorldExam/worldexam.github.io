@@ -62,6 +62,17 @@ section .desc{margin-bottom:18px;color:var(--muted);font-size:19px;line-height:1
   display:inline-block;
   white-space:nowrap;
 }
+.author-item a{
+  color:inherit;
+  text-decoration:none;
+  transition:color .2s;
+}
+.author-item a:hover{
+  color:#7dd3fc;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
 .author-item:not(:last-of-type)::after{content:","}
 .hero-with-bg{
   margin:0;
@@ -1555,8 +1566,8 @@ th.sortable:hover .sort-arrow{
   <h1>WorldExam</h1>
   <p class="desc"><strong>Benchmarking World Models from Apparent Appearance to Inherent Reactivity</strong></p>
 <p class="authors">
-  <span class="author-item">Yuxue Yang<sup>1,*,†</sup></span>
-  <span class="author-item">Shuyao Shang<sup>1,*</sup></span>
+  <span class="author-item"><a href="https://yang.yuxue.site" target="_blank" rel="noopener noreferrer">Yuxue Yang</a><sup>1,*,†</sup></span>
+  <span class="author-item"><a href="https://yaoyao-jpg.github.io" target="_blank" rel="noopener noreferrer">Shuyao Shang</a><sup>1,*</sup></span>
   <span class="author-item">Jiahe Wang<sup>1</sup></span>
   <span class="author-item">Zitong Zhou<sup>1</sup></span>
   <span class="author-item">Liang Tan<sup>1</sup></span>
@@ -1573,8 +1584,8 @@ th.sortable:hover .sort-arrow{
   <span class="author-item">Jun Zhu<sup>5</sup></span>
   <span class="author-item">Hongsheng Li<sup>2,3</sup></span>
   <span class="author-item">Tieniu Tan<sup>1</sup></span>
-  <span class="author-item">Lue Fan<sup>1,†,<i class="fa-regular fa-envelope author-email-icon" role="img" aria-label="Corresponding author"></i></sup></span>
-  <span class="author-item">Zhaoxiang Zhang<sup>1,<i class="fa-regular fa-envelope author-email-icon" role="img" aria-label="Corresponding author"></i></sup></span>
+  <span class="author-item"><a href="https://lue.fan" target="_blank" rel="noopener noreferrer">Lue Fan</a><sup>1,†,<i class="fa-regular fa-envelope author-email-icon" role="img" aria-label="Corresponding author"></i></sup></span>
+  <span class="author-item"><a href="https://zhaoxiangzhang.net" target="_blank" rel="noopener noreferrer">Zhaoxiang Zhang</a><sup>1,<i class="fa-regular fa-envelope author-email-icon" role="img" aria-label="Corresponding author"></i></sup></span>
 </p>
 
 <p class="affiliations">
@@ -1616,7 +1627,7 @@ th.sortable:hover .sort-arrow{
 </p>
   <!-- 按钮区域 -->
   <div class="publication-links">
-    <a href="https://worldexam.github.io/" class="link-card" target="_blank">
+    <a href="https://arxiv.org/abs/2608.02603" class="link-card" target="_blank" rel="noopener noreferrer">
       <div class="link-card-icon"><span class="resource-brand-mask resource-brand-mask--arxiv" role="img" aria-label="arXiv"></span></div>
       <span class="link-card-text"><b>arXiv</b></span>
       <div class="link-card-arrow"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 4H12M12 12V4M12 4L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></div>
@@ -3132,13 +3143,16 @@ th.sortable:hover .sort-arrow{
 </section>
 
 <!-- 7. citation 章节 -->
-<!-- <section id="citation">
+<section id="citation">
   <h2>Citation</h2>
   <p class="desc">If you find our work useful, please consider citing:</p>
-  <pre style="background:#f5f7fa;border:1px solid #eee;border-radius:8px;padding:16px;font-size:12px;font-family:'JetBrains Mono',monospace;overflow-x:auto;line-height:1.6">@article{...
-  year={2026}
-}</pre>
-</section> -->
+  <pre style="background:#f5f7fa;border:1px solid #eee;border-radius:8px;padding:16px;font-size:12px;font-family:'JetBrains Mono',monospace;overflow-x:auto;line-height:1.6"><code>@article{yang2026worldexam,
+  title   = {WorldExam: Benchmarking World Models from Apparent Appearance to Inherent Reactivity},
+  author  = {Yang, Yuxue and Shang, Shuyao and Wang, Jiahe and Zhou, Zitong and Tan, Liang and Zeng, Junhan and Li, Ruizhi and Li, Junyan and Liu, Yu and Yang, Xiao and Li, Yong and Zhu, Jun and Li, Hongsheng and Tan, Tieniu and Fan, Lue and Zhang, Zhaoxiang},
+  journal = {arXiv preprint arXiv:2608.02603},
+  year    = {2026}
+}</code></pre>
+</section>
 
 </div><!-- /.container -->
 
